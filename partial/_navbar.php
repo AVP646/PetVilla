@@ -10,29 +10,39 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 </style>
     <style>
-        i{
+        .nav-i i{
             padding:0 20px;
-            
+            /* border:1px solid black; */
+            margin:0 10px;
+
         }
-        ul li{
+
+        .nav-i i:hover{
+            font-size:18px;
+            transition:0.4s ease , 0.3 ease;
+        }
+
+        .nav-links li{
             font-family: "Poppins", sans-serif;
             font-style: normal;
             font-weight:500;
             padding:0 10px;
+            /* border:1px solid black; */
+        }
+        .nav-links li:hover{
+            font-size:18px;
+            /* font-size:20px; */
+            transition:0.4s ease;
         }
         .nav-title{
             padding:0 0 0 30px;
+            font-family: "Poppins", sans-serif;
+            font-style: normal;
+            font-weight:500;
         }
         .nav-im{
             width:60px;
             transform:rotate(30deg);
-        }
-        .nav-o-i{
-            margin:12px 0 0 0 ;
-        }
-        .nav-o-i-1{
-            padding-left:200px;
-
         }
     </style>
 </head>
@@ -44,7 +54,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto nav-links">
         <li class="nav-item">
           <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="index.php">HOME</a>
         </li>
@@ -63,9 +73,9 @@
         
 
       
-      <form class="d-flex" role="search" id="form_nav">
-        <i class="fa-solid fa-magnifying-glass nav-o-i nav-o-i-1"></i>
-         <i class="fa-solid fa-cart-shopping nav-o-i"></i>
+      <form class="d-flex nav-i" role="search" id="form_nav">
+        <i class="fa-solid fa-magnifying-glass "></i>
+         <i class="fa-solid fa-cart-shopping"></i>
         <i class="fa-solid fa-heart"></i>
         <i class="fa-solid fa-user"></i>
         <!-- <input data-aos="fade-down" data-aos-duration="1600" class="form-control me-2 rounded-pill  " type="search" placeholder="Search" aria-label="Search"/> -->
