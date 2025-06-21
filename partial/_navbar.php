@@ -56,10 +56,10 @@
           display:none;
           transition:0.5 ease;
         }
-        .bg-color{
+        /* .bg-color{
           background:url('images/slider-bg.png');
           z-index: 0;
-        } 
+        }  */
     </style>
 </head>
 
@@ -122,7 +122,6 @@ icon.addEventListener('click', function () {
           icon.style.display = 'inline-block';
         }, 300);
       });
-    });
   </script>
 
 </body>
