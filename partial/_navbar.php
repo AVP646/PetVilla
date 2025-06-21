@@ -1,5 +1,6 @@
 
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -61,29 +62,30 @@
         } 
     </style>
 </head>
+
 <body>
 
 <!-- this is navabr and it work with bootstrap  -->
-    <nav class="navbar navbar-expand-lg  bg-color">
+    <nav class="navbar navbar-expand-lg BG-COLOR ">
   <div class="container-fluid">
-    <a class="navbar-brand nav-title" href="index.php"><img src="images/logo.png" alt="" class="nav-im" > PetVilla</a>
+    <a class="navbar-brand nav-title" href="index.php"><img src="../images/logo.png" alt="" class="nav-im" > PetVilla</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto nav-links">
         <li class="nav-item">
-          <a  class="nav-link active  nav-links" aria-current="page" href="index.php">HOME</a>
+          <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="index.php">HOME</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link  nav-links" aria-current="page" href="about_us.php">PRODUCT</a>
+          <a data-aos="fade-down" data-aos-duration="1300" class="nav-link active nav-links" aria-current="page" href="about_us.php">ABOUT</a>
         </li>
           <li class="nav-item">
-          <a  class="nav-link  nav-links" aria-current="page" href="product.php">ABOUT US</a>
+          <a data-aos="fade-down" data-aos-duration="1400" class="nav-link active nav-links" aria-current="page" href="product.php">PRODUCT</a>
         </li>
          </li>
           <li class="nav-item">
-          <a  class="nav-link  nav-links" aria-current="page" href="contactUs.php">CONTACT US</a>
+          <a data-aos="fade-down" data-aos-duration="1500" class="nav-link active nav-links" aria-current="page" href="contactUs.php">CONTACT US</a>
         </li>
     </ul>
         
@@ -113,13 +115,16 @@ icon.addEventListener('click', function () {
   console.log("hello");
 });
 
-cancel.addEventListener('click',function () {
-  this.style.display = 'none';
-  box.style.display = 'none';
-  icon.style.display = 'block';
-  console.log("why");
-});
+      cancel.addEventListener('click', () => {
+        box.classList.remove('show');
+        cancel.classList.remove('show');
+        setTimeout(() => {
+          icon.style.display = 'inline-block';
+        }, 300);
+      });
+    });
+  </script>
 
-</script>
 </body>
+
 </html>
