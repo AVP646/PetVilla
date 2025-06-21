@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,10 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
     </style>
     <style>
-
+        *{
+          padding: 0;
+          margin: 0;
+        }
         .nav-i i{
             padding:0 20px;
             margin:10px 10px;
@@ -48,35 +51,39 @@
             width:60px;
             transform:rotate(30deg);
         }
-        #cancel{
+         #cancel{
           display:none;
           transition:0.5 ease;
         }
+        .bg-color{
+          background:url('images/slider-bg.png');
+          z-index: 0;
+        } 
     </style>
 </head>
 <body>
 
 <!-- this is navabr and it work with bootstrap  -->
-    <nav class="navbar navbar-expand-lg BG-COLOR ">
+    <nav class="navbar navbar-expand-lg  bg-color">
   <div class="container-fluid">
-    <a class="navbar-brand nav-title" href="index.php"><img src="../images/logo.png" alt="" class="nav-im" > PetVilla</a>
+    <a class="navbar-brand nav-title" href="index.php"><img src="images/logo.png" alt="" class="nav-im" > PetVilla</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto nav-links">
         <li class="nav-item">
-          <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="index.php">HOME</a>
+          <a  class="nav-link active  nav-links" aria-current="page" href="index.php">HOME</a>
         </li>
          <li class="nav-item">
-          <a data-aos="fade-down" data-aos-duration="1300" class="nav-link active nav-links" aria-current="page" href="about_us.php">ABOUT</a>
+          <a class="nav-link  nav-links" aria-current="page" href="about_us.php">PRODUCT</a>
         </li>
           <li class="nav-item">
-          <a data-aos="fade-down" data-aos-duration="1400" class="nav-link active nav-links" aria-current="page" href="product.php">PRODUCT</a>
+          <a  class="nav-link  nav-links" aria-current="page" href="product.php">ABOUT US</a>
         </li>
          </li>
           <li class="nav-item">
-          <a data-aos="fade-down" data-aos-duration="1500" class="nav-link active nav-links" aria-current="page" href="contactUs.php">CONTACT US</a>
+          <a  class="nav-link  nav-links" aria-current="page" href="contactUs.php">CONTACT US</a>
         </li>
     </ul>
         
