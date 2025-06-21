@@ -285,9 +285,7 @@
             </svg>
         </div>
     </section>
-    <div class="foot">
-    <h3>ayush</h3>
-    </div>
+    <?php include "../Pages/shop_by_pet.php"; ?>
     <script>
         const sliderTrack = document.getElementById('sliderTrack');
         const totalSlides = sliderTrack.children.length;

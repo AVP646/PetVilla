@@ -7,7 +7,7 @@
     <title>Footer</title>
     <style>
         #footer {
-            background: url(images/footer-bg.webp);
+            background: url(../images/footer-bg.webp);
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
@@ -61,7 +61,7 @@
         <div class="container text-center ">
             <div class="row align-items-start">
                 <div class="col foot-d">
-                    <a class="navbar-brand footer-title" href="index.php"><img src="images/logo.png"  alt="" class="footer-im"> PetVilla</a>
+                    <a class="navbar-brand footer-title" href="index.php"><img src="../images/footer-bg.webp"  alt="" class="footer-im"> PetVilla</a>
                     <p>Lorem ipsum dolor</p>
                     <i class="fa-brands fa-facebook"></i>
                     <i class="fa-brands fa-twitter"></i>
