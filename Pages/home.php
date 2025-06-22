@@ -217,6 +217,7 @@
             font-family: "Baloo 2", cursive;
             font-size: 20px;
             filter: drop-shadow(2px 5px 5px grey);
+            display: flex;
         }
 
         .arrow {
@@ -285,7 +286,7 @@
             </svg>
         </div>
     </section>
-    <?php include "../Pages/shop_by_pet.php"; ?>
+    <?php include "shop_by_pet.php"; ?>
     <script>
         const sliderTrack = document.getElementById('sliderTrack');
         const totalSlides = sliderTrack.children.length;
