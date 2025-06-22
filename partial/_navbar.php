@@ -68,7 +68,7 @@
 <!-- this is navabr and it work with bootstrap  -->
     <nav class="navbar navbar-expand-lg BG-COLOR ">
   <div class="container-fluid">
-    <a class="navbar-brand nav-title" href="index.php"><img src="../images/logo.png" alt="" class="nav-im" > PetVilla</a>
+    <a class="navbar-brand nav-title" href="index.php"><img src="./images/logo.png" alt="" class="nav-im" > PetVilla</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -122,7 +122,6 @@ icon.addEventListener('click', function () {
           icon.style.display = 'inline-block';
         }, 300);
       });
-    });
   </script>
 
 </body>
