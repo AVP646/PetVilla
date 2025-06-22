@@ -33,7 +33,7 @@
         .bg-color {
             background: linear-gradient(to right, #ff9468 70%, #ff8961 100%);
             width: 100vw;
-            height: 650px;
+            /* height: 650px; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -82,6 +82,7 @@
             font-weight: 600;
             color: black;
             opacity: 0;
+            bottom: -20px;
             animation: fadeIn 3s ease forwards;
             position: relative;
         }
@@ -100,7 +101,7 @@
 
         .slide-text p {
             font-size: 16px;
-            color: #222;
+            color:rgb(71, 69, 69);
             opacity: 0;
             transform: translateY(20px);
             animation: slideUp 2s ease forwards;
@@ -113,7 +114,7 @@
         }
 
         .animated-text2 {
-            font-size: 50px;
+            font-size: 70px;
             font-family: "Baloo 2", cursive;
             fill: transparent;
             stroke: black;
@@ -127,12 +128,14 @@
             to {
                 stroke-dashoffset: 0;
                 fill: black;
+               text-shadow: 2px 2px 5px red;
             }
         }
 
         @keyframes fadeIn {
             to {
                 opacity: 1;
+                 text-shadow: 2px 2px 5px red;
             }
         }
 
@@ -140,6 +143,7 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+                
             }
         }
 
@@ -159,7 +163,7 @@
             .bg-color {
                 background: linear-gradient(to right, #ff9468 70%, #ff8961 100%);
                 width: 100vw;
-                height: 890px;
+                /* height: 890px; */
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -213,6 +217,7 @@
             font-family: "Baloo 2", cursive;
             font-size: 20px;
             filter: drop-shadow(2px 5px 5px grey);
+            display: flex;
         }
 
         .arrow {
@@ -231,8 +236,8 @@
                     <div class="slide-text">
                         <h2 class="stroke-heading">Tasty Food</h2>
                         <svg viewBox="0 0 500 150">
-                            <text x="0" y="50" class="animated-text2">Fresh Flavoured</text>
-                            <text x="0" y="100" class="animated-text2">Dog Food</text>
+                            <text x="0" y="70" class="animated-text2">Fresh Flavoured</text>
+                            <text x="0" y="130" class="animated-text2">Dog Food</text>
                         </svg>
                         <p>Sedquis nis eleentum rhoncus sit amet in nisi. Phasellus tmpor.</p>
                     </div>
@@ -246,8 +251,8 @@
                     <div class="slide-text">
                         <h2 class="stroke-heading">Yummy & Tasty</h2>
                         <svg viewBox="0 0 500 150">
-                            <text x="0" y="50" class="animated-text2">We Make</text>
-                            <text x="0" y="100" class="animated-text2">The Best Food</text>
+                            <text x="0" y="70" class="animated-text2">We Make</text>
+                            <text x="0" y="130" class="animated-text2">The Best Food</text>
                         </svg>
                         <p>Sedquis nis eleentum rhoncus sit amet in nisi. Phasellus tmpor.</p>
                     </div>
@@ -261,8 +266,8 @@
                     <div class="slide-text">
                         <h2 class="stroke-heading">Budget Friendly</h2>
                         <svg viewBox="0 0 500 150">
-                            <text x="0" y="50" class="animated-text2">Organic Food &</text>
-                            <text x="0" y="100" class="animated-text2">Supplements</text>
+                            <text x="0" y="70" class="animated-text2">Organic Food &</text>
+                            <text x="0" y="130" class="animated-text2">Supplements</text>
                         </svg>
                         <p>Sedquis nis eleentum rhoncus sit amet in nisi. Phasellus tmpor.</p>
                     </div>
@@ -281,7 +286,7 @@
             </svg>
         </div>
     </section>
-
+    <?php include "shop_by_pet.php"; ?>
     <script>
         const sliderTrack = document.getElementById('sliderTrack');
         const totalSlides = sliderTrack.children.length;
@@ -297,3 +302,5 @@
 
 </body>
 </html>
+
+<?php include "../partial/_footer.php"; ?>

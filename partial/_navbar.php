@@ -56,10 +56,10 @@
           display:none;
           transition:0.5 ease;
         }
-        .bg-color{
+        /* .bg-color{
           background:url('images/slider-bg.png');
           z-index: 0;
-        } 
+        }  */
     </style>
 </head>
 
@@ -68,17 +68,17 @@
 <!-- this is navabr and it work with bootstrap  -->
     <nav class="navbar navbar-expand-lg BG-COLOR ">
   <div class="container-fluid">
-    <a class="navbar-brand nav-title" href="index.php"><img src="./images/logo.png" alt="" class="nav-im" > PetVilla</a>
+    <a class="navbar-brand d-flex align-items-center" href="index.php"><img src="../images/logo.png" alt="" class="nav-im" > PetVilla</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto nav-links">
         <li class="nav-item">
-          <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="index.php">HOME</a>
+          <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">HOME</a>
         </li>
          <li class="nav-item">
-          <a data-aos="fade-down" data-aos-duration="1300" class="nav-link active nav-links" aria-current="page" href="about_us.php">ABOUT</a>
+          <a data-aos="fade-down" data-aos-duration="1300" class="nav-link active nav-links" aria-current="page" href="../Pages/about.php">ABOUT</a>
         </li>
           <li class="nav-item">
           <a data-aos="fade-down" data-aos-duration="1400" class="nav-link active nav-links" aria-current="page" href="product.php">PRODUCT</a>
