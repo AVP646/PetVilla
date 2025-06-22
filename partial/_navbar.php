@@ -77,12 +77,15 @@
         <li class="nav-item">
           <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">HOME</a>
         </li>
-         <li class="nav-item">
-          <a data-aos="fade-down" data-aos-duration="1300" class="nav-link active nav-links" aria-current="page" href="../Pages/about.php">ABOUT</a>
+        <li class="nav-item">
+          <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">PETS</a>
         </li>
-          <li class="nav-item">
+        <li class="nav-item">
           <a data-aos="fade-down" data-aos-duration="1400" class="nav-link active nav-links" aria-current="page" href="product.php">PRODUCT</a>
         </li>
+        <li class="nav-item">
+         <a data-aos="fade-down" data-aos-duration="1300" class="nav-link active nav-links" aria-current="page" href="../Pages/about.php">ABOUT</a>
+       </li>
          </li>
           <li class="nav-item">
           <a data-aos="fade-down" data-aos-duration="1500" class="nav-link active nav-links" aria-current="page" href="contactUs.php">CONTACT US</a>
@@ -115,12 +118,10 @@ icon.addEventListener('click', function () {
   console.log("hello");
 });
 
-      cancel.addEventListener('click', () => {
-        box.classList.remove('show');
-        cancel.classList.remove('show');
-        setTimeout(() => {
-          icon.style.display = 'inline-block';
-        }, 300);
+      cancel.addEventListener('click',function () {
+        box.style.display = 'none' ;
+        icon.style.display = 'block';
+        this.style.display = 'none';
       });
   </script>
 
