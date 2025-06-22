@@ -40,16 +40,16 @@
             font-size:25px;
             transition:0.5s ease;
         }
-        #footer-cat{
+        /* #footer-cat{
             position: absolute;
             width:170px;
-            left:10px;
-        }
+            left:10px; */
+        /* } */
         #dog-footer{
-            position: absolute;
-            width:130px;
-            right:10px;
-            top:500px;
+            /* position: absolute; */
+            /* width:130px; */
+            /* right:10px; */
+            /* top:500px; */
         }
     </style>
 </head>
