@@ -40,16 +40,17 @@
             font-size:25px;
             transition:0.5s ease;
         }
-        /* #footer-cat{
-            position: absolute;
+         #footer-cat{
+            position: relative;
             width:170px;
-            left:10px; */
-        /* } */
+            left:10px; 
+            top:40px;
+        }
         #dog-footer{
-            /* position: absolute; */
-            /* width:130px; */
-            /* right:10px; */
-            /* top:500px; */
+            position: relative;
+            width:130px;
+            left:30%;
+             top:10px; 
         }
     </style>
 </head>
