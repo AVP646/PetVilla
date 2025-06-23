@@ -7,12 +7,12 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Poppins:wght@400;600&display=swap');
 
-        .container-catgari{
-      /* padding-top:100px;
+        /* .container-catgari{
+      padding-top:100px;
       display:flex;
       align-items:center;
-      justify-content:center; */
-     }
+      justify-content:center;
+     } */
      /* .container-catgari1{
       padding-top:20px;
       border:3px solid green;
@@ -86,10 +86,6 @@
       font-family: "Poppins", sans-serif;
       font-style: normal;
       font-weight:500;
-     }
-     .cate-name:hover{
-
-     
      }
      .cate-arrow{
       padding:10px;

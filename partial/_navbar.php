@@ -19,7 +19,7 @@
             padding:0 20px;
             margin:10px 10px;
             transition:0.3s ease-in-out;
-
+           
 
         }
         .nav-i input{
@@ -76,7 +76,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto nav-links">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto nav-links ">
         <li class="nav-item">
           <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">HOME</a>
         </li>
@@ -95,7 +95,7 @@
         </li>
     </ul>
         
-      <form class="d-flex nav-i" role="search" id="form_nav">
+      <form class="d-flex nav-i " role="search" id="form_nav">
         <input data-aos="fade-down" id="search-box" data-aos-duration="1600" class="form-control me-2 rounded-pill  " type="search" placeholder="Search" aria-label="Search"/>
         <i class="fa-solid fa-xmark" id="cancel"></i>
         <i class="fa-solid fa-magnifying-glass " id="search"></i>

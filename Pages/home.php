@@ -101,7 +101,7 @@
 
         .slide-text p {
             font-size: 16px;
-            color:rgb(71, 69, 69);
+            color: rgb(71, 69, 69);
             opacity: 0;
             transform: translateY(20px);
             animation: slideUp 2s ease forwards;
@@ -128,14 +128,14 @@
             to {
                 stroke-dashoffset: 0;
                 fill: black;
-               text-shadow: 2px 2px 5px white;
+                text-shadow: 2px 2px 5px white;
             }
         }
 
         @keyframes fadeIn {
             to {
                 opacity: 1;
-                 text-shadow: 2px 2px 5px white;
+                text-shadow: 2px 2px 5px white;
             }
         }
 
@@ -143,7 +143,7 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
-                
+
             }
         }
 
@@ -184,7 +184,7 @@
 
         .custom-shape-divider-bottom-1750488578 {
             position: absolute;
-            bottom: -1;
+            bottom: -1px;
             left: 0;
             width: 100%;
             overflow: hidden;
@@ -218,10 +218,26 @@
             font-size: 20px;
             filter: drop-shadow(2px 5px 5px grey);
             display: flex;
+            box-shadow: 1px 1px 2px white;
         }
 
         .arrow {
             width: 30px;
+            animation: Blip 3s ease-in-out infinite;
+        }
+
+        @keyframes Blip {
+            0% {
+                filter: drop-shadow(0 0 0 white);
+            }
+
+            50% {
+                filter: drop-shadow(1px 1px 3px white);
+            }
+
+            100% {
+                filter: drop-shadow(0 0 0 white);
+            }
         }
     </style>
 </head>
@@ -301,6 +317,7 @@
     </script>
 
 </body>
+
 </html>
 
 <?php include "../partial/_footer.php"; ?>
