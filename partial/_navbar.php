@@ -18,6 +18,8 @@
         .nav-i i{
             padding:0 20px;
             margin:10px 10px;
+            transition:0.3s ease-in-out;
+
 
         }
         .nav-i input{
@@ -35,12 +37,13 @@
             font-style: normal;
             font-weight:500;
             padding:0 10px;
+            transition:0.3s ease-in-out;
+
          }
         
         .nav-links li:hover{
             font-size:18px;
              
-            transition:0.3s ease;
         } 
         .nav-title{
             padding:0 0 0 30px;

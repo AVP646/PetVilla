@@ -128,14 +128,14 @@
             to {
                 stroke-dashoffset: 0;
                 fill: black;
-               text-shadow: 2px 2px 5px red;
+               text-shadow: 2px 2px 5px white;
             }
         }
 
         @keyframes fadeIn {
             to {
                 opacity: 1;
-                 text-shadow: 2px 2px 5px red;
+                 text-shadow: 2px 2px 5px white;
             }
         }
 
@@ -184,7 +184,7 @@
 
         .custom-shape-divider-bottom-1750488578 {
             position: absolute;
-            bottom: 0;
+            bottom: -1;
             left: 0;
             width: 100%;
             overflow: hidden;
@@ -297,7 +297,7 @@
             sliderTrack.style.transform = `translateX(-${counter * 100}vw)`;
         }
 
-        setInterval(goNext, 5000);
+        setInterval(goNext, 10000);
     </script>
 
 </body>
