@@ -155,7 +155,7 @@
         <input type="text" class="form-control mb-3" placeholder="Name on Card" required>
       </div>
 
-      <button type="submit" class="btn btn-danger w-100">Pay now</button>
+      <button type="submit" class="btn btn-danger w-100">Pay now </button>
     </form>
   </div>
 
