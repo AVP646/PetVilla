@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+      @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Poppins:wght@400;600&display=swap');
+
         .container-catgari{
       /* padding-top:100px;
       display:flex;
@@ -30,12 +32,16 @@
       /* background-position:center; */
       justify-content:center;
       margin-bottom:10px;
+      margin-left:1px;
       /* border:2px solid red; */
       /* margin: 0 0 10px 0; */
      
      }
      #main-cate-title{
       padding:50px 0 0 20px ;
+      position: relative;
+      bottom:15px;
+      font-family: "Baloo 2", cursive;
      }
      #main-cate-title i{
       padding:0 0 0 15px;
@@ -49,7 +55,7 @@
      .container-catgari2:hover{
       
      .cate-imges:hover{
-      transform: scale(1.2);
+      transform: scale(1.1);
       transition:0.4s ease;
      }
         .cate-name{
