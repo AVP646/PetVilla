@@ -16,7 +16,7 @@
             --text-dark: #3f3b57;
             --text-light: #908ca3;
             --white: #ffffff;
-            --max-width: 1200px;
+            --max-width: 100%;
         }
 
         * {
@@ -28,8 +28,8 @@
         .section__container {
             max-width: var(--max-width);
             padding: 5rem 1rem;
-            margin: auto;
-            
+            /* margin: auto; */
+            background-color: #dcd7f8;
         }
 
         .section__subheader {
@@ -180,7 +180,7 @@
         </div>
         <div class="about__row">
             <div class="about__image">
-                <img src="../images/about-2.jpg" alt="about" />
+                <img src="../images/about-2.webp" alt="about" />
             </div>
             <div class="about__content">
                 <span><img src="../images/about-2-icon.png" alt="about-icon" /></span>
@@ -207,36 +207,25 @@
     </section>
 
     <script src="https://unpkg.com/scrollreveal"></script>
-    <script>
-        const scrollRevealOption = {
-            distance: "50px",
-            origin: "bottom",
-            duration: 1000,
-        };
+   <script src="https://unpkg.com/scrollreveal"></script>
+<script>
+  const sr = ScrollReveal({
+    distance: "50px",
+    origin: "bottom",
+    duration: 1000,
+  });
 
-        ScrollReveal().reveal(
-            ".about__row:nth-child(3) .about__image img, .about__row:nth-child(5) .about__image img", {
-            ...scrollRevealOption,
-            origin: "left",
-        }
-        );
-        ScrollReveal().reveal(".about__row:nth-child(4) .about__image img", {
-            ...scrollRevealOption,
-            origin: "right",
-        });
-        ScrollReveal().reveal(".about__content span", {
-            ...scrollRevealOption,
-            delay: 500,
-        });
-        ScrollReveal().reveal(".about__content h4", {
-            ...scrollRevealOption,
-            delay: 1000,
-        });
-        ScrollReveal().reveal(".about__content p", {
-            ...scrollRevealOption,
-            delay: 1500,
-        });
-    </script>
+  sr.reveal(".about__row:nth-child(3) .about__image img, .about__row:nth-child(5) .about__image img", {
+    origin: "left"
+  });
+  sr.reveal(".about__row:nth-child(4) .about__image img", {
+    origin: "right"
+  });
+  sr.reveal(".about__content span", { delay: 500 });
+  sr.reveal(".about__content h4", { delay: 1000 });
+  sr.reveal(".about__content p", { delay: 1500 });
+</script>
+
 </body>
 
 </html>

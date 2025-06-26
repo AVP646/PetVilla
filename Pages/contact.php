@@ -1,3 +1,5 @@
+<?php include "../partial/_navbar.php" ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,14 +20,20 @@
             font-family: "Baloo 2", cursive;
         }
 
+        html,
         body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .main-contact-c {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100vw;
             height: 100vh;
             flex-direction: column;
-
             background-color: #dcd7f8;
         }
 
@@ -94,41 +102,51 @@
             }
         }
 
-        label{
+
+        label {
             font-size: large;
         }
     </style>
 </head>
 
 <body>
-    <div class="main-register-container container">
-        <div class="min-box"></div>
-        <svg viewBox="400">
-            <text x="49" y="40" class="register-logo"> Login Form</text>
-        </svg>
+    <div class="main-contact-c ">
+        <div class="main-register-container">
+            <div class="min-box"></div>
+            <svg viewBox="400">
+                <text x="49" y="40" class="register-logo">Contact Form</text>
+            </svg>
 
-        <form action="./home.php" method="POST" class="w-100">
+            <form action="./home.php" method="POST" class="w-100">
 
-            <div class="row">
-                <div class="col-12 mb-3">
-                    <label class="form-label">Email</label>
-                    <input type="email" name="email" class="form-control" placeholder="Enter Email" required>
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" placeholder="Enter Email" class="form-control" required>
+                    </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-12 mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" required minlength="6" placeholder="Enter password" autocomplete="new-password">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Enter Password" required minlength="6" autocomplete="new-password">
+                    </div>
                 </div>
-            </div>
 
-            <div class="row justify-content-center mb-3">
-                <div class="col-auto">
-                    <button type="submit" class="btn btn-dark">Login</button>
+                <div class="row">
+                    <div class="col-12 md-3">
+                        <label class="form-label">Message</label>
+                        <textarea name="message" class="form-control p-2" placeholder="Enter Message" required minlength="6" rows="4"></textarea>
+                    </div>
                 </div>
-            </div>
-        </form>
+
+                <div class="row justify-content-center mb-3 mt-4">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-dark">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
 

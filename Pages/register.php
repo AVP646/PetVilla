@@ -25,15 +25,14 @@
       width: 100vw;
       height: 100vh;
       flex-direction: column;
-      position: absolute;
-      top: 0;
-      background-color: rgba(170, 158, 158, 0.64);
+      background-color: #dcd7f8;
+      overflow-x: hidden;
     }
 
     .main-register-container {
       width: 100%;
       max-width: 600px;
-      height: auto;
+      height: 550px;
       display: flex;
       justify-content: center;
       background-color: rgba(209, 208, 208, 0.5);
@@ -94,6 +93,10 @@
         fill: black;
       }
     }
+
+    label {
+      font-size: large;
+    }
   </style>
 </head>
 
@@ -119,21 +122,21 @@
       <div class="row">
         <div class="col-12 mb-3">
           <label class="form-label">Email</label>
-          <input type="email" name="email" class="form-control" required autocomplete="off">
+          <input type="email" name="email" class="form-control" placeholder="Enter Email" required autocomplete="off">
         </div>
       </div>
 
       <div class="row">
         <div class="col-12 mb-3">
           <label class="form-label">Phone Number</label>
-          <input type="tel" name="phone" class="form-control" id="phone" required autocomplete="off">
+          <input type="tel" name="phone" class="form-control" id="phone" placeholder="Enter Phone Number" required autocomplete="off">
         </div>
       </div>
 
       <div class="row">
         <div class="col-12 mb-3">
           <label class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" required minlength="6" autocomplete="new-password">
+          <input type="password" name="password" class="form-control" placeholder="Enter password" required minlength="6" autocomplete="new-password">
         </div>
       </div>
 

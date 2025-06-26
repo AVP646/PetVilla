@@ -32,6 +32,7 @@
 
         .bg-color {
             background: linear-gradient(to right, #ff9468 70%, #ff8961 100%);
+            /* background-color: #dcd7f8; */
             width: 100vw;
             /* height: 650px; */
             display: flex;
