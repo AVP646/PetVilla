@@ -315,26 +315,8 @@
       color:black;
      } 
      /* this ends here  */
-     .pet-food-div{
-           height:300px;
-            background:url('../images/pet-food-bgs.png');
 
-            background-repeat:no-repeat;
-            background-position:center;
-        
-            background-size:contain;
-        /* margin:20px 0 20px 0;   */
-     }
-     /* .pet-food-img{
-        height:500px;
-            background:url('../images/.jpg');
-
-            background-repeat:no-repeat;
-            background-position:center;
-
-            background-size:contain;
-        margin:20px 0 20px 0;
-     } */
+     
     </style>
 </head>
 
@@ -460,11 +442,6 @@
     <!-- this ends here  -->
 
      <!-- this is pets food main container with link and images  -->
-
-     <div class="container-fluid pet-food-div">
-        <div class="container-fluid pet-food-img"></div>
-
-     </div>
 
 
 
