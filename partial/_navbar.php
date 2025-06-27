@@ -21,6 +21,7 @@
       transition: 0.3s ease-in-out;
       color: black;
       cursor: pointer;
+
     }
 
     .nav-i input {
@@ -30,8 +31,8 @@
     }
 
     .nav-i i:hover {
-      font-size: 18px;
-      transition: 0.4s ease, 0.3 ease;
+      /* font-size: 18px; */
+      transform: scale(1.2);
     }
 
     .nav-links li {
@@ -40,11 +41,10 @@
       font-weight: 500;
       padding: 0 10px;
       transition: 0.3s ease-in-out;
-
     }
 
     .nav-links li:hover {
-      font-size: 18px;
+      transform: scale(1.1);
 
     }
 
@@ -84,20 +84,25 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto nav-links ">
           <li class="nav-item">
-            <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">HOME</a>
+            <a data-aos="fade-down" data-aos-duration="1200"
+              class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">HOME</a>
           </li>
           <li class="nav-item">
-            <a data-aos="fade-down" data-aos-duration="1200" class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">PETS</a>
+            <a data-aos="fade-down" data-aos-duration="1200"
+              class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">PETS</a>
           </li>
           <li class="nav-item">
-            <a data-aos="fade-down" data-aos-duration="1400" class="nav-link active nav-links" aria-current="page" href="product.php">PRODUCT</a>
+            <a data-aos="fade-down" data-aos-duration="1400"
+              class="nav-link active nav-links" aria-current="page" href="product.php">PRODUCT</a>
           </li>
           <li class="nav-item">
-            <a data-aos="fade-down" data-aos-duration="1300" class="nav-link active nav-links" aria-current="page" href="../Pages/about.php">ABOUT</a>
+            <a data-aos="fade-down" data-aos-duration="1300"
+              class="nav-link active nav-links" aria-current="page" href="../Pages/about.php">ABOUT</a>
           </li>
           </li>
           <li class="nav-item">
-            <a data-aos="fade-down" data-aos-duration="1500" class="nav-link active nav-links" aria-current="page" href="contactUs.php">CONTACT US</a>
+            <a data-aos="fade-down" data-aos-duration="1500"
+              class="nav-link active nav-links" aria-current="page" href="../Pages/contact.php">CONTACT US</a>
           </li>
         </ul>
 

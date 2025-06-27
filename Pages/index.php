@@ -32,6 +32,7 @@
 
         .bg-color {
             background: linear-gradient(to right, #ff9468 70%, #ff8961 100%);
+            /* background-color: #dcd7f8; */
             width: 100vw;
             /* height: 650px; */
             display: flex;
@@ -315,8 +316,50 @@
       color:black;
      } 
      /* this ends here  */
+      /* this is pet-food cta  */
+     .pet-food{
+        background:red;
+        margin:10px 0;
+     }
+     .pet-food-d{
+        margin:30px 0;
+        background:url('../images/bg.jpg');
+        background-repeat:no-repeat;
+        background-size:cover;
+        border-radius:30px;
+     }
+     .pet-food-d img{
+        width:350px;
+        margin:10px 0;
+        border-radius:30px;
+        transition:0.4s ease-in-out;
+     }
+     .pet-food-d img:hover{
+        transform:scale(1.1,1.1);
+     }
+     /* ends here  */
+     .last-d{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        margin:10px 0;
+     }
+     .slider{
+        width:200px;
+        height:200px;
+        background:red; 
+        border:1px solid black;
+        border-radius:50%;
+        margin:0 5px;
+        transition:0.4s ease-in-out;
 
-     
+     }
+     .slider:hover{
+        transform:scale(1.1,1.1);
+
+     }
+
+
     </style>
 </head>
 
@@ -443,10 +486,29 @@
 
      <!-- this is pets food main container with link and images  -->
 
+        <div class="container-fluid px-4 pet-food-d text-center">
+  <div class="row gx-5">
+    <div class="col">
+      <div class=""><img src="../images/pppp.png" width="380px" alt=""></div>
+    </div>
+    <div class="col">
+      <div class=""><img src="../images/pppp.png" width="380px" alt=""></div>
+    </div>
+  </div>
+</div>
 
+<!-- ends here  -->
+ <!-- last slider-pet-food  -->
+<div class="container-fluid last-d">
+        <div class="slider"></div>
+        <div class="slider"></div>
+        <div class="slider"></div>
+        <div class="slider"></div>
+        <div class="slider"></div>
+        <div class="slider"></div>
+</div>
 
-
-
+<!-- here its end  -->
 
 
 
