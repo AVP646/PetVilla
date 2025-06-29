@@ -64,11 +64,6 @@
       display: none;
       transition: 0.5 ease;
     }
-
-    /* .bg-color{
-          background:url('images/slider-bg.png');
-          z-index: 0;
-        }  */
   </style>
 </head>
 
