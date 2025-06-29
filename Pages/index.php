@@ -338,27 +338,36 @@
         transform:scale(1.1,1.1);
      }
      /* ends here  */
-     .last-d{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        margin:10px 0;
-     }
      .slider{
-        width:200px;
-        height:200px;
-        background:red; 
-        border:1px solid black;
-        border-radius:50%;
-        margin:0 5px;
-        transition:0.4s ease-in-out;
+        /* width:200px;
+        height:200px; */
+                 background:url('../images/bg.jpg');
+
+        border-radius:30px;
+        /* margin:10px 0; */
+        /* transition:0.4s ease-in-out; */
+        margin-bottom:20px;
 
      }
      .slider:hover{
-        transform:scale(1.1,1.1);
+        /* transform:scale(1.1,1.1); */
 
      }
 
+     .slider img{
+        width:200px;
+        height:200px;
+        /* background:red;  */
+        /* border:1px solid black; */
+        border-radius:50%;
+        margin:5px 45px;
+        transition:0.4s ease-in-out;
+        border:1px solid black;
+
+     }
+     .slider img:hover{
+        transform:scale(1.1,1.1);
+     }
 
     </style>
 </head>
@@ -499,13 +508,85 @@
 
 <!-- ends here  -->
  <!-- last slider-pet-food  -->
-<div class="container-fluid last-d">
-        <div class="slider"></div>
-        <div class="slider"></div>
-        <div class="slider"></div>
-        <div class="slider"></div>
-        <div class="slider"></div>
-        <div class="slider"></div>
+
+
+<div class="container text-center slider">
+  <h2 id="main-cate-title">Food For Pets<i class="fa-solid fa-paw" style="color: #ffac38;"></i><i class="fa-solid fa-paw" style="color: #ffac38;"></i></h2>
+
+  <div class="row">
+    <div class="col">
+            <img src="../images/dog.jpg"  alt="">
+      
+    </div>
+    <div class="col">
+            <img src="../images/dog.jpg"  alt="">
+      
+    </div>
+    <div class="col">
+            <img src="../images/dog.jpg"  alt="">
+      
+    </div>
+    <div class="col">
+            <img src="../images/dog.jpg"  alt="">
+      
+    </div>
+    <div class="col">
+            <img src="../images/dog.jpg"  alt="">
+      
+    </div>
+    <div class="col">
+            <img src="../images/dog.jpg"  alt="">
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <div class="container-fluid "> -->
+       
+     <!-- <div class="grid  slider">
+  <div class="g-col-4">
+            <img src="../images/dog.jpg"  alt="">
+
+  </div>
+  <div class="g-col-4">
+            <img src="../images/dog.jpg"  alt="">
+
+  </div>
+  <div class="g-col-4">
+            <img src="../images/dog.jpg"  alt="">
+
+  </div> -->
+<!-- </div> -->
+<!-- <div class="slider">
+            <img src="../images/dog.jpg"  alt="">
+        </div>
+        <div class="slider">
+            <img src="../images/cat.webp"  alt="">
+
+        </div>
+        <div class="slider">
+            <img src="../images/fish.png"  alt="">
+
+        </div>
+        <div class="slider">
+            <img src="../images/bird.jpg"  alt="">
+
+        </div>
+        <div class="slider">
+            <img src="../images/turtle.webp"  alt="">
+
+        </div>
+        <div class="slider">
+            <img src="../images/rabit.webp"  alt="">
+
+            </div> -->
 </div>
 
 <!-- here its end  -->
