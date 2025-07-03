@@ -10,11 +10,21 @@
     @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
   </style>
   <style>
+
+    /* color for website here  */
+    /* #748873
+    #D1A980
+    #E5E0D8
+    #F8F8F8 */
     * {
       padding: 0;
       margin: 0;
     }
-
+    .navbar-color{
+      background-color:   #D1A980;
+      /* z-index: 1111;
+      position:relative; */
+    }
     .nav-i i {
       padding: 0 20px;
       margin: 10px 10px;
@@ -70,7 +80,7 @@
 <body>
 
   <!-- this is navabr and it work with bootstrap  -->
-  <nav class="navbar navbar-expand-lg BG-COLOR ">
+  <nav class="navbar navbar-expand-lg  navbar-color">
     <div class="container-fluid">
       <a class="navbar-brand d-flex align-items-center" href="index.php"><img src="../images/logo.png" alt="" class="nav-im"> PetVilla</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
