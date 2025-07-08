@@ -8,7 +8,7 @@
     <style>
         #footer {
             /* background: url(../images/footer-bg.webp); */
-            background:#748873;
+            background:#D1A980;
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;

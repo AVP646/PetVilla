@@ -24,6 +24,11 @@
         border-radius:5px;
         border:1px solid black;
       }
+       .im-div button{
+        width:100px;
+        height:30px;
+        text-align:center;
+       }
       .im-div:hover{
         transform:scale(1.1,1.1);
       }
@@ -36,7 +41,8 @@
     </style>
 </head>
 <body>
-  <div class="container-fluid overflow-hidden text-center">
+  <div class="container-fluid overflow-hidden  border my-5">
+      <h2><i class="fa-solid fa-sort-down"></i>Filter</h2>
   <div class="row gy-5">
      <div class="col-3 border mini-slider">
       <div class="p-3">Custom column padding</div>
@@ -51,7 +57,7 @@
         <h6>bulldog</h6>
         <h6>400$</h6>
         <button class="btn btn-danger">View</button>
-        <button class="btn btn-danger">add to cart</button>
+        <button class="btn btn-danger">Add</button>
 
     </div>
     <div class="col im-div">
@@ -60,7 +66,7 @@
         <h6>bulldog</h6>
         <h6>400$</h6>
         <button class="btn btn-danger">view</button>
-        <button class="btn btn-danger">add to cart</button>
+        <button class="btn btn-danger">Add</button>
     </div>
     <div class="col im-div">
            <img src="../images/dog.jpg"  alt="">
@@ -68,7 +74,7 @@
         <h6>bulldog</h6>
         <h6>400$</h6>
         <button class="btn btn-danger">view</button>
-        <button class="btn btn-danger">add to cart </button>
+        <button class="btn btn-danger">Add </button>
 
     </div>
      <div class="col im-div">
@@ -77,7 +83,7 @@
         <h6>bulldog</h6>
         <h6>400$</h6>
         <button class="btn btn-danger">view</button>
-        <button class="btn btn-danger">add to cart</button>
+        <button class="btn btn-danger">Add</button>
     </div>
     <div class="col im-div">
         <img src="../images/dog.jpg"  alt="">
@@ -85,7 +91,7 @@
         <h6>bulldog</h6>
         <h6>400$</h6>
         <button class="btn btn-danger">View</button>
-        <button class="btn btn-danger">add to cart</button>
+        <button class="btn btn-danger">Add</button>
     </div>
     <div class="col im-div">
         <img src="../images/dog.jpg"  alt="">
@@ -93,7 +99,7 @@
         <h6>bulldog</h6>
         <h6>400$</h6>
         <button class="btn btn-danger">Adopt me</button>
-        <button class="btn btn-danger">add to cart</button>
+        <button class="btn btn-danger">Add</button>
     </div> 
   </div>
 </div>

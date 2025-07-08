@@ -241,7 +241,7 @@
 
  .main-categori {
      /* background: url('../images/categori-bg.png'); */
-     /* background:#E5E0D8; */
+     /* background:#F8F8F8; */
      background-size: auto;
      justify-content: center;
      margin-bottom: 10px;
@@ -328,10 +328,12 @@
 
  .pet-food-d {
      margin: 30px 0;
-     background: url('../images/bg.jpg');
+     /* background: url('../images/bg.jpg'); */
+     background-color: #E5E0D8;
+
      background-repeat: no-repeat;
      background-size: cover;
-     border-radius: 30px;
+     /* border-radius: 30px; */
  }
 
  .pet-food-d img {
@@ -347,7 +349,8 @@
 
  /* ends here  */
  .slider {
-     background: url('../images/bg.jpg');
+     /* background: url('../images/bg.jpg'); */
+      background-color:   #E5E0D8;
      border-radius: 30px;
      margin-bottom: 20px;
 
