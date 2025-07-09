@@ -90,15 +90,15 @@
         <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-auto nav-links ">
           <li class="nav-item">
             <a data-aos="fade-down" data-aos-duration="1200"
-              class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">HOME</a>
+              class="nav-link active  nav-links" aria-current="page" href="../Pages/index.php">HOME</a>
           </li>
           <li class="nav-item">
             <a data-aos="fade-down" data-aos-duration="1200"
-              class="nav-link active  nav-links" aria-current="page" href="../Pages/home.php">PETS</a>
+              class="nav-link active  nav-links" aria-current="page" href="../Pages/pet-page.php">PETS</a>
           </li>
           <li class="nav-item">
             <a data-aos="fade-down" data-aos-duration="1400"
-              class="nav-link active nav-links" aria-current="page" href="product.php">PRODUCT</a>
+              class="nav-link active nav-links" aria-current="page" href="../pages/pet-page.php">PRODUCT</a>
           </li>
           <li class="nav-item">
             <a data-aos="fade-down" data-aos-duration="1300"
@@ -115,9 +115,8 @@
           <input data-aos="fade-down" id="search-box" data-aos-duration="1600" class="form-control me-2 rounded-pill  " type="search" placeholder="Search" aria-label="Search" />
           <i class="fa-solid fa-xmark" id="cancel"></i>
           <i class="fa-solid fa-magnifying-glass " id="search"></i>
-          <i class="fa-solid fa-cart-shopping"></i>
-          <i class="fa-solid fa-heart"></i>
-          <a href="../Pages/register.php"><i class="fa-solid fa-user"></i></a>
+          <a href="../pages/addToCart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="../Pages/user.php"><i class="fa-solid fa-user"></i></a>
         </form>
       </div>
     </div>
