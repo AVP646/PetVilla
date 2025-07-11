@@ -9,10 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetVilla</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="homes.css">
-    <style>
-       
-    </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="inde.css">
 </head>
 
 <body>
@@ -136,9 +135,164 @@
     </div>
     <!-- this ends here  -->
 
+    <!-- this is catogires for ffood  -->
+
+     <section class="py-5 my-5 food-catt">
+    <div class="container">
+      <h2 class="text-center mb-4 fw-bold">Looking For Pets Food !</h2>
+      <p class="text-center mb-5 text-muted">Explore our wide range of pets food categories and find the best food for your beloved animals.</p>
+      <div class="row g-4">
+        <!-- Card 1 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="category-card">
+            <div class="category-icon">🐶</div>
+            <h5>Dog Food</h5>
+            <p>Nutritious and delicious meals for dogs.</p>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="category-card">
+            <div class="category-icon">🐱</div>
+            <h5>Cat Food</h5>
+            <p>Healthy and tasty food for cats.</p>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="category-card">
+            <div class="category-icon">🐰</div>
+            <h5>Rabbit Food</h5>
+            <p>Fresh and nutritious food for rabbits.</p>
+          </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="category-card">
+            <div class="category-icon">🐦</div>
+            <h5>Birds Food</h5>
+            <p>High-quality seeds and feed for birds.</p>
+          </div>
+        </div>
+        <!-- Card 5 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="category-card">
+            <div class="category-icon">🐢</div>
+            <h5>Reptile Food</h5>
+            <p>Special feed for turtles and reptiles.</p>
+          </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="category-card">
+            <div class="category-icon">🐟</div>
+            <h5>Fish Food</h5>
+            <p>Premium quality food for aquarium fish.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- ends here  -->
+
+<!-- this is why we need pets container  -->
+        <section class="container my-5" id="reviews">
+        <h2 class="text-center display-5 fw-bold mb-4">Why Wee Need Pets ??</h2>
+        <p class="text-center lead text-muted mb-5">Hear inspiring stories from pet owners around the world.</p>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <div class="col">
+                <div class="p-4 review-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="John Smith" width="60" height="60">
+                        <div>
+                            <h5 class="mb-0">John S.</h5>
+                            <div class="review-rating">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> (4.5/5)
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted">"My dog, Buddy, has truly changed my life. His endless energy and affection remind me to live in the moment. I can't imagine a day without him."</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-4 review-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="Alice M." width="60" height="60">
+                        <div>
+                            <h5 class="mb-0">Alice M.</h5>
+                            <div class="review-rating">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> (5/5)
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted">"My cat, Luna, is the most calming presence in my home. After a long day, just petting her melts away all my stress. Highly recommend pet ownership!"</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-4 review-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="Rahul K." width="60" height="60">
+                        <div>
+                            <h5 class="mb-0">Rahul K.</h5>
+                            <div class="review-rating">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i> (4/5)
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted">"My parrot, Polly, is a constant source of entertainment. While demanding, the joy she brings to our family is immeasurable. It's truly a unique bond."</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-4 review-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="Sarah F." width="60" height="60">
+                        <div>
+                            <h5 class="mb-0">Sarah F.</h5>
+                            <div class="review-rating">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> (5/5)
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted">"Our guinea pigs, Peanut and Butter, have taught my kids so much about responsibility and compassion. They're tiny bundles of joy!"</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-4 review-card ">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="David P." width="60" height="60">
+                        <div>
+                            <h5 class="mb-0">David P.</h5>
+                            <div class="review-rating">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i> (3/5)
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted">"Having a fish tank is surprisingly meditative. It adds a peaceful element to my living room. Maintenance is key, but worth it for the tranquility."</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-4 review-card">
+                    <div class="d-flex align-items-center mb-3">
+                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="Liam M." width="60" height="60">
+                        <div>
+                            <h5 class="mb-0">Liam M.</h5>
+                            <div class="review-rating">
+                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> (4.5/5)
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted">"My tortoise, Sheldon, is a long-term commitment, but so rewarding. Watching him explore and grow has been a unique experience."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- this ends here  -->
+
      <!-- this is pets food main container with link and images  -->
 
-        <div class="container-fluid px-4 pet-food-d text-center">
+        <!-- <div class="container-fluid px-4 pet-food-d text-center">
   <div class="row gx-5">
     <div class="col">
       <div class=""><img src="../images/pppp.png" width="380px" alt=""></div>
@@ -147,12 +301,12 @@
       <div class=""><img src="../images/pppp.png" width="380px" alt=""></div>
     </div>
   </div>
-</div>
+</div> -->
 
 <!-- ends here  -->
  <!-- last slider-pet-food  -->
 
-
+<!-- 
 <div class="container text-center slider">
   <h2 id="main-cate-title">Food For Pets<i class="fa-solid fa-paw" style="color: #ffac38;"></i><i class="fa-solid fa-paw" style="color: #ffac38;"></i></h2>
 
@@ -184,7 +338,7 @@
   </div>
 </div>
 
-</div>
+</div> -->
 
 <!-- here its end  -->
 

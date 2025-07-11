@@ -237,11 +237,11 @@
      height: 130px;
      width: 380px;
      border-radius: 100px;
+     transition: 0.3s ease-in-out;
+
  }
 
  .main-categori {
-     /* background: url('../images/categori-bg.png'); */
-     /* background:#F8F8F8; */
      background-size: auto;
      justify-content: center;
      margin-bottom: 10px;
@@ -272,10 +272,13 @@
 
  .container-catgari2:hover {
 
-     .cate-imges:hover {
+     /* .cate-imges:hover {
          transform: scale(1.1);
-     }
+     } */
 
+         transform: scale(1.1,1.1);
+     
+    
      .cate-name {
          position: relative;
          width: 160px;
@@ -319,6 +322,24 @@
  }
 
  /* this ends here  */
+
+ /* this is pets food catogori  */
+         .category-card {
+      border-radius: 1rem;
+      background: #fff;
+      padding: 2rem 1rem;
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0.5rem 1rem rgba(0,0,0,0.1);
+    }
+    .category-icon {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+ /* ensd hereeee */
 
  /* this is pet-food cta  */
  .pet-food {
@@ -369,3 +390,19 @@
  .slider img:hover {
      transform: scale(1.1, 1.1);
  }
+
+
+
+
+
+.food-catt{
+     background-color: #E5E0D8;
+    
+}
+
+
+
+
+
+
+

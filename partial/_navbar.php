@@ -98,7 +98,7 @@
           </li>
           <li class="nav-item">
             <a data-aos="fade-down" data-aos-duration="1400"
-              class="nav-link active nav-links" aria-current="page" href="../pages/pet-page.php">PRODUCT</a>
+              class="nav-link active nav-links" aria-current="page" href="../pages/food-page.php">PRODUCT</a>
           </li>
           <li class="nav-item">
             <a data-aos="fade-down" data-aos-duration="1300"
