@@ -58,13 +58,13 @@
     <!-- Sidebar -->
     <div class="bg-dark text-white p-3  " id="sidebar">
       <h3 class="mb-4 text-center">PetVilla </h3>
-      <ul class="nav flex-column">
-        <li class="nav-item"><a href="#" class="nav-link text-">Dashboard</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-">Orders</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-">Users</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-">Pets</a></li>
-        <li class="nav-item"><a href="#" class="nav-link text-">Products</a></li>
-        <li class="nav-item"><a href="#" class="nav-link logout">LOGOUT</a></li>
+      <ul class="nav flex-column"> 
+        <li class="nav-item"><a href="admin_das.php" class="nav-link text-">Dashboard</a></li>
+        <li class="nav-item"><a href="admin_order.php" class="nav-link text-">Orders</a></li>
+        <li class="nav-item"><a href="admin_users.php" class="nav-link text-">Users</a></li>
+        <li class="nav-item"><a href="admin_Pets.php" class="nav-link text-">Pets</a></li>
+        <li class="nav-item"><a href="admin_Product.php" class="nav-link text-">Products</a></li>
+        <li class="nav-item"><a href="admin_logout.php" class="nav-link logout">LOGOUT</a></li>
       </ul>
     </div>
 

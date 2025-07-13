@@ -1,4 +1,5 @@
- <?php include "../partial/_navbar.php";  ?>
+<?php include 'login_session.php' ?>
+<?php include "../partial/_navbar.php";  ?>
 <!-- 
 <!DOCTYPE html>
 <html lang="en">
@@ -160,7 +161,11 @@
       <div class="col-md-7">
         <h3>Golden Retriever Puppy</h3>
         <p class="text-muted">Category: Dog • Breed: Golden Retriever</p>
-        <div class="rating mb-2">★ ★ ★ ★ ☆ (52 reviews)</div>
+        <p class="text-muted">Age: 2years • Size: 10kg</p>
+        <p class="text-muted">Color: Black • Gender: Male</p>
+        <p class="text-muted">Status: Available</p>
+
+
         <p class="price">₹3,999</p>
 
         <p>This playful and affectionate golden retriever puppy is perfect for families. Vaccinated, healthy, and ready to bring joy to your home.</p>

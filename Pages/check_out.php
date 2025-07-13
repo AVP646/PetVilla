@@ -1,3 +1,4 @@
+<?php include 'login_session.php' ?>
 <?php include "../partial/_navbar.php" ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,3 +1,4 @@
+<?php include 'login_session.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +12,7 @@
       font-family: 'Poppins', sans-serif;
     }
     .navbar {
-      background: linear-gradient(90deg, #ffd6e8, #ffe4c4);
+      /* background: linear-gradient(90deg, #ffd6e8, #ffe4c4); */
     }
     .card {
       border: none;
@@ -24,8 +25,8 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
     .card img {
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
+      /* border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem; */
     }
     .filter-box {
       background: #fff;

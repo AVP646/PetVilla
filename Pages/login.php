@@ -1,6 +1,51 @@
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  include "../partial/_database.php";
+
+  $user = $_POST['user'];
+  $pass = $_POST['pass'];
+
+    // $sql = "SELECT * FROM  users WHERE username='$user' AND password='$pass'";
+    $sql = "SELECT * FROM users  WHERE username='$user'";
+    $result = mysqli_query($conn,$sql);
+    $num = mysqli_num_rows($result);
+
+    if($num == 1)
+    {
+      while($row = mysqli_fetch_assoc($result))
+      {
+        if(password_verify($pass , $row['password']))
+        {
+         session_start();
+        $_SESSION['login'] = true;
+        $_SESSION['user'] = $user;
+        $_SESSION['name'] = $row['fname'];
+        $_SESSION['sur'] = $row['lname'];
+        $_SESSION['email'] = $row['email'];
+        $_SESSION['Mno'] = $row['Mno'];
+
+
+
+        header("location:index.php");
+        }
+         else
+         {
+             alert2();
+         }
+      }
+    }
+    else{
+        alert();
+    }
+    
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -107,19 +152,19 @@
             <text x="49" y="40" class="register-logo"> Login Form</text>
         </svg>
 
-        <form action="./home.php" method="POST" class="w-100">
+        <form action="login.php" method="POST" class="w-100">
 
             <div class="row">
                 <div class="col-12 mb-3">
                     <label class="form-label">Username</label>
-                    <input type="text" name="email" class="form-control" placeholder="Enter Username" required>
+                    <input type="text" name="user" class="form-control" placeholder="Enter Username" required>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-12 mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" required minlength="6" placeholder="Enter password" autocomplete="new-password">
+                    <input type="password" name="pass" class="form-control" required minlength="6" placeholder="Enter password" autocomplete="new-password">
                 </div>
             </div>
 
@@ -131,5 +176,28 @@
         </form>
     </div>
 </body>
-
 </html>
+
+<?php
+
+  function alert()
+  {
+      
+  echo 
+      "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+      <strong>Failed</strong> You dont have an account please sign up first
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+  }
+
+  function alert2()
+  {
+      
+  echo 
+      "<div class='alert alert-warning alert-dismissible fade show' role='alert'>
+      <strong>Failed</strong> invalid password try again
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+  }
+?>
+  

@@ -1,3 +1,40 @@
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST")
+{
+  include "../partial/_database.php";
+  $fname = $_POST['fname']; 
+  $lname = $_POST['lname']; 
+  $email = $_POST['email'];
+  $user = $_POST['user'];
+  $no = $_POST['no'];
+  $pass = $_POST['pass'];
+
+
+  // check the user name exist or not 
+
+  $exsql = "SELECT * FROM users WHERE username='$user'";
+  $result2 = mysqli_query($conn,$exsql);
+  $num2 = mysqli_num_rows($result2);
+
+  if($num2 > 0)
+  {
+    alert3();
+  }
+  else
+  {
+    $hash = password_hash($pass,PASSWORD_DEFAULT);
+    $sql = "INSERT INTO `users` (`fname`, `lname`, `email`, `Mno`, `password`, `username`) VALUES ('$fname', '$lname', '$email', '$no', '$hash', '$user')";
+    $result = mysqli_query($conn,$sql);
+    header ("location:login.php");
+  }
+  }
+
+
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -107,7 +144,7 @@
       <text x="49" y="40" class="register-logo"> Registretion Form</text>
     </svg>
 
-    <form action="./login.php" method="POST" class="w-100" autocomplete="off">
+    <form action="register.php" method="POST" class="w-100" autocomplete="off">
       <div class="row">
         <div class="col-md-6 col-12 mb-3">
           <label class="form-label">First Name</label>
@@ -128,15 +165,22 @@
 
       <div class="row">
         <div class="col-12 mb-3">
+          <label class="form-label">Username</label>
+          <input type="text" name="user" class="form-control" placeholder="Enter Username" required autocomplete="off">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12 mb-3">
           <label class="form-label">Phone Number</label>
-          <input type="tel" name="phone" class="form-control" id="phone" placeholder="Enter Phone Number" required autocomplete="off">
+          <input type="tel" name="no" class="form-control" id="phone" placeholder="Enter Phone Number" required autocomplete="off">
         </div>
       </div>
 
       <div class="row">
         <div class="col-12 mb-3">
           <label class="form-label">Password</label>
-          <input type="password" name="password" class="form-control" placeholder="Enter password" required minlength="6" autocomplete="new-password">
+          <input type="password" name="pass" class="form-control" placeholder="Enter password" required minlength="6" autocomplete="new-password">
         </div>
       </div>
 
@@ -152,3 +196,17 @@
 </body>
 
 </html>
+
+
+<?php
+
+  function alert3()
+  {
+      
+  echo 
+      "<div class='alert alert-success alert-dismissible fade show' role='alert'>
+      <strong>sorry! </strong> the username already exists please try another 
+      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+      </div>";
+  }
+?>
