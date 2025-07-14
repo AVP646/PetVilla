@@ -1,3 +1,30 @@
+ <?php      include "../partial/_database.php";  ?>
+<?php
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+$pet_image = $_FILES['pet_image'];
+$pet_name = $_POST['pet_name'];
+$breed = $_POST['breed'];
+$age = $_POST['age'];
+$gender = $_POST['gender'];
+$category = $_POST['category'];
+$description = $_POST['description'];
+$price = $_POST['price'];
+$availability = $_POST['availability'];
+
+
+$target_dir = "../Pets/"; 
+$target_file = $target_dir.($pet_image["name"]);
+  
+if(move_uploaded_file($pet_image['tmp_name'],$target_file)){
+   $sql = "INSERT INTO pets (`pet-image`, `pet-name`, `pet-breed`, `pet-age`, `pet-gender`, `pet-category`, `pet-description`, `pet-price`, `pet-availability`) VALUES ('$target_file', '$pet_name', '$breed', '$age', '$gender', '$category', '$description', '$price', '$availability')";
+   $result = mysqli_query($conn,$sql);
+}
+else{
+    echo "not uploaded";
+}
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,6 +32,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pet Shop Admin Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="css/style.css" />
   <style>
             body {
@@ -70,8 +99,13 @@
 
     <!-- Page Content -->
      <div class="container">
-    <form action="upload_pet.php" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow">
+    <form action="admin_pets.php" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow">
   <h4 class="mb-3 text-primary">Upload a New Pet</h4>
+
+  <div class="mb-3">
+    <label for="petImage" class="form-label">Pet Image</label>
+    <input type="file" name="pet_image" class="form-control" id="petImage" accept="image/*" required>
+  </div>
 
   <div class="mb-3">
     <label for="petName" class="form-label">Pet Name</label>
@@ -83,6 +117,7 @@
     <input type="text" name="breed" class="form-control" id="petBreed" required>
   </div>
 
+ 
   <div class="mb-3">
     <label for="age" class="form-label">Age (in months/years)</label>
     <input type="text" name="age" class="form-control" id="age" required>
@@ -118,10 +153,7 @@
     <input type="number" name="price" class="form-control" id="price" required>
   </div>
 
-  <div class="mb-3">
-    <label for="petImage" class="form-label">Pet Image</label>
-    <input type="file" name="pet_image" class="form-control" id="petImage" accept="image/*" required>
-  </div>
+  
 
   <div class="mb-3">
     <label class="form-label">Availability</label>
@@ -150,21 +182,26 @@
         </thead>
         <tbody>
           <!-- Product 1 -->
-          <tr class="text-center">
-            <td><img src="../images/dog.jpg" width="100px" alt="Dog Food" class="product-img"></td>
-            <td>NutriBite Dog Food</td>
-            <td>₹799</td>
-            <td class="subtotal"><i class="fa-solid fa-xmark"></i></td>
+           <?php 
+            $query1 = "SELECT * FROM pets";
+            $result1 = mysqli_query($conn,$query1);
+            if(mysqli_num_rows($result1) > 0){
+             while($row = mysqli_fetch_assoc($result1)){
+                    echo "
+                       <tr class='text-center'>
+            <td><img src='".$row['pet-image'] ."' width='100px' alt='Dog Food' class='product-img'></td>
+            <td>". $row['pet-name'] ."</td>
+            <td>". $row['pet-price']."</td>
+            <td class='subtotal'><i class='fa-solid fa-xmark'></i></td>
           </tr>
 
-          <!-- Product 2 -->
-          <tr class="text-center">
-            <td><img src="../images/dog.jpg" width="100px" alt="Cat Toy" class="product-img"></td>
-            <td>Cat Toy Ball Set</td>
-            <td>₹199</td>
-            <!-- <td><input type="number" class="form-control qty" value="2" min="1"/></td> -->
-            <td class="subtotal"><i class="fa-solid fa-xmark"></i></td>
-          </tr>
+                    ";
+             }
+
+            }
+
+           ?>
+         
         </tbody>
       </table>
     </div>

@@ -1,4 +1,5 @@
-<?php include 'login_session.php' ?>
+<?php include 'login_session.php'; ?>
+<?php include '../partial/_database.php'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@
       font-family: 'Poppins', sans-serif;
     }
     .navbar {
-      background: linear-gradient(90deg, #ffd6e8, #ffe4c4);
+      /* background: linear-gradient(90deg, #ffd6e8, #ffe4c4); */
     }
     .card {
       border: none;
@@ -26,8 +27,8 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
     .card img {
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
+      /* border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem; */
     }
     .filter-box {
       background: #fff;
@@ -110,94 +111,30 @@
       <!-- Product Cards -->
       <div class="col-md-9">
         <div class="row g-4">
+          
           <!-- Card -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card">
-              <img src="../images/dog.jpg" class="card-img-top" alt="Pet Food">
-              <div class="card-body text-center">
-                <h6 class="card-title">Premium Dog Food</h6>
-                <p class="card-text text-muted">High quality food for all breeds.</p>
-                <p class="fw-bold text-success">₹499</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Add to Cart</a>
+           <?php 
+            $query1 = "SELECT * FROM pets";
+            $result1 = mysqli_query($conn,$query1);
+            if(mysqli_num_rows($result1) > 0){
+             while($row = mysqli_fetch_assoc($result1)){
+                    echo "
+                        <div class='col-sm-6 col-lg-4'>
+            <div class='card'>
+              <img src='". $row['pet-image'] ."' class='card-img-top' alt='Pet Food'>
+              <div class='card-body text-center'>
+                <h6 class='card-title'>". $row['pet-name'] ."</h6>
+                <p class='card-text text-muted'>". $row['pet-description'] ."</p>
+                <p class='fw-bold text-success'>". $row['pet-price'] ."</p>
+                <a href='#' class='btn btn-outline-primary btn-sm'>Add to Cart</a>
               </div>
             </div>
-          </div>
-
-          <!-- Repeat cards as needed -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card">
-              <img src="../images/dog.jpg" class="card-img-top" alt="Pet Food">
-              <div class="card-body text-center">
-                <h6 class="card-title">Kitten Starter Pack</h6>
-                <p class="card-text text-muted">Nutritious & delicious.</p>
-                <p class="fw-bold text-success">₹299</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Add more cards here -->
-           <!-- Repeat cards as needed -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card">
-              <img src="../images/dog.jpg" class="card-img-top" alt="Pet Food">
-              <div class="card-body text-center">
-                <h6 class="card-title">Kitten Starter Pack</h6>
-                <p class="card-text text-muted">Nutritious & delicious.</p>
-                <p class="fw-bold text-success">₹299</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-          <!-- Repeat cards as needed -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card">
-              <img src="../images/dog.jpg" class="card-img-top" alt="Pet Food">
-              <div class="card-body text-center">
-                <h6 class="card-title">Kitten Starter Pack</h6>
-                <p class="card-text text-muted">Nutritious & delicious.</p>
-                <p class="fw-bold text-success">₹299</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-          <!-- Repeat cards as needed -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card">
-              <img src="../images/dog.jpg" class="card-img-top" alt="Pet Food">
-              <div class="card-body text-center">
-                <h6 class="card-title">Kitten Starter Pack</h6>
-                <p class="card-text text-muted">Nutritious & delicious.</p>
-                <p class="fw-bold text-success">₹299</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-          <!-- Repeat cards as needed -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card">
-              <img src="../images/dog.jpg" class="card-img-top" alt="Pet Food">
-              <div class="card-body text-center">
-                <h6 class="card-title">Kitten Starter Pack</h6>
-                <p class="card-text text-muted">Nutritious & delicious.</p>
-                <p class="fw-bold text-success">₹299</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-          <!-- Repeat cards as needed -->
-          <div class="col-sm-6 col-lg-4">
-            <div class="card">
-              <img src="../images/dog.jpg" class="card-img-top" alt="Pet Food">
-              <div class="card-body text-center">
-                <h6 class="card-title">Kitten Starter Pack</h6>
-                <p class="card-text text-muted">Nutritious & delicious.</p>
-                <p class="fw-bold text-success">₹299</p>
-                <a href="#" class="btn btn-outline-primary btn-sm">Add to Cart</a>
-              </div>
-            </div>
-          </div>
-        </div>
+          </div>";
+             }
+            }
+           ?>
+          
+         </div>
       </div>
     </div>
   </div>
