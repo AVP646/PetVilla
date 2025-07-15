@@ -121,7 +121,7 @@
                     echo "
                         <div class='col-sm-6 col-lg-4'>
             <div class='card'>
-              <img src='". $row['pet-image'] ."' class='card-img-top' alt='Pet Food'>
+        <a href='detail.php?id=" . $row['SrNo'] . "'><img src='". $row['pet-image'] ."' class='card-img-top' alt='Pet Food'></a>
               <div class='card-body text-center'>
                 <h6 class='card-title'>". $row['pet-name'] ."</h6>
                 <p class='card-text text-muted'>". $row['pet-description'] ."</p>
@@ -133,7 +133,7 @@
              }
             }
            ?>
-          
+          <!-- <a href="detail.php?id['']"></a> -->
          </div>
       </div>
     </div>

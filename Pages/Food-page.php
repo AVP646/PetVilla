@@ -114,18 +114,18 @@
           
           <!-- Card -->
            <?php 
-            $query1 = "SELECT * FROM pets";
+            $query1 = "SELECT * FROM food";
             $result1 = mysqli_query($conn,$query1);
             if(mysqli_num_rows($result1) > 0){
              while($row = mysqli_fetch_assoc($result1)){
                     echo "
                         <div class='col-sm-6 col-lg-4'>
             <div class='card'>
-              <img src='". $row['pet-image'] ."' class='card-img-top' alt='Pet Food'>
+        <a href='detail2.php?id=" . $row['SrNo'] . "'><img src='". $row['food-image'] ."' class='card-img-top' alt='Pet Food'></a>
               <div class='card-body text-center'>
-                <h6 class='card-title'>". $row['pet-name'] ."</h6>
-                <p class='card-text text-muted'>". $row['pet-description'] ."</p>
-                <p class='fw-bold text-success'>". $row['pet-price'] ."</p>
+                <h6 class='card-title'>". $row['food-name'] ."</h6>
+                <p class='card-text text-muted'>". $row['food-description'] ."</p>
+                <p class='fw-bold text-success'>". $row['food-price'] ."</p>
                 <a href='#' class='btn btn-outline-primary btn-sm'>Add to Cart</a>
               </div>
             </div>
@@ -133,7 +133,7 @@
              }
             }
            ?>
-          
+          <!-- <a href="detail.php?id['']"></a> -->
          </div>
       </div>
     </div>

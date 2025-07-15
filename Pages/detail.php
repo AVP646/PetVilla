@@ -1,5 +1,8 @@
 <?php include 'login_session.php' ?>
 <?php include "../partial/_navbar.php";  ?>
+<?php include "../partial/_database.php"; ?>
+
+
 <!-- 
 <!DOCTYPE html>
 <html lang="en">
@@ -153,23 +156,36 @@
   <div class="container pet-container">
     <div class="row">
       <!-- Pet Image Section -->
-      <div class="col-md-5">
-        <img src="../images/dog.jpg" alt="Golden Retriever" class="pet-image"/>
+       <?php
+    $hint = $_GET['id'];
+
+    $query = "SELECT * FROM pets WHERE SrNo ='".$hint."'";
+    $result= mysqli_query($conn,$query);
+    if(mysqli_num_rows($result) > 0){
+    $row = mysqli_fetch_assoc($result);
+      echo "
+          <div class='col-md-5'>
+        <img src='".$row['pet-image'] ."' alt='Golden Retriever' class='pet-image'/>
       </div>
 
       <!-- Pet Details Section -->
-      <div class="col-md-7">
-        <h3>Golden Retriever Puppy</h3>
-        <p class="text-muted">Category: Dog • Breed: Golden Retriever</p>
-        <p class="text-muted">Age: 2years • Size: 10kg</p>
-        <p class="text-muted">Color: Black • Gender: Male</p>
-        <p class="text-muted">Status: Available</p>
+      <div class='col-md-7'>
+        <h3>".$row['pet-name'] ."</h3>
+        <p class='text-muted'>Category: ".$row['pet-category'] ." • Breed: ".$row['pet-breed'] ."</p>
+        <p class='text-muted'>Age: ".$row['pet-age'] ." • Size: 10kg</p>
+        <p class='text-muted'>Color: Black • Gender: ".$row['pet-gender'] ."</p>
+        <p class='text-muted'>Status: ".$row['pet-availability'] ."</p>
 
 
-        <p class="price">₹3,999</p>
+        <p class='price'>₹".$row['pet-price'] ."</p>
 
-        <p>This playful and affectionate golden retriever puppy is perfect for families. Vaccinated, healthy, and ready to bring joy to your home.</p>
+        <p>".$row['pet-description'] ."</p>
 
+    ";
+    
+  }
+?>
+      
         <div class="quantity-selector my-3">
           <label for="qty">Qty:</label>
           <input type="number" id="qty" class="form-control" value="1" min="1" />

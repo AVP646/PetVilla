@@ -1,5 +1,6 @@
 <?php include 'login_session.php' ?>
 <?php include "../partial/_navbar.php";  ?>
+<?php include "../partial/_database.php"; ?>
 <!-- 
 <!DOCTYPE html>
 <html lang="en">
@@ -153,24 +154,55 @@
   <div class="container pet-container">
     <div class="row">
       <!-- Pet Image Section -->
+            <?php
+    $hint = $_GET['id'];
+
+    $query = "SELECT * FROM food WHERE SrNo ='".$hint."'";
+    $result= mysqli_query($conn,$query);
+    if(mysqli_num_rows($result) > 0){
+    $row = mysqli_fetch_assoc($result);
+      echo "
+          <div class='col-md-5'>
+        <img src='".$row['food-image'] ."' alt='Golden Retriever' class='pet-image'/>
+      </div>
+
+      <!-- Pet Details Section -->
+      <div class='col-md-7'>
+        <h3>".$row['food-name'] ."</h3>
+        <p class='text-muted'>Category: ".$row['food-category'] ." • size: ".$row['food-size'] ."</p>
+        <p class='text-muted'>mfd: ".$row['food-mfd'] ." • exd:  ".$row['food-exd'] ."</p>
+        <p class='text-muted'>instruction: ".$row['food-instruction'] ."</p>
+        <p class='text-muted'>Status: ".$row['food-availability'] ."</p>
+
+
+        <p class='price'>₹".$row['food-price'] ."</p>
+
+        <p>".$row['food-description'] ."</p>
+
+
+    ";
+    
+  }
+?>
+<!-- 
       <div class="col-md-5">
         <img src="../images/pedigree.webp" alt="Golden Retriever" class="pet-image"/>
       </div>
 
-      <!-- Pet Details Section -->
-      <div class="col-md-7">
+      <!- Pet Details Section --
+      <div class='col-md-7'>
         <h3>Pedigree</h3>
-        <p class="text-muted">Category: Dog • Size: 10kg </p>
-        <p class="text-muted">mfd: 11/2/25 </p>
-        <p class="text-muted">Exd:12/1/27 </p>
-        <p class="text-muted">Instruction: 20gram Per day </p>
-        <p class="text-muted">Status: Available</p>
+        <p class='text-muted'>Category: Dog • Size: 10kg </p>
+        <p class='text-muted'>mfd: 11/2/25 </p>
+        <p class='text-muted'>Exd:12/1/27 </p>
+        <p class='text-muted'>Instruction: 20gram Per day </p>
+        <p class='text-muted'>Status: Available</p>
 
 
-        <p class="price">₹3,999</p>
+        <p class='price'>₹3,999</p>
 
         <p>This playful and affectionate golden retriever puppy is perfect for families. Vaccinated, healthy, and ready to bring joy to your home.</p>
-
+ -->
         <div class="quantity-selector my-3">
           <label for="qty">Qty:</label>
           <input type="number" id="qty" class="form-control" value="1" min="1" />
