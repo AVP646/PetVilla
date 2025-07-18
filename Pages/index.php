@@ -362,4 +362,5 @@
 
 </html>
 
-<?php include "../partial/_footer.php"; ?>
+<?php 
+// include "../partial/_footer.php"; ?>

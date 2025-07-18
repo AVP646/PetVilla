@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+      <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
@@ -30,7 +31,7 @@
             max-width: var(--max-width);
             padding: 5rem 1rem;
             /* margin: auto; */
-            background-color: #dcd7f8;
+            background-color: #E5E0D8;
         }
 
         .section__subheader {
@@ -167,11 +168,11 @@
         <p class="section__subheader">About Us</p>
         <h2 class="section__header">What we can do for you</h2>
         <div class="about__row">
-            <div class="about__image">
-                <img src="../images/about-1.jpg" alt="about" />
+            <div class="about__image"  data-aos="fade-right"  data-aos-duration="1000">
+                <img  src="../images/about-1.jpg" alt="about" />
             </div>
-            <div class="about__content">
-                <span><img src="../images/about-1-icon.png" alt="about-icon" /></span>
+            <div class="about__content" data-aos="fade-left"  data-aos-duration="1500">
+                <span><img data-aos="fade-up"  data-aos-duration="1100" src="../images/about-1-icon.png" alt="about-icon" /></span>
                 <h4>Let us help you with your pet health</h4>
                 <p>
                     Our expert veterinarians are here to provide comprehensive care and
@@ -180,10 +181,10 @@
             </div>
         </div>
         <div class="about__row">
-            <div class="about__image">
+            <div class="about__image" data-aos="fade-left"  data-aos-duration="1000">
                 <img src="../images/about-2.webp" alt="about" />
             </div>
-            <div class="about__content">
+            <div class="about__content" data-aos="fade-right"  data-aos-duration="1000">
                 <span><img src="../images/about-2-icon.png" alt="about-icon" /></span>
                 <h4>Caring personal will take care of your pet</h4>
                 <p>
@@ -192,11 +193,11 @@
                 </p>
             </div>
         </div>
-        <div class="about__row">
+        <div class="about__row" data-aos="fade-right"  data-aos-duration="1000">
             <div class="about__image">
                 <img src="../images/about-3.jpg" alt="about" />
             </div>
-            <div class="about__content">
+            <div class="about__content" data-aos="fade-left"  data-aos-duration="1000">
                 <span><img src="../images/about-3-icon.png" alt="about-icon" /></span>
                 <h4>Let us groom your precious and loved pet</h4>
                 <p>
@@ -207,26 +208,12 @@
         </div>
     </section>
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-   <script src="https://unpkg.com/scrollreveal"></script>
-<script>
-  const sr = ScrollReveal({
-    distance: "50px",
-    origin: "bottom",
-    duration: 1000,
-  });
 
-  sr.reveal(".about__row:nth-child(3) .about__image img, .about__row:nth-child(5) .about__image img", {
-    origin: "left"
-  });
-  sr.reveal(".about__row:nth-child(4) .about__image img", {
-    origin: "right"
-  });
-  sr.reveal(".about__content span", { delay: 500 });
-  sr.reveal(".about__content h4", { delay: 1000 });
-  sr.reveal(".about__content p", { delay: 1500 });
-</script>
-
+   
+  <!-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> -->
+  <script>
+    AOS.init();
+  </script>
 </body>
 
 </html>
