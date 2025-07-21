@@ -4,17 +4,12 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PetVilla</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-
     <link rel="stylesheet" href="inde.css">
 </head>
-
 <body>
 
     <section class="bg-main bg-color">
@@ -199,7 +194,7 @@
 <!-- this is why we need pets container  -->
         <section class="container my-5" id="reviews">
         <h2 class="text-center display-5 fw-bold mb-4">Why Wee Need Pets ??</h2>
-        <p class="text-center lead text-muted mb-5">Hear inspiring stories from pet owners around the world.</p>
+        <p class="text-center lead text-muted mb-5">Hear inspiring stories & Reviews from pet owners around the world.</p>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
             <div class="col">
@@ -363,4 +358,4 @@
 </html>
 
 <?php 
-// include "../partial/_footer.php"; ?>
+include "../partial/_footer.php"; ?>

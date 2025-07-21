@@ -115,7 +115,7 @@
           <input data-aos="fade-down" id="search-box" data-aos-duration="1600" class="form-control me-2 rounded-pill  " type="search" placeholder="Search" aria-label="Search" />
           <i class="fa-solid fa-xmark" id="cancel"></i>
           <i class="fa-solid fa-magnifying-glass " id="search"></i>
-          <a href="../pages/addToCart.php"><i class="fa-solid fa-cart-shopping"></i></a>
+          <a href="../pages/Cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
           <a href="../Pages/user.php"><i class="fa-solid fa-user"></i></a>
         </form>
       </div>

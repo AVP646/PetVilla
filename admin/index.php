@@ -1,3 +1,4 @@
+<?php include "../partial/_database.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
-            body {
+     body {
   font-family: 'Segoe UI', sans-serif;
   background-color: #f8f9fa;
 }
@@ -59,7 +60,7 @@
     <div class="bg-dark text-white p-3  " id="sidebar">
       <h3 class="mb-4 text-center">PetVilla </h3>
       <ul class="nav flex-column"> 
-        <li class="nav-item"><a href="admin_das.php" class="nav-link text-">Dashboard</a></li>
+        <li class="nav-item"><a href="index.php" class="nav-link text-">Dashboard</a></li>
         <li class="nav-item"><a href="admin_order.php" class="nav-link text-">Orders</a></li>
         <li class="nav-item"><a href="admin_users.php" class="nav-link text-">Users</a></li>
         <li class="nav-item"><a href="admin_Pets.php" class="nav-link text-">Pets</a></li>
@@ -70,37 +71,58 @@
 
     <!-- Page Content -->
     <div class="container-fluid p-4">
-      <h2 class="mb-4">Welcome, Admin 🐾</h2>
+      <h2 class="mb-4">Welcome, <?php 
+      // echo $_SESSION['user']; ?> 🐾</h2>
       <div class="row g-4">
         <div class="col-md-4">
           <div class="card card-hover">
             <div class="card-body text-center">
+              <?php
+              $query1 = "SELECT * FROM orders";
+              $resul1 = mysqli_query($conn,$query1);
+              $no1 = mysqli_num_rows($resul1);
+              ?>
               <h5>Total Orders</h5>
-              <p class="fs-4 text-primary">312</p>
+              <p class="fs-4 text-primary"><?php echo $no1; ?></p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card card-hover">
             <div class="card-body text-center">
+              <?php
+              $query1 = "SELECT * FROM users";
+              $resul1 = mysqli_query($conn,$query1);
+              $no2 = mysqli_num_rows($resul1);
+              ?>
               <h5>Total Users</h5>
-              <p class="fs-4 text-success">180</p>
+              <p class="fs-4 text-success"><?php echo $no2; ?></p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card card-hover">
             <div class="card-body text-center">
+              <?php
+              $query1 = "SELECT * FROM pets";
+              $resul1 = mysqli_query($conn,$query1);
+              $no3 = mysqli_num_rows($resul1);
+              ?>
               <h5>Total Pets</h5>
-              <p class="fs-4 text-warning">75</p>
+              <p class="fs-4 text-warning"><?php echo $no3; ?></p>
             </div>
           </div>
         </div>
         <div class="col-md-4">
           <div class="card card-hover">
             <div class="card-body text-center">
+              <?php
+              $query1 = "SELECT * FROM food";
+              $resul1 = mysqli_query($conn,$query1);
+              $no4 = mysqli_num_rows($resul1);
+              ?>
               <h5>Total Products</h5>
-              <p class="fs-4 text-warning">75</p>
+              <p class="fs-4 text-warning"><?php echo $no4; ?></p>
             </div>
           </div>
         </div>

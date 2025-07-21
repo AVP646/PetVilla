@@ -2,98 +2,7 @@
 <?php include "../partial/_navbar.php";  ?>
 <?php include "../partial/_database.php"; ?>
 
-
 <!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Page</title>
-    <style>
-        .img-detail img{
-            height:400px;
-            width:600px;
-
-        }
-        .detail{
-            border:1px solid black;
-        }
-        .detail h5,h6,h3{
-      font-family: "Poppins", sans-serif;
-      font-style: normal;
-      font-weight: 500;
-      text-transform:capitalize;
-      text-align:left;
-        }
-    </style>
-</head>
-<body> -->
-    <!-- this is main container  -->
-<!-- 
-    <div class="container text-center">
-  <div class="row">
-    <div class="col">
-      <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner img-detail">
-    <div class="carousel-item active">
-      <img src="../images/dog.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../images/cat1.jpg" class="d-block w-100" alt="...">
-    </div>
-    <div class="carousel-item">
-      <img src="../images/turtles1.jpg" class="d-block w-100" alt="...">
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-</div>
-    <div class="col detail">
-      <h3>my name is  Leberar Dog veriety</h3>         
-      <h5>Description:</h5>
-      <h6>Lorem ipsum dolor sit amet consectetur adipisicing elit.  cum ipsam.
-      <h5>adoption fee  200$</h5>
-      <h6>Available for Adoption</h6>
-
-        <br>
-     <button class="btn btn-danger">Adopt Me</button>
-     
-     </div>
-  </div>
-</div>
-< this is second con  --
-<div class="container text-center">
-  <div class="row align-items-start">
-    <h1>Fact about Me</h1>
-    <div class="col">
-      <h5>Breed: BullDog</h5>
-      <h5>Age: 2 years</h5>
-      <h5>size: 25kg</h5>
-
-      
-    </div>
-    <div class="col">
-      <h5>color: white</h5>
-      <h5>gender: Male</h5>
-      
-    </div>
-  </div>
-</div> -->
-
-<!-- 
-<h5>breed: BullDog</h5> -->
-<!-- </body>
-</html> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -155,35 +64,35 @@
 <body>
   <div class="container pet-container">
     <div class="row">
-      <!-- Pet Image Section -->
+      <- Pet Image Section --
        <?php
-    $hint = $_GET['id'];
+    // $hint = $_GET['id'];
 
-    $query = "SELECT * FROM pets WHERE SrNo ='".$hint."'";
-    $result= mysqli_query($conn,$query);
-    if(mysqli_num_rows($result) > 0){
-    $row = mysqli_fetch_assoc($result);
-      echo "
-          <div class='col-md-5'>
-        <img src='".$row['pet-image'] ."' alt='Golden Retriever' class='pet-image'/>
-      </div>
+    // $query = "SELECT * FROM pets WHERE SrNo ='".$hint."'";
+    // $result= mysqli_query($conn,$query);
+    // if(mysqli_num_rows($result) > 0){
+    // $row = mysqli_fetch_assoc($result);
+    //   echo "
+    //       <div class='col-md-5'>
+    //     <img src='".$row['pet-image'] ."' alt='Golden Retriever' class='pet-image'/>
+    //   </div>
 
-      <!-- Pet Details Section -->
-      <div class='col-md-7'>
-        <h3>".$row['pet-name'] ."</h3>
-        <p class='text-muted'>Category: ".$row['pet-category'] ." • Breed: ".$row['pet-breed'] ."</p>
-        <p class='text-muted'>Age: ".$row['pet-age'] ." • Size: 10kg</p>
-        <p class='text-muted'>Color: Black • Gender: ".$row['pet-gender'] ."</p>
-        <p class='text-muted'>Status: ".$row['pet-availability'] ."</p>
+    //   <!-- Pet Details Section -->
+    //   <div class='col-md-7'>
+    //     <h3>".$row['pet-name'] ."</h3>
+    //     <p class='text-muted'>Category: ".$row['pet-category'] ." • Breed: ".$row['pet-breed'] ."</p>
+    //     <p class='text-muted'>Age: ".$row['pet-age'] ." • Size: 10kg</p>
+    //     <p class='text-muted'>Color: Black • Gender: ".$row['pet-gender'] ."</p>
+    //     <p class='text-muted'>Status: ".$row['pet-availability'] ."</p>
 
 
-        <p class='price'>₹".$row['pet-price'] ."</p>
+    //     <p class='price'>₹".$row['pet-price'] ."</p>
 
-        <p>".$row['pet-description'] ."</p>
+    //     <p>".$row['pet-description'] ."</p>
 
-    ";
+    // ";
     
-  }
+  // }
 ?>
       
         <div class="quantity-selector my-3">
@@ -201,7 +110,148 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buddy - Pet Details 🐾 | PetVilla</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fdfdfd;
+      color: #333;
+    }
+    .hero {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1558788353-f76d92427f16?fit=crop&w=1600&q=80') no-repeat center center/cover;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+    }
+    .pet-details {
+      padding: 40px 20px;
+    }
+    .pet-info h2 {
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+    .pet-info p {
+      line-height: 1.6;
+    }
+    .pet-facts {
+      background: #fff0f5;
+      padding: 20px;
+      border-radius: 15px;
+      margin-top: 30px;
+    }
+    .pet-facts h5 {
+      font-weight: 600;
+    }
+    .price {
+      font-size: 1.3rem;
+      color: #ff69b4;
+      font-weight: 700;
+      margin: 10px 0;
+    }
+    .status {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 50px;
+      background: #28a745; /* Available = green */
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .status.reserved {
+      background: #ffc107; /* Reserved = yellow */
+      color: #333;
+    }
+    .status.adopted {
+      background: #dc3545; /* Adopted = red */
+    }
+    .btn-adopt {
+      background: #ff69b4;
+      color: #fff;
+      border-radius: 50px;
+      padding: 12px 30px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+      transition: all 0.3s ease;
+    }
+    .btn-adopt:hover {
+      background: #ff85c1;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Banner -->
+  <div class="hero">
+    <h1>Meet Buddy 🐶</h1>
+  </div>
+
+  <!-- Pet Details Section -->
+   <?php
+    $hint = $_GET['id'];
+
+    $query = "SELECT * FROM pets WHERE SrNo ='".$hint."'";
+    $result= mysqli_query($conn,$query);
+    if(mysqli_num_rows($result) > 0){
+    $row = mysqli_fetch_assoc($result);
+      echo "
+    <div class='container pet-details'>
+    <div class='row g-4 align-items-start'>
+      <div class='col-md-6'>
+        <img src='".$row['pet-image'] ."'  class='img-fluid rounded-4 shadow'>
+      </div>
+      <div class='col-md-6 pet-info'>
+        <h2>".$row['pet-name'] ."</h2>
+        <p><strong>Breed:</strong> ".$row['pet-breed'] ."</p>
+        <p><strong>Category:</strong> ".$row['pet-category'] ."</p>
+        <p><strong>Age:</strong> ".$row['pet-age'] ."</p>
+        <p><strong>Gender:</strong> ".$row['pet-gender'] ."</p>
+        <p><strong>Health:</strong> Vaccinated, Microchipped, Neutered</p>
+        <p><strong>Status:</strong> ".$row['pet-availability'] ."</p>
+        <p class='price'>Adoption Fee: ₹".$row['pet-price'] ."</p>
+        <!-- For Reserved or Adopted, add class: reserved or adopted -->
+        <div class='pet-facts'>
+          <h5>About Buddy</h5>
+          <p>".$row['pet-description'] ."</p>
+        </div>
+        <a href='#' class='btn-adopt'>Adopt </a>
+      </div>
+    </div>
+  </div>
+
+    ";
+    
+  }
+?>
+ 
+
+</body>
 </html>
+
 
 <?php
   // include "../partial/_footer.php";  ?>

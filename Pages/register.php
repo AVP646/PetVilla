@@ -6,7 +6,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $lname = $_POST['lname']; 
   $email = $_POST['email'];
   $user = $_POST['user'];
-  $no = $_POST['no'];
+  $mno = $_POST['mobile'];
   $pass = $_POST['pass'];
 
 
@@ -23,190 +23,118 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   else
   {
     $hash = password_hash($pass,PASSWORD_DEFAULT);
-    $sql = "INSERT INTO `users` (`fname`, `lname`, `email`, `Mno`, `password`, `username`) VALUES ('$fname', '$lname', '$email', '$no', '$hash', '$user')";
+    $sql = "INSERT INTO users (`fname`, `lname`, `email`, `Mno`, `password`, `username`) VALUES ('$fname', '$lname', '$email', '$mno', '$hash', '$user')";
     $result = mysqli_query($conn,$sql);
     header ("location:login.php");
   }
   }
 
-
-
-
 ?>
 
 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Document</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.min.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pet Shop Register</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Poppins:wght@400;600&display=swap');
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      color-scheme: light dark;
-      font-family: "Baloo 2", cursive;
-    }
-
     body {
+      background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      width: 100vw;
-      height: 100vh;
-      flex-direction: column;
-      background-color: #dcd7f8;
-      overflow-x: hidden;
-    }
-
-    .main-register-container {
-      width: 100%;
-      max-width: 600px;
-      height: 550px;
-      display: flex;
       justify-content: center;
-      background-color: rgba(209, 208, 208, 0.5);
-      box-shadow: 2px 2px 3px black;
-      border: 1px solid transparent;
-      border-radius: 5px;
-      flex-direction: column;
-      position: relative;
-      padding: 20px;
+      font-family: 'Segoe UI', sans-serif;
     }
-
-    .min-box {
-      width: 200px;
-      height: 100px;
-      background-color: rgba(209, 208, 208, 0.5);
-      position: absolute;
-      right: 0;
-      top: 0;
-      border-bottom-left-radius: 50px;
-      border: 1px solid transparent;
-      box-shadow: -1px 2px 5px rgba(54, 53, 53, 0.64);
+    .signup-card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+      width: 100%;
+      max-width: 500px; /* wider */
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
     }
+    .logo {
+      width: 150px;
+      margin-bottom: 1rem;
+      border-radius:30px;
 
-    @media (max-width: 768px) {
-      .min-box {
-        width: 180px;
-        height: 100px;
-      }
     }
-
-    @media (max-width: 576px) {
-      .min-box {
-        width: 110px;
-        height: 80px;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
-    .register-logo {
-      font-size: 35px;
-      position: relative;
-      fill: transparent;
-      stroke: black;
-      stroke-dashoffset: 50;
-      stroke-dasharray: 50;
-      animation: scrollGradient 5s linear infinite;
+    .signup-card h2 {
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: #333;
     }
-
-    @keyframes scrollGradient {
-      0% {
-        fill: black;
-      }
-
-      50% {
-        stroke-dashoffset: 0;
-      }
-
-      100% {
-        fill: black;
-      }
+    .form-control:focus {
+      box-shadow: none;
+      border-color: #6c63ff;
     }
-
-    label {
-      font-size: large;
+    .btn-primary {
+      background: #6c63ff;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #574fd6;
+    }
+    .login-link {
+      margin-top: 1rem;
+    }
+    .login-link a {
+      text-decoration: none;
+      color: #6c63ff;
+      font-weight: 500;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
-
 <body>
-  <div class="main-register-container container">
-    <div class="min-box"></div>
-    <svg viewBox="400">
-      <text x="49" y="40" class="register-logo"> Registretion Form</text>
-    </svg>
-
-    <form action="register.php" method="POST" class="w-100" autocomplete="off">
-      <div class="row">
-        <div class="col-md-6 col-12 mb-3">
-          <label class="form-label">First Name</label>
-          <input type="text" name="fname" class="form-control" placeholder="First name" required pattern="[A-Za-z]{2,}" autocomplete="off">
-        </div>
-        <div class="col-md-6 col-12 mb-3">
-          <label class="form-label">Last Name</label>
-          <input type="text" name="lname" class="form-control" placeholder="Last name" required pattern="[A-Za-z]{2,}" autocomplete="off">
-        </div>
+  <div class="signup-card">
+    <img src="../images/logo2.png" alt="Pet Paw Logo" class="logo">
+    <h2>Create Account</h2>
+    <form action="register.php" method="post">
+      <div class="mb-3 text-start">
+        <label for="firstName" class="form-label">First Name</label>
+        <input type="text" class="form-control" name="fname" id="firstName" placeholder="Enter first name">
       </div>
-
-      <div class="row">
-        <div class="col-12 mb-3">
-          <label class="form-label">Email</label>
-          <input type="email" name="email" class="form-control" placeholder="Enter Email" required autocomplete="off">
-        </div>
+      <div class="mb-3 text-start">
+        <label for="lastName" class="form-label">Last Name</label>
+        <input type="text" class="form-control" name="lname" id="lastName" placeholder="Enter last name">
       </div>
-
-      <div class="row">
-        <div class="col-12 mb-3">
-          <label class="form-label">Username</label>
-          <input type="text" name="user" class="form-control" placeholder="Enter Username" required autocomplete="off">
-        </div>
+      <div class="mb-3 text-start">
+        <label for="email" class="form-label">Email Address</label>
+        <input type="email" class="form-control" name="email" id="email" placeholder="Enter email">
       </div>
-
-      <div class="row">
-        <div class="col-12 mb-3">
-          <label class="form-label">Phone Number</label>
-          <input type="tel" name="no" class="form-control" id="phone" placeholder="Enter Phone Number" required autocomplete="off">
-        </div>
+      <div class="mb-3 text-start">
+        <label for="username" class="form-label">Username</label>
+        <input type="text" class="form-control" id="username" name="user" placeholder="Choose username">
       </div>
-
-      <div class="row">
-        <div class="col-12 mb-3">
-          <label class="form-label">Password</label>
-          <input type="password" name="pass" class="form-control" placeholder="Enter password" required minlength="6" autocomplete="new-password">
-        </div>
+      <div class="mb-3 text-start">
+        <label for="mobile" class="form-label">Mobile Number</label>
+        <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter Mobile Number">
       </div>
-
-      <div class="row justify-content-center mb-3">
-        <div class="col-auto">
-          <button type="submit" class="btn btn-dark">Register</button>
-        </div>
+      <div class="mb-3 text-start">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" id="password" name="pass" placeholder="Enter password">
+      </div>
+      <div class="d-grid">
+        <button type="submit" class="btn btn-primary">Sign Up</button>
       </div>
     </form>
+    <div class="login-link">
+      Already have an account? <a href="login.php">Login</a>
+    </div>
   </div>
 
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
-
-
-<?php
-
-  function alert3()
-  {
-      
-  echo 
-      "<div class='alert alert-success alert-dismissible fade show' role='alert'>
-      <strong>sorry! </strong> the username already exists please try another 
-      <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-      </div>";
-  }
-?>

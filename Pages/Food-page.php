@@ -1,20 +1,20 @@
 <?php include 'login_session.php'; ?>
 <?php include '../partial/_database.php'; ?>
-
+<!-- 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PetVilla | Food</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" /> --
   <style>
     body {
       background-color: #fdfdfd;
       font-family: 'Poppins', sans-serif;
     }
     .navbar {
-      /* background: linear-gradient(90deg, #ffd6e8, #ffe4c4); */
+       background: linear-gradient(90deg, #ffd6e8, #ffe4c4); 
     }
     .card {
       border: none;
@@ -27,8 +27,8 @@
       box-shadow: 0 10px 20px rgba(0,0,0,0.15);
     }
     .card img {
-      /* border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem; */
+       border-top-left-radius: 1rem;
+      border-top-right-radius: 1rem; *
     }
     .filter-box {
       background: #fff;
@@ -44,7 +44,7 @@
     }
   </style>
 </head>
-<body>
+<body> -->
     <?php 
     include '../partial/_navbar.php'; ?>
   <!-- Navbar -->
@@ -67,9 +67,9 @@
   </nav> -->
 
   <!-- Content -->
-  <div class="container my-5">
+  <!-- <div class="container my-5">
     <div class="row">
-      <!-- Filters -->
+      <-- Filters --
       <div class="col-md-3 mb-4">
         <div class="filter-box">
           <h5>Filters</h5>
@@ -108,11 +108,11 @@
         </div>
       </div>
 
-      <!-- Product Cards -->
+      <-- Product Cards --
       <div class="col-md-9">
         <div class="row g-4">
           
-          <!-- Card -->
+          <- Card --
            <?php 
             $query1 = "SELECT * FROM food";
             $result1 = mysqli_query($conn,$query1);
@@ -133,12 +133,164 @@
              }
             }
            ?>
-          <!-- <a href="detail.php?id['']"></a> -->
+          <-- <a href="detail.php?id['']"></a> --
          </div>
       </div>
     </div>
   </div>
-<?php include "../partial/_footer.php"; ?>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> --
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pet Food 🐾 | PetVilla</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fdfdfd;
+      color: #333;
+    }
+    .hero {
+      background: #ff69b4;
+      color: #fff;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 700;
+    }
+    .filter-buttons {
+      text-align: center;
+      margin: 30px 0;
+    }
+    .filter-btn {
+      background: #ff69b4;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 10px 25px;
+      margin: 5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .filter-btn:hover {
+      background: #ff85c1;
+    }
+    .food-section {
+      padding: 20px;
+    }
+    .food-card {
+      border: none;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .food-card:hover {
+      transform: translateY(-8px);
+    }
+    .food-card img {
+      height: 200px;
+      object-fit: cover;
+    }
+    .food-card .card-body {
+      padding: 20px;
+    }
+    .food-card .price {
+      color: #ff69b4;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .btn-buy {
+      background: #ff69b4;
+      color: #fff;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .btn-buy:hover {
+      background: #ff85c1;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Banner -->
+  <div class="hero">
+    <h1>Pet Food 🦴🐟🐦</h1>
+    <p>Healthy & Delicious Food for Every Pet.</p>
+  </div>
+
+  <!-- Filter Buttons -->
+  <div class="filter-buttons">
+    <button class="filter-btn" onclick="filterFood('all')">All</button>
+    <button class="filter-btn" onclick="filterFood('Dog')">Dog Food</button>
+    <button class="filter-btn" onclick="filterFood('Cat')">Cat Food</button>
+    <button class="filter-btn" onclick="filterFood('Fish')">Fish Food</button>
+    <button class="filter-btn" onclick="filterFood('Bird')">Bird Food</button>
+    <button class="filter-btn" onclick="filterFood('Turtle')">Turtle Food</button>
+    <button class="filter-btn" onclick="filterFood('Rabbit')">Rabbit Food</button>
+    
+  </div>
+
+  <!-- Food Grid Section -->
+  <div class="container food-section">
+    <div class="row g-4">
+
+      <!-- Food Card 1 -->
+        <?php 
+            $query1 = "SELECT * FROM food";
+            $result1 = mysqli_query($conn,$query1);
+            if(mysqli_num_rows($result1) > 0){
+             while($row = mysqli_fetch_assoc($result1)){
+                    echo "
+               <div class='col-md-4 food-item' data-type='". $row['food-category'] ."'>
+        <div class='card food-card'>
+        <a href='detail2.php?id=" . $row['SrNo'] . "'><img src='". $row['food-image'] ."' class='card-img-top'></a>
+          <div class='card-body'>
+            <h5 class='card-title'>". $row['food-name'] ."</h5>
+            <p class='price'>₹". $row['food-price'] ."</p>
+            <p class='card-text'>". $row['food-description'] .".</p>
+            <a href='addtofood.php?id=". $row['SrNo']."' class='btn-buy'>Buy Now</a>
+          </div>
+        </div>
+      </div>";
+             }
+            }
+           ?>
+    
+    </div>
+  </div>
+
+  
+  <!-- Filter Script -->
+  <script>
+    function filterFood(type) {
+      const foods = document.querySelectorAll('.food-item');
+      foods.forEach(food => {
+        if (type === 'all' || food.dataset.type === type) {
+          food.style.display = 'block';
+        } else {
+          food.style.display = 'none';
+        }
+      });
+    }
+  </script>
+
 </body>
 </html>
+
+<?php include "../partial/_footer.php"; ?>
