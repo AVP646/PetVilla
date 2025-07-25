@@ -8,53 +8,125 @@ include 'login_session.php' ?>
  ?>
 
 <?php
-if($_SERVER["REQUEST_METHOD"] == "POST")
-{
-  $fullname = $_POST['fullName']; 
-  $address = $_POST['address']; 
-  $city = $_POST['city'];
-  $mobile = $_POST['mobile'];
-  $payment = $_POST['payment'];
-  $user = $_SESSION['user'];
+// if($_SERVER["REQUEST_METHOD"] == "POST")
+// {
+//   $fullname = $_POST['fullName']; 
+//   $address = $_POST['address']; 
+//   $city = $_POST['city'];
+//   $mobile = $_POST['mobile'];
+//   $payment = $_POST['payment'];
+//   $user = $_SESSION['user'];
 
 
-    $query4 = "INSERT INTO orders (`user`, `fullname`,`address`, `city`, `mobile`, `p-method`,`date`) VALUES ('$user', '$fullname', '$address', '$city', '$mobile','$payment',current_timestamp())";
-    $result4 = mysqli_query($conn,$query4);
-     if($result4){
-        $queryCart = "SELECT * FROM cart WHERE user = '$user'";
-        $resultCart = mysqli_query($conn, $queryCart);
-        if(mysqli_num_rows($resultCart) > 0){
-              $no = 0;
+//     $query4 = "INSERT INTO orders (`user`, `fullname`,`address`, `city`, `mobile`, `p-method`,`date`) VALUES ('$user', '$fullname', '$address', '$city', '$mobile','$payment',current_timestamp())";
+//     $result4 = mysqli_query($conn,$query4);
+//      if($result4){
+//         $queryCart = "SELECT * FROM cart WHERE user = '$user'";
+//         $resultCart = mysqli_query($conn, $queryCart);
+//         if(mysqli_num_rows($resultCart) > 0){
+//               $no = 0;
 
-         while($row = mysqli_fetch_assoc($resultCart)){
-           $name = $row['name'];
-           $total = $no;
+//          while($row = mysqli_fetch_assoc($resultCart)){
+//            $name = $row['name'];
+//            $total = $no;
 
-          $queryItem = " INSERT INTO `order_id` (`product-name`, `total`,`user`) VALUES ('$name', '$total','$user')";
-          $result9 =  mysqli_query($conn, $queryItem);
-              $no = $no + $row['price'];             
+//           $queryItem = " INSERT INTO `order_id` (`product-name`, `total`,`user`) VALUES ('$name', '$total','$user')";
+//           $result9 =  mysqli_query($conn, $queryItem);
+//               $no = $no + $row['price'];             
 
-         }
-             $dl = "DELETE FROM cart WHERE user= '".$_SESSION['user']."'";
-    $result6 = mysqli_query($conn,$dl);
-    header("location:index.php");
+//          }
+//              $dl = "DELETE FROM cart WHERE user= '".$_SESSION['user']."'";
+//     $result6 = mysqli_query($conn,$dl);
+//     header("location:index.php");
 
 
-        }
+//         }
             
 
 
-    }
-    else{
-        echo "bc";
-    }
+//     }
+//     else{
+//         echo "bc";
+//     }
 
-     $dl = "DELETE FROM cart WHERE user= '".$_SESSION['user']."'";
-    $result6 = mysqli_query($conn,$dl);
-    header("location:index.php");
+//      $dl = "DELETE FROM cart WHERE user= '".$_SESSION['user']."'";
+//     $result6 = mysqli_query($conn,$dl);
+//     header("location:index.php");
 
-}
+// }
 ?>
+
+<?php
+// // session_start();
+
+// // Cart in session: [product SrNo => quantity]
+// if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+// // $cart = $_SESSION['cart'];
+// $user_id = $_SESSION['user'];
+//  // Use SrNo from your login session
+?>
+<?php
+
+// ✅ Make sure user is logged in
+if (isset($_SESSION['user'])) {
+  $user_id = $_SESSION['user'];
+} else {
+  die("❌ You must log in first.");
+}
+
+// ✅ Get checkout form data
+$address = $_POST['address'] ?? '';
+$payment = $_POST['payment'] ?? '';
+$phone = $_POST['mobile'] ?? '';
+
+// ✅ Get cart items from DB
+$cart_query = "SELECT c.SrNo, p.`pet-price`
+               FROM cart c
+               JOIN pets p ON c.SrNo = p.SrNo
+               WHERE c.SrNo = $user_id";
+$cart_result = mysqli_query($conn, $cart_query);
+
+if (mysqli_num_rows($cart_result) == 0) {
+  die("❌ Your cart is empty.");
+}
+
+// ✅ Calculate total
+$total = 0;
+$cart_items = [];
+while ($row = mysqli_fetch_assoc($cart_result)) {
+  $total += $row['price'] * $row['quantity'];
+  $cart_items[] = $row;
+}
+
+// ✅ Insert order
+$order_query = "INSERT INTO orders (user_id, total_amount, payment_method, shipping_address, phone)
+                VALUES ($user_id, $total, '$payment', '$address', '$phone')";
+if (!mysqli_query($conn, $order_query)) {
+  die("❌ Order insert failed: " . mysqli_error($conn));
+}
+$order_id = mysqli_insert_id($conn);
+
+// ✅ Insert each order item
+foreach ($cart_items as $item) {
+  $product_id = $item['product_id'];
+  $quantity = $item['quantity'];
+  $price = $item['price'];
+
+  $item_query = "INSERT INTO order_items (order_id, product_id, quantity, price)
+                 VALUES ($order_id, $product_id, $quantity, $price)";
+  if (!mysqli_query($conn, $item_query)) {
+    die("❌ Order item insert failed: " . mysqli_error($conn));
+  }
+}
+
+// ✅ Empty the cart
+$clear_query = "DELETE FROM cart WHERE user_id = $user_id";
+mysqli_query($conn, $clear_query);
+
+echo "✅ Order placed successfully!";
+?>
+
     
 <!DOCTYPE html>
 <html lang="en">
@@ -182,18 +254,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     <!-- Checkout Form -->
     <form method="POST" action="check.php">
-      <div class="mb-3 text-start">
+      <!-- <div class="mb-3 text-start">
         <label for="fullName" class="form-label">Full Name</label>
         <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name">
-      </div>
+      </div> -->
       <div class="mb-3 text-start">
         <label for="address" class="form-label">Address</label>
         <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
       </div>
-      <div class="mb-3 text-start">
+      <!-- <div class="mb-3 text-start">
         <label for="city" class="form-label">City</label>
         <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
-      </div>
+      </div> -->
       <div class="mb-3 text-start">
         <label for="mobile" class="form-label">Mobile Number</label>
         <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter mobile number">
