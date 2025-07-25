@@ -21,6 +21,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         $_SESSION['login'] = true;
         $_SESSION['user'] = $user;
         $_SESSION['name'] = $row['fname'];
+        $_SESSION['user_id'] = $row['user_id'];
+
         $_SESSION['sur'] = $row['lname'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['Mno'] = $row['Mno'];

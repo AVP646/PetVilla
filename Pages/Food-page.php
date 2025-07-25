@@ -259,12 +259,17 @@
                     echo "
                <div class='col-md-4 food-item' data-type='". $row['food-category'] ."'>
         <div class='card food-card'>
-        <a href='detail2.php?id=" . $row['SrNo'] . "'><img src='". $row['food-image'] ."' class='card-img-top'></a>
+        <a href='detail2.php?id=" . $row['food_id'] . "'><img src='". $row['food-image'] ."' class='card-img-top'></a>
           <div class='card-body'>
             <h5 class='card-title'>". $row['food-name'] ."</h5>
             <p class='price'>₹". $row['food-price'] ."</p>
             <p class='card-text'>". $row['food-description'] .".</p>
-            <a href='addtofood.php?id=". $row['SrNo']."' class='btn-buy'>Buy Now</a>
+            <form action='addtocart.php' method='POST'>
+      <input type='hidden' name='product_id' value='".$row['food_id']."'>
+      <input type='hidden' name='product_type' value='food'>
+      <input type='number' name='quantity' value='1' min='1'>
+      <button type='submit'>Add to Cart</button>
+    </form>
           </div>
         </div>
       </div>";

@@ -137,14 +137,14 @@
        while ($row1 = mysqli_fetch_assoc($query)){
         echo "
         <tr>
-            <td>".$row1['SrNo']."</td>
+            <td>".$row1['user_id']."</td>
             <td>".$row1['fname']."</td>
             <td>".$row1['lname']."</td>
             <td>".$row1['email']."</td>
             <td>".$row1['Mno']."</td>
             <td>".$row1['username']."</td>
             <td class='action-btns'>
-              <a href='admin_user_remove.php?id=" . $row1['SrNo'] . "'><button class='btn btn-sm btn-danger'>Delete</button></a>
+              <a href='admin_user_remove.php?id=" . $row1['user_id'] . "'><button class='btn btn-sm btn-danger'>Delete</button></a>
             </td>
         </tr>";
        }

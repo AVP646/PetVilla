@@ -1,130 +1,70 @@
  <?php 
 include 'login_session.php' ?>
-<?php 
-// include "../partial/_navbar.php" ?>
 <?php
- include "../partial/_database.php"; 
-//  session_start();
- ?>
+include "../partial/_database.php";
 
-<?php
-// if($_SERVER["REQUEST_METHOD"] == "POST")
-// {
-//   $fullname = $_POST['fullName']; 
-//   $address = $_POST['address']; 
-//   $city = $_POST['city'];
-//   $mobile = $_POST['mobile'];
-//   $payment = $_POST['payment'];
-//   $user = $_SESSION['user'];
+$user_id = $_SESSION['user_id'];
 
-
-//     $query4 = "INSERT INTO orders (`user`, `fullname`,`address`, `city`, `mobile`, `p-method`,`date`) VALUES ('$user', '$fullname', '$address', '$city', '$mobile','$payment',current_timestamp())";
-//     $result4 = mysqli_query($conn,$query4);
-//      if($result4){
-//         $queryCart = "SELECT * FROM cart WHERE user = '$user'";
-//         $resultCart = mysqli_query($conn, $queryCart);
-//         if(mysqli_num_rows($resultCart) > 0){
-//               $no = 0;
-
-//          while($row = mysqli_fetch_assoc($resultCart)){
-//            $name = $row['name'];
-//            $total = $no;
-
-//           $queryItem = " INSERT INTO `order_id` (`product-name`, `total`,`user`) VALUES ('$name', '$total','$user')";
-//           $result9 =  mysqli_query($conn, $queryItem);
-//               $no = $no + $row['price'];             
-
-//          }
-//              $dl = "DELETE FROM cart WHERE user= '".$_SESSION['user']."'";
-//     $result6 = mysqli_query($conn,$dl);
-//     header("location:index.php");
-
-
-//         }
-            
-
-
-//     }
-//     else{
-//         echo "bc";
-//     }
-
-//      $dl = "DELETE FROM cart WHERE user= '".$_SESSION['user']."'";
-//     $result6 = mysqli_query($conn,$dl);
-//     header("location:index.php");
-
-// }
-?>
-
-<?php
-// // session_start();
-
-// // Cart in session: [product SrNo => quantity]
-// if($_SERVER["REQUEST_METHOD"] == "POST"){
-
-// // $cart = $_SESSION['cart'];
-// $user_id = $_SESSION['user'];
-//  // Use SrNo from your login session
-?>
-<?php
-
-// ✅ Make sure user is logged in
-if (isset($_SESSION['user'])) {
-  $user_id = $_SESSION['user'];
-} else {
-  die("❌ You must log in first.");
-}
-
-// ✅ Get checkout form data
-$address = $_POST['address'] ?? '';
-$payment = $_POST['payment'] ?? '';
-$phone = $_POST['mobile'] ?? '';
-
-// ✅ Get cart items from DB
-$cart_query = "SELECT c.SrNo, p.`pet-price`
-               FROM cart c
-               JOIN pets p ON c.SrNo = p.SrNo
-               WHERE c.SrNo = $user_id";
+// Get cart items
+$cart_query = "SELECT * FROM cart WHERE user_id='$user_id'";
 $cart_result = mysqli_query($conn, $cart_query);
 
-if (mysqli_num_rows($cart_result) == 0) {
-  die("❌ Your cart is empty.");
-}
-
-// ✅ Calculate total
-$total = 0;
+$total_amount = 0;
 $cart_items = [];
+
 while ($row = mysqli_fetch_assoc($cart_result)) {
-  $total += $row['price'] * $row['quantity'];
   $cart_items[] = $row;
+
+  $product_id = $row['product_id'];
+  $product_type = $row['product_type'];
+  $quantity = intval($row['quantity']); // ✅ always get quantity!
+
+  if ($product_type == 'pet') {
+    $price_query = "SELECT `pet-price` FROM pets WHERE pets_id='$product_id'";
+    $price_column = 'pet-price';
+  } else {
+    $price_query = "SELECT `food-price` FROM food WHERE food_id='$product_id'";
+    $price_column = 'food-price';
+  }
+
+  $price_result = mysqli_query($conn, $price_query);
+  $price = mysqli_fetch_assoc($price_result)[$price_column];
+  $price = floatval($price); // ✅ safe cast
+
+  $subtotal = $price * $quantity;
+  $total_amount += $subtotal; // ✅ add subtotal to total
 }
 
-// ✅ Insert order
-$order_query = "INSERT INTO orders (user_id, total_amount, payment_method, shipping_address, phone)
-                VALUES ($user_id, $total, '$payment', '$address', '$phone')";
-if (!mysqli_query($conn, $order_query)) {
-  die("❌ Order insert failed: " . mysqli_error($conn));
-}
+// Insert order
+mysqli_query($conn, "INSERT INTO orders (user_id, order_date, total_amount) VALUES ('$user_id', NOW(), '$total_amount')");
 $order_id = mysqli_insert_id($conn);
 
-// ✅ Insert each order item
+// Insert order items
 foreach ($cart_items as $item) {
   $product_id = $item['product_id'];
-  $quantity = $item['quantity'];
-  $price = $item['price'];
+  $product_type = $item['product_type'];
+  $quantity = intval($item['quantity']);
 
-  $item_query = "INSERT INTO order_items (order_id, product_id, quantity, price)
-                 VALUES ($order_id, $product_id, $quantity, $price)";
-  if (!mysqli_query($conn, $item_query)) {
-    die("❌ Order item insert failed: " . mysqli_error($conn));
+  if ($product_type == 'pet') {
+    $price_query = "SELECT `pet-price` FROM pets WHERE pets_id='$product_id'";
+    $price_column = 'pet-price';
+  } else {
+    $price_query = "SELECT `food-price` FROM food WHERE food_id='$product_id'";
+    $price_column = 'food-price';
   }
+
+  $price_result = mysqli_query($conn, $price_query);
+  $price = mysqli_fetch_assoc($price_result)[$price_column];
+  $price = floatval($price);
+
+  mysqli_query($conn, "INSERT INTO order_items (order_id, product_id, product_type, quantity, price)
+                       VALUES ('$order_id', '$product_id', '$product_type', '$quantity', '$price')");
 }
 
-// ✅ Empty the cart
-$clear_query = "DELETE FROM cart WHERE user_id = $user_id";
-mysqli_query($conn, $clear_query);
+// Clear cart
+mysqli_query($conn, "DELETE FROM cart WHERE user_id='$user_id'");
 
-echo "✅ Order placed successfully!";
+echo "✅ Order placed! Your Order ID is: $order_id | Total: ₹$total_amount";
 ?>
 
     
@@ -138,8 +78,6 @@ echo "✅ Order placed successfully!";
   <style>
     body {
       background: linear-gradient(135deg, #f8f9fa, #e3f2fd);
-      background-image: url('https://i.ibb.co/9G08HnS/pawprints.png');
-      background-repeat: repeat;
       background-size: 100px;
       min-height: 100vh;
       display: flex;
@@ -223,50 +161,46 @@ echo "✅ Order placed successfully!";
     <!-- Item Summary -->
      
   <?php
-            $query1 = "SELECT * FROM cart where user = '". $_SESSION['user']."'";
-            $result1 = mysqli_query($conn,$query1);
-            if(mysqli_num_rows($result1) > 0){
-              $no = 0;
+    //         $query1 = "SELECT * FROM cart where users = '". $_SESSION['user']."'";
+    //         $result1 = mysqli_query($conn,$query1);
+    //         if(mysqli_num_rows($result1) > 0){
+    //           $no = 0;
 
-             while($row = mysqli_fetch_assoc($result1)){
-              $no = $no + $row['price'];
+    //          while($row = mysqli_fetch_assoc($result1)){
+    //           $no = $no + $row['price'];
 
-              echo "
-              <div class='item-summary'>
-                <img src='".$row['image']."' alt='Golden Retriever Puppy'>
-      <div class='item-name'>".$row['name']." Puppy</div>
-    </div>
-              ";
-            }
-          }
+    //           echo "
+    //           <div class='item-summary'>
+    //             <img src='".$row['image']."' alt='Golden Retriever Puppy'>
+    //   <div class='item-name'>".$row['name']." Puppy</div>
+    // </div>
+    //           ";
+    //         }
+    //       }
            ?>
 
     <!-- Total -->
-    <div class="total">
+    <!-- <div class="total">
       Total: <?php 
-      if(mysqli_num_rows($result1) > 0){
-          echo"₹".$no;
-            }
-            else{
-              echo "add item first";
-            } ?>
-    </div>
+      // if(mysqli_num_rows($result1) > 0){
+      //     echo"₹".$no;
+      //       }
+      //       else{
+      //         echo "add item first";
+      //       } ?>
+    </div> -->
 
     <!-- Checkout Form -->
-    <form method="POST" action="check.php">
+    <!-- <form method="POST" action="check.php"> -->
       <!-- <div class="mb-3 text-start">
         <label for="fullName" class="form-label">Full Name</label>
         <input type="text" class="form-control" id="fullName" name="fullName" placeholder="Enter your full name">
-      </div> -->
-      <div class="mb-3 text-start">
-        <label for="address" class="form-label">Address</label>
-        <textarea class="form-control" id="address" name="address" rows="3" placeholder="Enter your address"></textarea>
-      </div>
+      <-- </div> -->
       <!-- <div class="mb-3 text-start">
         <label for="city" class="form-label">City</label>
         <input type="text" class="form-control" id="city" name="city" placeholder="Enter city">
       </div> -->
-      <div class="mb-3 text-start">
+      <!-- <div class="mb-3 text-start">
         <label for="mobile" class="form-label">Mobile Number</label>
         <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="Enter mobile number">
       </div>
@@ -287,4 +221,4 @@ echo "✅ Order placed successfully!";
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html>
+</html> -->

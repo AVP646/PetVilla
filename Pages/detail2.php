@@ -320,7 +320,7 @@
    <?php
     $hint = $_GET['id'];
 
-    $query = "SELECT * FROM food WHERE SrNo ='".$hint."'";
+    $query = "SELECT * FROM food WHERE food_id ='".$hint."'";
     $result= mysqli_query($conn,$query);
     if(mysqli_num_rows($result) > 0){
     $row = mysqli_fetch_assoc($result);
@@ -342,7 +342,13 @@
           <h5>Product Description</h5>
           <p>".$row['food-description'] ."</p>
         </div>
-        <a href='#' class='btn-buy'>Buy Now</a>
+        <form action='addtocart.php' method='POST'>
+  <input type='hidden' name='product_id' value=".$row['food_id'].">
+  <input type='hidden' name='product_type' value='food'>
+  <input type='hidden' name='quantity' value='1'>
+  <button type='submit' class='btn-bu'>Add to Cart 🛒</button>
+</form>
+
       </div>
     </div>
   </div>";

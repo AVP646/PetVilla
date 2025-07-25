@@ -5,7 +5,7 @@
 <?php
   
 $id = $_GET['id'];
-$query = " DELETE  FROM users where SrNo='". $id ."'";
+$query = " DELETE  FROM users where user_id='". $id ."'";
 $result = mysqli_query($conn,$query);
 
 if($result){

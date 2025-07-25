@@ -1,145 +1,6 @@
 <?php include 'login_session.php'; ?>
 <?php include '../partial/_database.php'; ?>
-<!-- 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PetVilla | Food</title>
-  <- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" /> --
-  <style>
-    body {
-      background-color: #fdfdfd;
-      font-family: 'Poppins', sans-serif;
-    }
-    .navbar {
-      /* background: linear-gradient(90deg, #ffd6e8, #ffe4c4); */
-    }
-    .card {
-      border: none;
-      border-radius: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-    .card img {
-      /* border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem; */
-    }
-    .filter-box {
-      background: #fff;
-      border-radius: 1rem;
-      padding: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    .filter-box h5 {
-      margin-bottom: 20px;
-    }
-    .price-range {
-      width: 100%;
-    }
-  </style>
-</head>
-<body> -->
-    <?php 
-    include '../partial/_navbar.php'; ?>
-  <!-- Navbar -->
-  <!-- <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
-      <a class="navbar-brand fw-bold" href="#">🐾 PetVilla</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Pets</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Products</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav> -->
-
-  <!-- Content -->
-  <!-- <div class="container my-5">
-    <div class="row">
-      <-- Filters --
-      <div class="col-md-3 mb-4">
-        <div class="filter-box">
-          <h5>Filters</h5>
-          <div class="mb-3">
-            <label class="form-label">Animal Type</label>
-            <select class="form-select">
-              <option>All</option>
-              <option>Dog</option>
-              <option>Cat</option>
-              <option>Bird</option>
-              <option>Fish</option>
-              <option>Rabbit</option>
-            </select>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Age</label>
-            <select class="form-select">
-              <option>All</option>
-              <option>Puppy/Kitten</option>
-              <option>Adult</option>
-              <option>Senior</option>
-            </select>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Price</label>
-            <select class="form-select">
-              <option>0-1000</option>
-              <option>1000-2000</option>
-              <option>2000-3000</option>
-              <option>above 3000</option>
-            </select>
-          </div>
           
-          <button class="btn btn-primary w-100">Apply Filters</button>
-        </div>
-      </div>
-
-      <-- Product Cards --
-      <div class="col-md-9">
-        <div class="row g-4">
-          
-          <-- Card --
-           <?php 
-            $query1 = "SELECT * FROM pets";
-            $result1 = mysqli_query($conn,$query1);
-            if(mysqli_num_rows($result1) > 0){
-             while($row = mysqli_fetch_assoc($result1)){
-                    echo "
-                        <div class='col-sm-6 col-lg-4'>
-            <div class='card'>
-        <a href='detail.php?id=" . $row['SrNo'] . "'><img src='". $row['pet-image'] ."' class='card-img-top' alt='Pet Food'></a>
-              <div class='card-body text-center'>
-                <h6 class='card-title'>". $row['pet-name'] ."</h6>
-                <p class='card-text text-muted'>". $row['pet-description'] ."</p>
-                <p class='fw-bold text-success'>". $row['pet-price'] ."</p>
-                <a href='addtocart.php?id=". $row['SrNo']."' class='btn btn-outline-primary btn-sm'>Add to Cart</a>
-              </div>
-            </div>
-          </div>";
-             }
-            }
-           ?>
-         </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -207,22 +68,49 @@
     .pet-card .card-body {
       padding: 20px;
     }
-    .btn-adopt {
-      background: #ff69b4;
-      color: #fff;
-      border-radius: 50px;
-      padding: 8px 20px;
-      font-weight: 600;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-    .btn-adopt:hover {
-      background: #ff85c1;
-      color: #fff;
-    }
-  </style>
+    
+  .quantity-input {
+    max-width: 60px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 6px 10px;
+    transition: all 0.3s ease;
+  }
+
+  .quantity-input:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 2px rgba(255,105,180,0.2);
+    outline: none;
+  }
+
+  .btn-addtocart {
+    background: linear-gradient(135deg, #ff69b4, #ff85c1) !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-addtocart:hover {
+    background: linear-gradient(135deg, #ff85c1, #ff69b4) !important;
+    transform: translateY(-2px);
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+</style>
 </head>
 <body>
+
+<!-- navbar  -->
+    <?php  include '../partial/_navbar.php'; ?>
+
 
   <!-- Hero Banner -->
   <div class="hero">
@@ -254,12 +142,25 @@
                     echo "
                 <div class='col-md-4 pet-item' data-type='". $row['pet-category'] ."'>
         <div class='card pet-card'>
-          <a href='detail.php?id=" . $row['SrNo'] . "'><img src='". $row['pet-image'] ."' class='card-img-top'></a>
+          <a href='detail.php?id=" . $row['pets_id'] . "'><img src='". $row['pet-image'] ."' class='card-img-top'></a>
           <div class='card-body'>
             <h5 class='card-title'>". $row['pet-name'] ."</h5>
             <p class='card-text'>Breed: ". $row['pet-breed'] ."<br>Age: ". $row['pet-age'] ."</p>
             <p class='price'>₹". $row['pet-price'] ."</p>
-            <a href='addtocart.php?id=". $row['SrNo']."' class='btn-adopt'>Adopt Me</a>
+       <form action='addtocart.php' method='POST' class='mt-3'>
+  <input type='hidden' name='product_id' value='". $row['pets_id']."'>
+  <input type='hidden' name='product_type' value='pet'>
+
+  <div class='d-flex align-items-center gap-2'>
+    <input type='number' name='quantity' value='1' min='1' 
+      class='form-control quantity-input' />
+
+    <button type='submit' class='btn btn-addtocart'>Add to Cart 🛒</button>
+  </div>
+</form>
+
+
+
           </div>
         </div>
       </div>";
