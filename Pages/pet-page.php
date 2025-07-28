@@ -12,12 +12,11 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: #fdfdfd;
       color: #333;
     }
     .hero {
-      background: #ff69b4;
-      color: #fff;
+      background: #E5E0D8;
+      color: black;
       padding: 60px 20px;
       text-align: center;
     }
@@ -30,9 +29,9 @@
       margin: 30px 0;
     }
     .filter-btn {
-      background: #ff69b4;
-      color: #fff;
-      border: none;
+      background: #E5E0D8;
+      color: black;
+      border: 1px solid black;
       border-radius: 50px;
       padding: 10px 25px;
       margin: 5px;
@@ -41,7 +40,7 @@
       transition: all 0.3s ease;
     }
     .filter-btn:hover {
-      background: #ff85c1;
+      background: #D1A980;
     }
     .pets-section {
       padding: 20px;
@@ -113,8 +112,8 @@
 
 
   <!-- Hero Banner -->
-  <div class="hero">
-    <h1>Meet Our Lovely Pets 🐶🐱🐰</h1>
+  <div class="hero my-5">
+    <h1>Meet Our Lovely Pets</h1>
     <p>Find your new best friend at PetVilla.</p>
   </div>
 

@@ -23,7 +23,7 @@
       color: #333;
     }
     .profile-header {
-      background: #ff69b4;
+      background: black;
       color: #fff;
       text-align: center;
       padding: 50px 20px;
@@ -49,18 +49,12 @@
       border: 5px solid #fff;
       margin-bottom: 15px;
     }
-    .btn-edit, .btn-logout {
+    .btn-logout {
       border-radius: 50px;
       padding: 8px 25px;
       font-weight: 600;
     }
-    .btn-edit {
-      background: #ff69b4;
-      color: #fff;
-    }
-    .btn-edit:hover {
-      background: #ff85c1;
-    }
+   
     .btn-logout {
       background: #dc3545;
       color: #fff;

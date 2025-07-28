@@ -159,8 +159,8 @@
       color: #333;
     }
     .hero {
-      background: #ff69b4;
-      color: #fff;
+      background: #E5E0D8;
+      color: black;
       padding: 60px 20px;
       text-align: center;
     }
@@ -173,9 +173,9 @@
       margin: 30px 0;
     }
     .filter-btn {
-      background: #ff69b4;
-      color: #fff;
-      border: none;
+      background: #E5E0D8;
+      color: black;
+      border: 1px solid black;
       border-radius: 50px;
       padding: 10px 25px;
       margin: 5px;
@@ -184,7 +184,7 @@
       transition: all 0.3s ease;
     }
     .filter-btn:hover {
-      background: #ff85c1;
+      background: #D1A980;
     }
     .food-section {
       padding: 20px;
@@ -224,13 +224,48 @@
       background: #ff85c1;
       color: #fff;
     }
+    .quantity-input {
+    max-width: 60px;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 6px 10px;
+    transition: all 0.3s ease;
+  }
+
+  .quantity-input:focus {
+    border-color: #ff69b4;
+    box-shadow: 0 0 0 2px rgba(255,105,180,0.2);
+    outline: none;
+  }
+
+  .btn-addtocart {
+    background: linear-gradient(135deg, #ff69b4, #ff85c1) !important;
+    color: #fff !important;
+    border: none;
+    border-radius: 30px;
+    padding: 8px 20px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-addtocart:hover {
+    background: linear-gradient(135deg, #ff85c1, #ff69b4) !important;
+    transform: translateY(-2px);
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
   </style>
 </head>
 <body>
 
   <!-- Hero Banner -->
-  <div class="hero">
-    <h1>Pet Food 🦴🐟🐦</h1>
+  <div class="hero my-5">
+    <h1>Pet Food </h1>
     <p>Healthy & Delicious Food for Every Pet.</p>
   </div>
 
@@ -264,12 +299,17 @@
             <h5 class='card-title'>". $row['food-name'] ."</h5>
             <p class='price'>₹". $row['food-price'] ."</p>
             <p class='card-text'>". $row['food-description'] .".</p>
-            <form action='addtocart.php' method='POST'>
-      <input type='hidden' name='product_id' value='".$row['food_id']."'>
-      <input type='hidden' name='product_type' value='food'>
-      <input type='number' name='quantity' value='1' min='1'>
-      <button type='submit'>Add to Cart</button>
-    </form>
+           <form action='addtocart.php' method='POST' class='mt-3'>
+  <input type='hidden' name='product_id' value='". $row['food_id']."'>
+  <input type='hidden' name='product_type' value='food'>
+
+  <div class='d-flex align-items-center gap-2'>
+    <input type='number' name='quantity' value='1' min='1' 
+      class='form-control quantity-input' />
+
+    <button type='submit' class='btn btn-addtocart'>Add to Cart 🛒</button>
+  </div>
+</form>
           </div>
         </div>
       </div>";

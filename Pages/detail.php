@@ -130,21 +130,7 @@
       background: #fdfdfd;
       color: #333;
     }
-    .hero {
-      position: relative;
-      background: url('https://images.unsplash.com/photo-1558788353-f76d92427f16?fit=crop&w=1600&q=80') no-repeat center center/cover;
-      height: 50vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-    }
+    
     .pet-details {
       padding: 40px 20px;
     }
@@ -205,10 +191,6 @@
 </head>
 <body>
 
-  <!-- Hero Banner -->
-  <div class="hero">
-    <h1>Meet Buddy 🐶</h1>
-  </div>
 
   <!-- Pet Details Section -->
    <?php

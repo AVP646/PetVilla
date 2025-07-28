@@ -104,27 +104,27 @@
       <!-- Links -->
       <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3 linkss">
         <h5 class="text-uppercase mb-4 font-weight-bold ">Quick Links</h5>
-        <p><a href="#" class=" footer-link">Home</a></p>
-        <p><a href="#" class=" footer-link">Shop</a></p>
-        <p><a href="#" class=" footer-link">Adopt</a></p>
-        <p><a href="#" class=" footer-link">Contact</a></p>
+        <p><a href="index.php" class=" footer-link">Home</a></p>
+        <p><a href="pet-page.php" class=" footer-link">Pets</a></p>
+        <p><a href="food-page.php" class=" footer-link">Foods</a></p>
+        <!-- <p><a href="#" class=" footer-link">cart</a></p> -->
       </div>
 
       <!-- Useful Links -->
       <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3 usefull">
         <h5 class="text-uppercase mb-4 font-weight-bold ">Useful</h5>
-        <p><a href="#" class=" footer-link">Your Account</a></p>
-        <p><a href="#" class=" footer-link">FAQs</a></p>
-        <p><a href="#" class=" footer-link">Privacy Policy</a></p>
-        <p><a href="#" class=" footer-link">Terms & Conditions</a></p>
+        <p><a href="about.php" class=" footer-link">About US</a></p>
+        <p><a href="contact.php" class=" footer-link">Contact Us</a></p>
+        <p><a href="user.php" class=" footer-link">User</a></p>
+        <!-- <p><a href="#" class=" footer-link"></a></p> -->
       </div>
 
       <!-- Contact -->
       <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3 contact">
         <h5 class="text-uppercase mb-4 font-weight-bold ">Contact</h5>
-        <p><i class="fas fa-home mr-3"></i> 123 Pet Street, City</p>
-        <p><i class="fas fa-envelope mr-3"></i> info@petshop.com</p>
-        <p><i class="fas fa-phone mr-3"></i> +91 9876543210</p>
+        <p><i class="fas fa-home mr-3"></i> CUshah, surendranagr</p>
+        <p><i class="fas fa-envelope mr-3"></i> pankajmm35@gmail.com</p>
+        <p><i class="fas fa-phone mr-3"></i> +91 7490082668</p>
     </div>
 
     <!-- Social Icons -->

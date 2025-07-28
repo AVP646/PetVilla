@@ -314,13 +314,13 @@
     <h2 data-aos="fade-up">Meet Our Team</h2>
     <div class="row justify-content-center">
       <div class="col-md-4 team-member" data-aos="zoom-in">
-        <img src="../images/pankaj" alt="Team Member">
+        <img src="../images/pankaj.jpg" alt="Team Member">
         <h5>Pankaj Mangniya</h5>
         <p>Developer & Pet Lover</p>
       </div>
       
       <div class="col-md-4 team-member" data-aos="zoom-in" data-aos-delay="200">
-        <img src="../images/ayush" alt="Team Member">
+        <img src="../images/ayush.jpg" alt="Team Member">
         <h5>Ayush Yadav</h5>
         <p>Developer & Pet Lover</p>
       </div>

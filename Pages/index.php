@@ -286,60 +286,6 @@
 
  <!-- this ends here  -->
 
-     <!-- this is pets food main container with link and images  -->
-
-        <!-- <div class="container-fluid px-4 pet-food-d text-center">
-  <div class="row gx-5">
-    <div class="col">
-      <div class=""><img src="../images/pppp.png" width="380px" alt=""></div>
-    </div>
-    <div class="col">
-      <div class=""><img src="../images/pppp.png" width="380px" alt=""></div>
-    </div>
-  </div>
-</div> -->
-
-<!-- ends here  -->
- <!-- last slider-pet-food  -->
-
-<!-- 
-<div class="container text-center slider">
-  <h2 id="main-cate-title">Food For Pets<i class="fa-solid fa-paw" style="color: #ffac38;"></i><i class="fa-solid fa-paw" style="color: #ffac38;"></i></h2>
-
-  <div class="row">
-    <div class="col">
-            <img src="../images/dog.jpg"  alt="">
-      
-    </div>
-    <div class="col">
-            <img src="../images/cat2.jpg"  alt="">
-      
-    </div>
-    <div class="col">
-            <img src="../images/fish2.jpg"  alt="">
-      
-    </div>
-    <div class="col">
-            <img src="../images/bird2.jpg"  alt="">
-      
-    </div>
-    <div class="col">
-            <img src="../images/turtles2.jpg"  alt="">
-      
-    </div>
-    <div class="col">
-            <img src="../images/rabit2.jpg"  alt="">
-      
-    </div>
-  </div>
-</div>
-
-</div> -->
-
-<!-- here its end  -->
-
-
-
     <script>
         const sliderTrack = document.getElementById('sliderTrack');
         const totalSlides = sliderTrack.children.length;
@@ -352,6 +298,16 @@
 
         setInterval(goNext, 10000);
     </script>
+    <script>
+  // Check URL for ?order=success
+  const urlParams = new URLSearchParams(window.location.search);
+  if (urlParams.get('order') === 'success') {
+    alert('✅ Your order has been placed successfully!');
+    // Or use a nicer toast if you have a library like SweetAlert2
+    // Swal.fire('Success!', 'Your order has been placed.', 'success');
+  }
+</script>
+
 
 </body>
 

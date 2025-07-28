@@ -238,21 +238,7 @@
       background: #fdfdfd;
       color: #333;
     }
-    .hero {
-      position: relative;
-      background: url('https://images.unsplash.com/photo-1581888227599-779811939961?fit=crop&w=1600&q=80') no-repeat center center/cover;
-      height: 50vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-align: center;
-    }
-    .hero h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
-    }
+    
     .food-details {
       padding: 40px 20px;
     }
@@ -282,15 +268,19 @@
       display: inline-block;
       padding: 5px 15px;
       border-radius: 50px;
-      background: #28a745; /* In Stock = green */
+      background: #28a745; /* Available = green */
       color: #fff;
       font-weight: 600;
       font-size: 0.9rem;
     }
-    .status.out-of-stock {
-      background: #dc3545; /* Out of Stock = red */
+    .status.reserved {
+      background: #ffc107; /* Reserved = yellow */
+      color: #333;
     }
-    .btn-buy {
+    .status.adopted {
+      background: #dc3545; /* Adopted = red */
+    }
+    .btn-adopt {
       background: #ff69b4;
       color: #fff;
       border-radius: 50px;
@@ -301,7 +291,7 @@
       margin-top: 20px;
       transition: all 0.3s ease;
     }
-    .btn-buy:hover {
+    .btn-adopt:hover {
       background: #ff85c1;
       color: #fff;
     }
@@ -309,10 +299,7 @@
 </head>
 <body>
 
-  <!-- Hero Banner -->
-  <div class="hero">
-    <h1>Premium Dog Food 🦴</h1>
-  </div>
+  
 
   <!-- Food Details Section -->
 
@@ -342,12 +329,13 @@
           <h5>Product Description</h5>
           <p>".$row['food-description'] ."</p>
         </div>
-        <form action='addtocart.php' method='POST'>
+<form action='addtocart.php' method='POST'>
   <input type='hidden' name='product_id' value=".$row['food_id'].">
   <input type='hidden' name='product_type' value='food'>
   <input type='hidden' name='quantity' value='1'>
-  <button type='submit' class='btn-bu'>Add to Cart 🛒</button>
+  <button type='submit' class='btn-adopt'>Add to Cart 🛒</button>
 </form>
+
 
       </div>
     </div>
