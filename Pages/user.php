@@ -93,6 +93,24 @@
     .wishlist-item img:hover {
       transform: scale(1.05);
     }
+    .btn-edit {
+  border-radius: 50px;
+  padding: 8px 25px;
+  font-weight: 600;
+  background: #007bff; /* Bootstrap primary */
+  color: #fff;
+}
+
+.btn-edit:hover {
+  background: #0056b3; /* Darker on hover */
+}
+
+@media (max-width: 768px) {
+  .d-flex.flex-column.flex-md-row {
+    flex-direction: column !important;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -110,10 +128,15 @@
       <p>Name: <?php echo $_SESSION['name']; ?><?php echo $_SESSION['sur']; ?></p>
       <p>Email:<?php echo $_SESSION['email']; ?></p>
       <p>Phone: +91 <?php echo $_SESSION['Mno']; ?></p>
-      <a href="logout.php" class="btn btn-logout">Logout</a>
+      <!-- <a href="logout.php" class="btn btn-logout">Logout</a> -->
+     <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+  <a href="edit_profile.php" class="btn btn-primary btn-edit">Edit Profile</a>
+  <a href="logout.php" class="btn btn-logout">Logout</a>
+</div>
+
+
     </div>
 
-    <!-- Order History -->
    <!-- Order History -->
 <div class="mt-5">
   <h4>My Orders</h4>

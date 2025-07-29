@@ -75,59 +75,62 @@
 <div class="container-fluid main-categori row g-4">
   <h2 id="main-cate-title">Shop By Pet<i class="fa-solid fa-paw" style="color: #ffac38;"></i><i class="fa-solid fa-paw" style="color: #ffac38;"></i></h2>
 
-    <div class="col-md-4 col-12 container-catgari2">
-        <img src="../images/dog-cate.jpg" class="cate-imges" alt="Dog">
-        <div class="cate-name">
-          <h5 >Dogs</h5>
-          <h6 class="">6 types</h6>
-            <i class="fa-solid fa-arrow-right cate-arrow"></i>
-        </div>
-    </div>
+    <a href="pet-page.php?category=Dog" class="col-md-4 col-12 container-catgari2 text-decoration-none">
+  <img src="../images/dog-cate.jpg" class="cate-imges" alt="Dog">
+  <div class="cate-name">
+    <h5>Dogs</h5>
+    <h6>6 types</h6>
+    <i class="fa-solid fa-arrow-right cate-arrow"></i>
+  </div>
+</a>
+
     
-    <div class="col-md-4 col-12 container-catgari2">
-        <img src="../images/cate-cate.jpg" class="cate-imges" alt="Dog">
-        <div class="cate-name">
-          <h5 >Cats</h5>
-          <h6 class="">2 types</h6>
-            <i class="fa-solid fa-arrow-right cate-arrow"></i>
-        </div>
-    </div>
+        <a href="pet-page.php?category=Cat" class="col-md-4 col-12 container-catgari2 text-decoration-none">
+  <img src="../images/cate-cate.jpg" class="cate-imges" alt="Dog">
+  <div class="cate-name">
+    <h5>Cats</h5>
+    <h6>6 types</h6>
+    <i class="fa-solid fa-arrow-right cate-arrow"></i>
+  </div>
+</a>
+
     
-    <div class="col-md-4 col-12 container-catgari2">
-        <img src="../images/fish-cate.jpg" class="cate-imges" alt="Dog">
-        <div class="cate-name">
-          <h5 >Fishes</h5>
-          <h6 class="">10 types</h6>
-            <i class="fa-solid fa-arrow-right cate-arrow"></i>
-        </div>
-    </div>
-    
-    <div class="col-md-4 col-12 container-catgari2">
-        <img src="../images/bird-cate.jpg" class="cate-imges" alt="Dog">
-        <div class="cate-name">
-          <h5 >Birds</h5>
-          <h6 class="">7 types</h6>
-            <i class="fa-solid fa-arrow-right cate-arrow"></i>
-        </div>
-    </div>
-    
-    <div class="col-md-4 col-12 container-catgari2">
-        <img src="../images/turtle-cat.jpg" class="cate-imges" alt="Dog">
-        <div class="cate-name">
-          <h5 >Turtles</h5>
-          <h6 class="">3 types</h6>
-            <i class="fa-solid fa-arrow-right cate-arrow"></i>
-        </div>
-    </div>
-    
-    <div class="col-md-4 col-12 container-catgari2">
-        <img src="../images/rabit-cat.jpg" class="cate-imges" alt="Dog">
-        <div class="cate-name">
-          <h5 >Rabits</h5>
-          <h6 class="">2 types</h6>
-            <i class="fa-solid fa-arrow-right cate-arrow"></i>
-        </div>
-    </div>
+        <a href="pet-page.php?category=Fish" class="col-md-4 col-12 container-catgari2 text-decoration-none">
+  <img src="../images/fish-cate.jpg" class="cate-imges" alt="Dog">
+  <div class="cate-name">
+    <h5>Fishes</h5>
+    <h6>6 types</h6>
+    <i class="fa-solid fa-arrow-right cate-arrow"></i>
+  </div>
+</a>
+
+        <a href="pet-page.php?category=Bird" class="col-md-4 col-12 container-catgari2 text-decoration-none">
+  <img src="../images/bird-cate.jpg" class="cate-imges" alt="Dog">
+  <div class="cate-name">
+    <h5>Birds</h5>
+    <h6>6 types</h6>
+    <i class="fa-solid fa-arrow-right cate-arrow"></i>
+  </div>
+</a>
+
+        <a href="pet-page.php?category=Turtles" class="col-md-4 col-12 container-catgari2 text-decoration-none">
+  <img src="../images/turtle-cat.jpg" class="cate-imges" alt="Dog">
+  <div class="cate-name">
+    <h5>Turtles</h5>
+    <h6>6 types</h6>
+    <i class="fa-solid fa-arrow-right cate-arrow"></i>
+  </div>
+</a>
+
+        <a href="pet-page.php?category=Rabbit" class="col-md-4 col-12 container-catgari2 text-decoration-none">
+  <img src="../images/rabit-cat.jpg" class="cate-imges" alt="Dog">
+  <div class="cate-name">
+    <h5>Rabbits</h5>
+    <h6>6 types</h6>
+    <i class="fa-solid fa-arrow-right cate-arrow"></i>
+  </div>
+</a>
+
     </div>
     <!-- this ends here  -->
 

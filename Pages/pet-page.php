@@ -1,5 +1,9 @@
 <?php include 'login_session.php'; ?>
 <?php include '../partial/_database.php'; ?>
+<?php
+$filterCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
+?>
+
           
 <!DOCTYPE html>
 <html lang="en">
@@ -149,6 +153,9 @@
        <form action='addtocart.php' method='POST' class='mt-3'>
   <input type='hidden' name='product_id' value='". $row['pets_id']."'>
   <input type='hidden' name='product_type' value='pet'>
+              
+  <input type='hidden' name='return_url' value=". $_SERVER['REQUEST_URI']." >
+
 
   <div class='d-flex align-items-center gap-2'>
     <input type='number' name='quantity' value='1' min='1' 
@@ -175,17 +182,21 @@
 
   <!-- Filter Script -->
   <script>
-    function filterPets(type) {
-      const pets = document.querySelectorAll('.pet-item');
-      pets.forEach(pet => {
-        if (type === 'all' || pet.dataset.type === type) {
-          pet.style.display = 'block';
-        } else {
-          pet.style.display = 'none';
-        }
-      });
-    }
-  </script>
+  function filterPets(type) {
+    const pets = document.querySelectorAll('.pet-item');
+    pets.forEach(pet => {
+      if (type === 'all' || pet.dataset.type === type) {
+        pet.style.display = 'block';
+      } else {
+        pet.style.display = 'none';
+      }
+    });
+  }
+
+  // 👇 Auto run filter when page loads
+  const defaultCategory = "<?php echo $filterCategory; ?>";
+  filterPets(defaultCategory);
+</script>
 
 </body>
 </html>

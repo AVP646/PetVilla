@@ -9,6 +9,8 @@ $user_id = $_SESSION['user_id']; // ✅ Make sure the user is logged in!
 $product_id = $_POST['product_id'];
 $product_type = $_POST['product_type']; // 'pet' or 'food'
 $quantity = $_POST['quantity'];
+$return_url = $_POST['return_url'] ?? 'index.php'; // fallback to home if not set
+
 
 // ✅ Optional: Check if item already in cart for this user
 $check = "SELECT * FROM cart 
@@ -31,5 +33,9 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 // ✅ Redirect to cart page or back to product page
-header("Location: cart.php");
+
+header("Location: $return_url");
 exit;
+
+// header("Location: cart.php");
+// exit;
