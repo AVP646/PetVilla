@@ -1,4 +1,4 @@
- <?php      include "../partial/_database.php";  ?>
+ <?php include "../partial/_database.php";  ?>
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 $pet_image = $_FILES['pet_image'];
@@ -250,9 +250,7 @@ else{
             <td>". $row['pet-name'] ."</td>
             <td>₹". $row['pet-price']."</td>
             <td class='subtotal'><i class='fa-solid fa-xmark'></i></td>
-          </tr>
-
-                    ";
+          </tr>";
              }
 
             }
