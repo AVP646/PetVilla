@@ -1,3 +1,5 @@
+<?php include 'admin_session.php' ?>
+
 <?php include "../partial/_database.php"; ?>
 <?php
 //  include "adminLogin_session.php"; ?>
@@ -25,91 +27,7 @@
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f8;
-    }
-
-    #wrapper {
-      min-height: 100vh;
-      display: flex;
-    }
-
-    #sidebar {
-      width: 240px;
-      background: #222831;
-      color: #eeeeee;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem 1rem;
-      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
-    }
-
-    #sidebar h3 {
-      font-weight: 700;
-      margin-bottom: 3rem;
-      text-align: center;
-      font-size: 1.6rem;
-      color: #00adb5;
-    }
-
-    .nav-link {
-      color: #eeeeee;
-      padding: 0.75rem 1rem;
-      margin: 0.3rem 0;
-      border-radius: 0.75rem;
-      display: flex;
-      align-items: center;
-      transition: all 0.3s ease;
-    }
-
-    .nav-link i {
-      margin-right: 0.75rem;
-      font-size: 1.2rem;
-    }
-
-    .nav-link:hover {
-      background: #00adb5;
-      color: #ffffff;
-      transform: translateX(5px);
-    }
-
-    .logout {
-      background: #d00000;
-      margin-top: auto;
-      text-align: center;
-    }
-
-    .logout:hover {
-      background: #9b0000;
-      transform: translateX(5px);
-    }
-
-    a {
-      text-decoration: none;
-    }
-
-    @media (max-width: 768px) {
-      #sidebar {
-        width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-      }
-
-      .nav {
-        flex-direction: row;
-        flex-wrap: nowrap;
-      }
-
-      .nav-link {
-        margin: 0 0.5rem;
-        white-space: nowrap;
-      }
-
-      #sidebar h3 {
-        display: none;
-      }
-    }
+   
  
 body {
       font-family: 'Inter', sans-serif;
@@ -135,7 +53,91 @@ body {
     .action-btns button {
       margin-right: 5px;
     }
+ body {
+      font-family: 'Quicksand', sans-serif;
+      background: #f4f6f8;
+    }
 
+    #wrapper {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    #sidebar {
+      width: 240px;
+      background: linear-gradient(160deg, #1b1b2f, #0f3460);
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+
+    #sidebar h3 {
+      font-size: 1.8rem;
+      margin-bottom: 3rem;
+      color: #f8b400;
+    }
+
+    .nav-link {
+      color: #eee;
+      padding: 0.75rem 1rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      width: 100%;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link i {
+      margin-right: 1rem;
+    }
+
+    .nav-link:hover {
+      background: #00adb5;
+      transform: translateX(8px);
+    }
+
+    .logout {
+      margin-top: auto;
+      background: #e94560;
+    }
+
+    .logout:hover {
+      background: #d63447;
+    }
+
+    .container-fluid {
+      flex: 1;
+      padding: 4rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+    }
+
+    @media (max-width: 768px) {
+      #wrapper {
+        flex-direction: column;
+      }
+
+      #sidebar {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-around;
+      }
+
+      #sidebar h3 {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -147,10 +149,11 @@ body {
         <li class="nav-item"><a href="index.php" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
         <li class="nav-item"><a href="admin_order.php" class="nav-link"><i class="bi bi-bag-check"></i> Orders</a></li>
         <li class="nav-item"><a href="admin_users.php" class="nav-link"><i class="bi bi-people"></i> Users</a></li>
-        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a></li>
+        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a>
+        </li>
         <li class="nav-item"><a href="admin_Pets.php" class="nav-link"><i class="fas fa-paw"></i> Pets</a></li>
-        <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a></li>
-        <li class="nav-item"><a href="admin_logout.php" class="nav-link logout"><i class="bi bi-box-arrow-right"></i> LOGOUT</a></li>
+        <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a>
+        </li>
       </ul>
     </div>
    

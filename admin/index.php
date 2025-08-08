@@ -1,199 +1,186 @@
-<?php include "../partial/_database.php"; ?>
+<?php include 'admin_session.php' ?>
+
+<?php include "../partial/_database.php";  ?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pet Shop Admin Dashboard</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <!-- Font Awesome for paw & admin icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PetVilla Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f8;
+      font-family: 'Quicksand', sans-serif;
+      background: #f4f6f8;
     }
 
     #wrapper {
-      min-height: 100vh;
       display: flex;
+      min-height: 100vh;
     }
 
     #sidebar {
       width: 240px;
-      background: #222831;
-      color: #eeeeee;
+      background: linear-gradient(160deg, #1b1b2f, #0f3460);
+      color: #eee;
       display: flex;
       flex-direction: column;
+      align-items: center;
       padding: 2rem 1rem;
-      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
     }
 
     #sidebar h3 {
-      font-weight: 700;
+      font-size: 1.8rem;
       margin-bottom: 3rem;
-      text-align: center;
-      font-size: 1.6rem;
-      color: #00adb5;
+      color: #f8b400;
     }
 
     .nav-link {
-      color: #eeeeee;
+      color: #eee;
       padding: 0.75rem 1rem;
-      margin: 0.3rem 0;
-      border-radius: 0.75rem;
+      border-radius: 50px;
       display: flex;
       align-items: center;
+      width: 100%;
       transition: all 0.3s ease;
     }
 
     .nav-link i {
-      margin-right: 0.75rem;
-      font-size: 1.2rem;
+      margin-right: 1rem;
     }
 
     .nav-link:hover {
       background: #00adb5;
-      color: #ffffff;
-      transform: translateX(5px);
+      transform: translateX(8px);
     }
 
     .logout {
-      background: #d00000;
       margin-top: auto;
-      text-align: center;
+      background: #e94560;
     }
 
     .logout:hover {
-      background: #9b0000;
-      transform: translateX(5px);
+      background: #d63447;
     }
 
-    a {
-      text-decoration: none;
+    .container-fluid {
+      flex: 1;
+      padding: 4rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
     }
 
     @media (max-width: 768px) {
+      #wrapper {
+        flex-direction: column;
+      }
+
       #sidebar {
+        flex-direction: row;
         width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-      }
-
-      .nav {
-        flex-direction: row;
-        flex-wrap: nowrap;
-      }
-
-      .nav-link {
-        margin: 0 0.5rem;
-        white-space: nowrap;
+        justify-content: space-around;
       }
 
       #sidebar h3 {
         display: none;
       }
     }
-    .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
+    .row a{
+      text-decoration:none;
+    }
   </style>
 </head>
+
 <body>
   <div id="wrapper">
-    <!-- Sidebar -->
     <div id="sidebar">
       <h3>🐾 PetVilla</h3>
       <ul class="nav flex-column">
         <li class="nav-item"><a href="index.php" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
         <li class="nav-item"><a href="admin_order.php" class="nav-link"><i class="bi bi-bag-check"></i> Orders</a></li>
         <li class="nav-item"><a href="admin_users.php" class="nav-link"><i class="bi bi-people"></i> Users</a></li>
-        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a></li>
+        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a>
+        </li>
         <li class="nav-item"><a href="admin_Pets.php" class="nav-link"><i class="fas fa-paw"></i> Pets</a></li>
-        <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a></li>
-        <li class="nav-item"><a href="admin_logout.php" class="nav-link logout"><i class="bi bi-box-arrow-right"></i> LOGOUT</a></li>
+        <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a>
+        </li>
       </ul>
     </div>
+    <div class="container-fluid">
+      <h2>Welcome,
+        <?php 
+      echo $_SESSION['name']; 
+      ?> 🐾
+      </h2>
 
-
-    <!-- Page Content -->
-    <div class="container-fluid p-4">
-      <h2 class="mb-4">Welcome, <?php 
-      // echo $_SESSION['user']; ?> 🐾</h2>
-      <div class="row g-4">
-        <div class="col-md-4">
+      <div class="row g-4 mt-4">
+        <div class="col-md-3">
           <a href="admin_order.php">
-          <div class="card card-hover">
-            <div class="card-body text-center">
-              <?php
-              $query1 = "SELECT * FROM orders";
-              $resul1 = mysqli_query($conn,$query1);
-              $no1 = mysqli_num_rows($resul1);
-              ?>
-              <h5>Total Orders</h5>
-              <p class="fs-4 text-primary"><?php echo $no1; ?></p>
-            </div>
+          <div class="card p-4 text-center">
+            <h5>Orders</h5>
+            <p class="fs-3 text-primary">
+              <?php $res1 = mysqli_query($conn, "SELECT * FROM orders"); echo mysqli_num_rows($res1); ?>
+            </p>
           </div>
-        </a>
+  </a>
         </div>
-<div class="col-md-4">
+        <div class="col-md-3">
           <a href="admin_users.php">
-          <div class="card card-hover">
-            <div class="card-body text-center">
-              <?php
-              $query1 = "SELECT * FROM users";
-              $resul1 = mysqli_query($conn,$query1);
-              $no2 = mysqli_num_rows($resul1);
-              ?>
-              <h5>Total Users</h5>
-              <p class="fs-4 text-success"><?php echo $no2; ?></p>
-            </div>
+          <div class="card p-4 text-center">
+            <h5>Users</h5>
+            <p class="fs-3 text-success">
+              <?php $res2 = mysqli_query($conn, "SELECT * FROM users"); echo mysqli_num_rows($res2); ?>
+            </p>
           </div>
-        </a>
+  </a>
         </div>
-<div class="col-md-4">
+        <div class="col-md-3">
           <a href="admin_pets.php">
-          <div class="card card-hover">
-            <div class="card-body text-center">
-              <?php
-              $query1 = "SELECT * FROM pets";
-              $resul1 = mysqli_query($conn,$query1);
-              $no3 = mysqli_num_rows($resul1);
-              ?>
-              <h5>Total Pets</h5>
-              <p class="fs-4 text-warning"><?php echo $no3; ?></p>
-            </div>
+          <div class="card p-4 text-center">
+            <h5>Pets</h5>
+            <p class="fs-3 text-warning">
+              <?php $res3 = mysqli_query($conn, "SELECT * FROM pets"); echo mysqli_num_rows($res3); ?>
+            </p>
           </div>
-        </a>
+  </a>
         </div>
-<div class="col-md-4">
+        <div class="col-md-3">
           <a href="admin_Product.php">
-          <div class="card card-hover">
-            <div class="card-body text-center">
-              <?php
-              $query1 = "SELECT * FROM food";
-              $resul1 = mysqli_query($conn,$query1);
-              $no4 = mysqli_num_rows($resul1);
-              ?>
-              <h5>Total Products</h5>
-              <p class="fs-4 text-warning"><?php echo $no4; ?></p>
-            </div>
+          <div class="card p-4 text-center">
+            <h5>Products</h5>
+            <p class="fs-3 text-danger">
+              <?php $res4 = mysqli_query($conn, "SELECT * FROM food"); echo mysqli_num_rows($res4); ?>
+            </p>
           </div>
-        </a>
+  </a>
+        </div>
+        <div class="col-md-3">
+          <a href="admin.php">
+          <div class="card p-4 text-center">
+            <h5>Admins</h5>
+            <p class="fs-3 text-danger">
+              <?php $res4 = mysqli_query($conn, "SELECT * FROM admins"); echo mysqli_num_rows($res4); ?>
+            </p>
+          </div>
+  </a>
         </div>
       </div>
     </div>
   </div>
-
-
-  </div>
-  
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

@@ -2,7 +2,14 @@
 
 <?php include "../partial/_database.php"; ?>
 <?php
-include "../partial/_database.php";
+//  include "adminLogin_session.php"; ?>
+ <?php
+
+    $user = "SELECT * FROM admins";
+    $query = mysqli_query($conn,$user);
+
+    $users = mysqli_num_rows($query);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +27,33 @@ include "../partial/_database.php";
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
   <style>
-    
-   body {
+   
+ 
+body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .table thead {
+      background-color: #343a40;
+      color: #fff;
+    }
+    .table tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+    .btn {
+      border-radius: 20px;
+    }
+    .page-header {
+      padding: 2rem 1rem;
+      background: #343a40;
+      color: #fff;
+      border-radius: 0 0 10px 10px;
+      text-align: center;
+    }
+    .action-btns button {
+      margin-right: 5px;
+    }
+ body {
       font-family: 'Quicksand', sans-serif;
       background: #f4f6f8;
     }
@@ -122,60 +154,55 @@ include "../partial/_database.php";
         <li class="nav-item"><a href="admin_Pets.php" class="nav-link"><i class="fas fa-paw"></i> Pets</a></li>
         <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a>
         </li>
-        
       </ul>
     </div>
-
-  <!-- Page Content -->
-  <div class="container-fluid p-4">
-    <h2 class="mb-4">📋 All Orders</h2>
-    <div class="table-responsive">
-      <table class="table table-striped table-hover order-table" id='myTable'>
-        <thead class="table-dark">
+   
+  <div class="container my-4">
+    <div class="table-responsive shadow p-3 bg-white rounded">
+      <table class="table table-striped align-middle" id="myTable">
+        <thead>
           <tr>
-            <th>Order ID</th>
-            <th>Customer</th>
-            <th>Total (₹)</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Details</th>
+            <th>#ID</th>
+            <th> Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-        <?php
-        $query = "SELECT o.*, CONCAT(u.fname, ' ', u.lname) AS customer_name 
-                  FROM orders o
-                  JOIN users u ON o.user_id = u.user_id
-                  ORDER BY o.order_date DESC";
 
-        $result = mysqli_query($conn, $query);
+          <?php
+    if (mysqli_num_rows($query) > 0){
 
-        while ($order = mysqli_fetch_assoc($result)) {
-          // Color badge for status
-          $status_class = ($order['payment_status'] === 'paid') ? 'badge bg-success' : 'badge bg-warning text-dark';
 
-          echo "<tr>
-                  <td>{$order['order_id']}</td>
-                  <td>{$order['customer_name']}</td>
-                  <td>₹{$order['total_amount']}</td>
-                  <td>{$order['order_date']}</td>
-                  <td><span class='$status_class'>{$order['payment_status']}</span></td>
-                  <td><a href='admin_order_details.php?order_id={$order['order_id']}' class='btn btn-primary btn-sm'>View</a></td>
-                </tr>";
-        }
-        ?>
+       while ($row1 = mysqli_fetch_assoc($query)){
+        echo "
+        <tr>
+            <td>".$row1['id']."</td>
+            <td>".$row1['name']."</td>
+            <td>".$row1['email']."</td>
+            <td>".$row1['username']."</td>
+            <td class='action-btns'>
+              <a href='admin_remove.php?id=" . $row1['id'] . "'><button class='btn btn-sm btn-danger'>Delete</button></a>
+            </td>
+        </tr>";
+       }
+      }
+       
+       
+    ?>
+         
         </tbody>
       </table>
     </div>
   </div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="//cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="//cdn.datatables.net/2.3.0/js/dataTables.min.js"></script>
     <script>
       let table = new DataTable('#myTable');
     </script>
 
 </body>
 </html>
-

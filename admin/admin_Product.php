@@ -1,4 +1,6 @@
- <?php  include "../partial/_database.php";  ?>
+<?php include 'admin_session.php' ?>
+
+<?php  include "../partial/_database.php";  ?>
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 $product_image = $_FILES['product-image'];
@@ -43,99 +45,92 @@ else{
   integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
   crossorigin="anonymous"></script>
   <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f4f6f8;
+ 
+ body {
+      font-family: 'Quicksand', sans-serif;
+      background: #f4f6f8;
     }
 
     #wrapper {
-      min-height: 100vh;
       display: flex;
+      min-height: 100vh;
     }
 
     #sidebar {
       width: 240px;
-      background: #222831;
-      color: #eeeeee;
+      background: linear-gradient(160deg, #1b1b2f, #0f3460);
+      color: #eee;
       display: flex;
       flex-direction: column;
+      align-items: center;
       padding: 2rem 1rem;
-      box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
     }
 
     #sidebar h3 {
-      font-weight: 700;
+      font-size: 1.8rem;
       margin-bottom: 3rem;
-      text-align: center;
-      font-size: 1.6rem;
-      color: #00adb5;
+      color: #f8b400;
     }
 
     .nav-link {
-      color: #eeeeee;
+      color: #eee;
       padding: 0.75rem 1rem;
-      margin: 0.3rem 0;
-      border-radius: 0.75rem;
+      border-radius: 50px;
       display: flex;
       align-items: center;
+      width: 100%;
       transition: all 0.3s ease;
     }
 
     .nav-link i {
-      margin-right: 0.75rem;
-      font-size: 1.2rem;
+      margin-right: 1rem;
     }
 
     .nav-link:hover {
       background: #00adb5;
-      color: #ffffff;
-      transform: translateX(5px);
+      transform: translateX(8px);
     }
 
     .logout {
-      background: #d00000;
       margin-top: auto;
-      text-align: center;
+      background: #e94560;
     }
 
     .logout:hover {
-      background: #9b0000;
-      transform: translateX(5px);
+      background: #d63447;
     }
 
-    a {
-      text-decoration: none;
+    .container-fluid {
+      flex: 1;
+      padding: 4rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
     }
 
     @media (max-width: 768px) {
+      #wrapper {
+        flex-direction: column;
+      }
+
       #sidebar {
+        flex-direction: row;
         width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-      }
-
-      .nav {
-        flex-direction: row;
-        flex-wrap: nowrap;
-      }
-
-      .nav-link {
-        margin: 0 0.5rem;
-        white-space: nowrap;
+        justify-content: space-around;
       }
 
       #sidebar h3 {
         display: none;
       }
     }
-    .card-hover {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card-hover:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
   </style>
 </head>
 <body>
@@ -147,13 +142,14 @@ else{
         <li class="nav-item"><a href="index.php" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
         <li class="nav-item"><a href="admin_order.php" class="nav-link"><i class="bi bi-bag-check"></i> Orders</a></li>
         <li class="nav-item"><a href="admin_users.php" class="nav-link"><i class="bi bi-people"></i> Users</a></li>
-        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a></li>
+        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a>
+        </li>
         <li class="nav-item"><a href="admin_Pets.php" class="nav-link"><i class="fas fa-paw"></i> Pets</a></li>
-        <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a></li>
-        <li class="nav-item"><a href="admin_logout.php" class="nav-link logout"><i class="bi bi-box-arrow-right"></i> LOGOUT</a></li>
+        <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a>
+        </li>
+        
       </ul>
     </div>
-
     <!-- Page Content -->
      <div class="container">
     <form action="admin_Product.php" method="POST" enctype="multipart/form-data" class="p-4 border rounded bg-light shadow">
@@ -189,14 +185,14 @@ else{
 
  
   <div class="mb-3">
-    <label for="age" class="form-label">Product Manu-fact-date</label>
-    <input type="text" name="mfd" class="form-control" id="age" required>
-  </div>
+        <label class="form-label">MFD (Manufacture Date)</label>
+        <input type="date" name="mfd" class="form-control" value="<?= $product['food-mfd'] ?>" required>
+      </div>
 
-  <div class="mb-3">
-    <label for="age" class="form-label">Product Ex-piry-date</label>
-    <input type="text" name="exd" class="form-control" id="age" required>
-  </div>
+      <div class="mb-3">
+        <label class="form-label">EXD (Expiry Date)</label>
+        <input type="date" name="exd" class="form-control" value="<?= $product['food-exd'] ?>" required>
+      </div>
 
   <div class="mb-3">
     <label for="description" class="form-label">Product Instruction</label>
@@ -255,7 +251,11 @@ else{
             <td><img src='".$row['food-image'] ."' width='100px' alt='Dog Food' class='product-img'></td>
             <td>". $row['food-name'] ."</td>
             <td>₹". $row['food-price']."</td>
-            <td class='subtotal'><i class='fa-solid fa-xmark'></i></td>
+            <td class='text-center'>
+  <a href='edit_product.php?id=".$row['food_id']."' class='btn btn-sm btn-warning'><i class='fa fa-edit'></i></a>
+  <a href='delete_product.php?id=".$row['food_id']."' class='btn btn-sm btn-danger' onclick='return confirm('Are you sure you want to delete this product?');'><i class='fa fa-trash'></i></a>
+</td>
+
           </tr>
 
                     ";

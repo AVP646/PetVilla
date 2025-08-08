@@ -131,10 +131,10 @@
     <div class="row align-items-center mt-4 iconss">
       <div class="">
         <div class="text-center text-md-right">
-          <a href="#" class="text- me-4 footer-social"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" class="text-hite me-4 footer-social"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text- me-4 footer-social"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-wite footer-social"><i class="fab fa-pinterest"></i></a>
+          <a href="https://www.facebook.com/jaydip.mangroliya.56/" class="text- me-4 footer-social"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/pankaj_hm/" class="text-hite me-4 footer-social"><i class="fab fa-instagram"></i></a>
+          <a href="www.linkedin.com/in/pankaj-manganiya-080a30308" class="text- me-4 footer-social"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/AVP646" class="text-wite footer-social"><i class="fab fa-github"></i></a>
         </div>
       </div>
     </div>

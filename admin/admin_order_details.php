@@ -1,3 +1,5 @@
+<?php include 'admin_session.php' ?>
+
 <?php
 include '../partial/_database.php';
 session_start();
@@ -21,6 +23,18 @@ $query  = "SELECT oi.*,
           LEFT JOIN food f ON oi.product_type = 'food' AND oi.product_id = f.food_id
           WHERE oi.order_id = '$order_id'";
 $result = mysqli_query($conn, $query);
+?>
+<?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_status'])) {
+    $new_status = mysqli_real_escape_string($conn, $_POST['new_status']);
+    $update_query = "UPDATE orders SET payment_status = '$new_status' WHERE order_id = '$order_id'";
+    if (mysqli_query($conn, $update_query)) {
+        header("Location: admin_order_details.php?order_id=$order_id&updated=1");
+        exit;
+    } else {
+        echo "Error updating status: " . mysqli_error($conn);
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,9 +63,14 @@ $result = mysqli_query($conn, $query);
       margin-bottom: 20px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
+    
   </style>
 </head>
 <body>
+  <?php if (isset($_GET['updated'])) : ?>
+  <div class="alert alert-success">Order status updated successfully!</div>
+<?php endif; ?>
+
 <div class="container">
   <div class="order-summary">
     <h2 class="mb-3">📦 Order Details</h2>
@@ -94,8 +113,28 @@ $result = mysqli_query($conn, $query);
         ?>
       </tbody>
     </table>
+
   </div>
 </div>
+
+<?php
+  $is_final_status = ($order['payment_status'] === 'paid' || $order['payment_status'] === 'cancelled');
+?>
+<form method="POST" class="mt-3 d-flex justify-content-center">
+  <div class="input-group" style="max-width: 400px;">
+    <select name="new_status" id="new_status" class="form-select" required <?= $is_final_status ? 'disabled' : '' ?>>
+      <option value="">Select status</option>
+      <option value="paid" <?= $order['payment_status'] == 'paid' ? 'selected' : '' ?>>Paid</option>
+      <option value="shipped" <?= $order['payment_status'] == 'shipped' ? 'selected' : '' ?>>Shipped</option>
+      <option value="pending" <?= $order['payment_status'] == 'pending' ? 'selected' : '' ?>>Pending</option>
+      <option value="cancelled" <?= $order['payment_status'] == 'cancelled' ? 'selected' : '' ?>>Cancelled</option>
+    </select>
+    <button type="submit" class="btn btn-primary" <?= $is_final_status ? 'disabled' : '' ?>>Update</button>
+  </div>
+</form>
+
+
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
