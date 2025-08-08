@@ -1,8 +1,38 @@
 <?php include 'login_session.php'; ?>
 <?php include '../partial/_database.php'; ?>
+
 <?php
+// Get filter and pagination parameters
 $filterCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
+$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+$limit = 6; // Number of pets per page
+$offset = ($page - 1) * $limit;
+
+// Build query with optional category filtering
+if ($filterCategory !== 'all') {
+    $stmt = $conn->prepare("SELECT * FROM pets WHERE `pet-category` = ? LIMIT ? OFFSET ?");
+    $stmt->bind_param("sii", $filterCategory, $limit, $offset);
+
+    $countStmt = $conn->prepare("SELECT COUNT(*) AS total FROM pets WHERE `pet-category` = ?");
+    $countStmt->bind_param("s", $filterCategory);
+} else {
+    $stmt = $conn->prepare("SELECT * FROM pets LIMIT ? OFFSET ?");
+    $stmt->bind_param("ii", $limit, $offset);
+
+    $countStmt = $conn->prepare("SELECT COUNT(*) AS total FROM pets");
+}
+
+// Execute main query
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Execute count query
+$countStmt->execute();
+$countResult = $countStmt->get_result();
+$totalPets = $countResult->fetch_assoc()['total'];
+$totalPages = ceil($totalPets / $limit);
 ?>
+
 
           
 <!DOCTYPE html>
@@ -107,6 +137,11 @@ $filterCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
     align-items: center;
     gap: 10px;
   }
+  .filter-btn.active {
+  background: #D1A980;
+  font-weight: 700;
+}
+
 </style>
 </head>
 <body>
@@ -123,14 +158,15 @@ $filterCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
 
   <!-- Filter Buttons -->
   <div class="filter-buttons">
-    <button class="filter-btn" onclick="filterPets('all')">All</button>
-    <button class="filter-btn" onclick="filterPets('Dog')">Dogs</button>
-    <button class="filter-btn" onclick="filterPets('Cat')">Cats</button>
-    <button class="filter-btn" onclick="filterPets('Fish')">Fishes</button>
-    <button class="filter-btn" onclick="filterPets('Bird')">Birds</button>
-    <button class="filter-btn" onclick="filterPets('Turtle')">Turtles</button>
-    <button class="filter-btn" onclick="filterPets('Rabbit')">Rabbits</button>
-  </div>
+  <a href="?category=all" class="filter-btn">All</a>
+  <a href="?category=Dog" class="filter-btn">Dogs</a>
+  <a href="?category=Cat" class="filter-btn">Cats</a>
+  <a href="?category=Fish" class="filter-btn">Fishes</a>
+  <a href="?category=Bird" class="filter-btn">Birds</a>
+  <a href="?category=Turtle" class="filter-btn">Turtles</a>
+  <a href="?category=Rabbit" class="filter-btn">Rabbits</a>
+</div>
+
 
   <!-- Pets Grid Section -->
   <div class="container pets-section">
@@ -140,62 +176,77 @@ $filterCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
         <?php 
             $query1 = "SELECT * FROM pets";
             $result1 = mysqli_query($conn,$query1);
-            if(mysqli_num_rows($result1) > 0){
-             while($row = mysqli_fetch_assoc($result1)){
-                    echo "
-                <div class='col-md-4 pet-item' data-type='". $row['pet-category'] ."'>
+if ($result->num_rows > 0) {
+  while ($row = $result->fetch_assoc()) {
+    echo "
+      <div class='col-md-4 pet-item'>
         <div class='card pet-card'>
-          <a href='detail.php?id=" . $row['pets_id'] . "'><img src='". $row['pet-image'] ."' class='card-img-top'></a>
+          <a href='detail.php?id=" . $row['pets_id'] . "'>
+            <img src='". $row['pet-image'] ."' class='card-img-top'>
+          </a>
           <div class='card-body'>
             <h5 class='card-title'>". $row['pet-name'] ."</h5>
             <p class='card-text'>Breed: ". $row['pet-breed'] ."<br>Age: ". $row['pet-age'] ."</p>
             <p class='price'>₹". $row['pet-price'] ."</p>
-       <form action='addtocart.php' method='POST' class='mt-3'>
-  <input type='hidden' name='product_id' value='". $row['pets_id']."'>
-  <input type='hidden' name='product_type' value='pet'>
-              
-  <input type='hidden' name='return_url' value=". $_SERVER['REQUEST_URI']." >
-
-
-  <div class='d-flex align-items-center gap-2'>
-    <input type='number' name='quantity' value='1' min='1' 
-      class='form-control quantity-input' />
-
-    <button type='submit' class='btn btn-addtocart'>Add to Cart 🛒</button>
-  </div>
-</form>
-
-
-
+            <form action='addtocart.php' method='POST' class='mt-3'>
+              <input type='hidden' name='product_id' value='". $row['pets_id']."'>
+              <input type='hidden' name='product_type' value='pet'>
+              <input type='hidden' name='return_url' value='". $_SERVER['REQUEST_URI'] ."'>
+              <div class='d-flex align-items-center gap-2'>
+                <input type='number' name='quantity' value='1' min='1' class='form-control quantity-input' />
+                <button type='submit' class='btn btn-addtocart'>Add to Cart 🛒</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>";
+  }
+} else {
+  echo "<p class='text-center'>No pets found.</p>";
+}
 
-             }
-            }
-           ?>
-
-
-    </div>
+?>  </div>
   </div>
 
 
-  <!-- Filter Script -->
-  <script>
-  function filterPets(type) {
-    const pets = document.querySelectorAll('.pet-item');
-    pets.forEach(pet => {
-      if (type === 'all' || pet.dataset.type === type) {
-        pet.style.display = 'block';
-      } else {
-        pet.style.display = 'none';
-      }
-    });
-  }
 
-  // 👇 Auto run filter when page loads
-  const defaultCategory = "<?php echo $filterCategory; ?>";
-  filterPets(defaultCategory);
+ <div class="text-center my-4">
+  <nav>
+    <ul class="pagination justify-content-center">
+      <?php
+        $baseUrl = "?category=$filterCategory&page=";
+
+        // Previous button
+        if ($page > 1) {
+          echo "<li class='page-item'><a class='page-link' href='". $baseUrl . ($page - 1) ."'>Previous</a></li>";
+        }
+
+        // Page numbers
+        for ($i = 1; $i <= $totalPages; $i++) {
+          $active = ($i == $page) ? "active" : "";
+          echo "<li class='page-item $active'><a class='page-link' href='". $baseUrl . $i ."'>$i</a></li>";
+        }
+
+        // Next button
+        if ($page < $totalPages) {
+          echo "<li class='page-item'><a class='page-link' href='". $baseUrl . ($page + 1) ."'>Next</a></li>";
+        }
+      ?>
+    </ul>
+  </nav>
+</div>
+
+
+
+
+<script>
+  const selectedCategory = "<?php echo $filterCategory; ?>";
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    if (btn.textContent.toLowerCase().includes(selectedCategory.toLowerCase())) {
+      btn.style.background = '#D1A980';
+      btn.style.fontWeight = 'bold';
+    }
+  });
 </script>
 
 </body>
