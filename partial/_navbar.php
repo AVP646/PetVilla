@@ -109,6 +109,10 @@
             <a data-aos="fade-down" data-aos-duration="1500"
               class="nav-link active nav-links" aria-current="page" href="../Pages/contact.php">CONTACT US</a>
           </li>
+          <li class="nav-item">
+            <a data-aos="fade-down" data-aos-duration="1600"
+              class="nav-link active nav-links" aria-current="page" href="../Pages/review.php">REVIEW</a>
+          </li>
         </ul>
 
         <form class="d-flex nav-i " role="search" id="form_nav">

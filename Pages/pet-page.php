@@ -142,6 +142,26 @@ $totalPages = ceil($totalPets / $limit);
   font-weight: 700;
 }
 
+.filter-btn {
+  display: inline-block;
+  background: #E5E0D8;
+  color: black;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  background: #D1A980;
+  color: black;
+}
+
 </style>
 </head>
 <body>
@@ -157,15 +177,19 @@ $totalPages = ceil($totalPets / $limit);
   </div>
 
   <!-- Filter Buttons -->
-  <div class="filter-buttons">
-  <a href="?category=all" class="filter-btn">All</a>
-  <a href="?category=Dog" class="filter-btn">Dogs</a>
-  <a href="?category=Cat" class="filter-btn">Cats</a>
-  <a href="?category=Fish" class="filter-btn">Fishes</a>
-  <a href="?category=Bird" class="filter-btn">Birds</a>
-  <a href="?category=Turtle" class="filter-btn">Turtles</a>
-  <a href="?category=Rabbit" class="filter-btn">Rabbits</a>
+  <!-- Pet Filters -->
+<div class="filter-buttons container">
+  <div class="d-flex flex-wrap justify-content-center gap-2">
+    <a href="?category=all" class="filter-btn">All</a>
+    <a href="?category=Dog" class="filter-btn">Dog</a>
+    <a href="?category=Cat" class="filter-btn">Cat</a>
+    <a href="?category=Fish" class="filter-btn">Fish</a>
+    <a href="?category=Bird" class="filter-btn">Bird</a>
+    <a href="?category=Turtle" class="filter-btn">Turtle</a>
+    <a href="?category=Rabbit" class="filter-btn">Rabbit</a>
+  </div>
 </div>
+
 
 
   <!-- Pets Grid Section -->

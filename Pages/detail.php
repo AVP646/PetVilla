@@ -215,17 +215,23 @@
         <p><strong>Health:</strong> Vaccinated, Microchipped, Neutered</p>
         <p><strong>Status:</strong> ".$row['pet-availability'] ."</p>
         <p class='price'>Adoption Fee: ₹".$row['pet-price'] ."</p>
-        <!-- For Reserved or Adopted, add class: reserved or adopted -->
         <div class='pet-facts'>
           <h5>About Buddy</h5>
           <p>".$row['pet-description'] ."</p>
         </div>
-      <form action='addtocart.php' method='POST'>
-  <input type='hidden' name='product_id' value=".$row['pets_id'].">
-  <input type='hidden' name='product_type' value='pet'>
-  <input type='hidden' name='quantity' value='1'>
-  <button type='submit' class='btn-adopt'>Add to Cart 🛒</button>
-</form>
+        <!-- For Reserved or Adopted, add class: reserved or adopted -->
+        <form action='addtocart.php' method='POST' class='mt-3'>
+        <input type='hidden' name='product_id' value='".$row['pets_id']."'>
+        <input type='hidden' name='product_type' value='pet'>
+        
+        <div class='mb-3'>
+        <label for='quantity' class='form-label'><strong>Quantity:</strong></label>
+        <input type='number' id='quantity' name='quantity' value='1' min='1' class='form-control' style='max-width: 100px;' required>
+        </div>
+        
+        <button type='submit' class='btn-adopt'>Add to Cart 🛒</button>
+        </form>
+        
 
       </div>
     </div>

@@ -116,7 +116,7 @@ $result = mysqli_query($conn, $query);
   </div>
 
   <div class="text-right">
-    <form action="check.php" method="POST">
+    <form action="checkout.php" method="POST">
       <button type="submit" class="btn btn-checkout btn-lg">Proceed to Checkout</button>
     </form>
   </div>

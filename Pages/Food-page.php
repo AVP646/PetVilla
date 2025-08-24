@@ -1,6 +1,40 @@
 <?php include 'login_session.php'; ?>
 <?php include '../partial/_database.php'; ?>
 
+<?php
+// Handle category filter and pagination
+$filterCategory = isset($_GET['category']) ? $_GET['category'] : 'all';
+$page = isset($_GET['page']) ? max(1, intval($_GET['page'])) : 1;
+
+$limit = 6;
+$offset = ($page - 1) * $limit;
+
+// Normalize category for filtering
+$filterCategoryLower = strtolower($filterCategory);
+
+// Prepare query
+if ($filterCategory !== 'all') {
+    $stmt = $conn->prepare("SELECT * FROM food WHERE LOWER(`food-category`) = ? LIMIT ? OFFSET ?");
+    $stmt->bind_param("sii", $filterCategoryLower, $limit, $offset);
+
+    $countStmt = $conn->prepare("SELECT COUNT(*) as total FROM food WHERE LOWER(`food-category`) = ?");
+    $countStmt->bind_param("s", $filterCategoryLower);
+} else {
+    $stmt = $conn->prepare("SELECT * FROM food LIMIT ? OFFSET ?");
+    $stmt->bind_param("ii", $limit, $offset);
+
+    $countStmt = $conn->prepare("SELECT COUNT(*) as total FROM food");
+}
+
+// Execute both
+$stmt->execute();
+$result1 = $stmt->get_result();
+
+$countStmt->execute();
+$totalItems = $countStmt->get_result()->fetch_assoc()['total'];
+$totalPages = ceil($totalItems / $limit);
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +62,7 @@
       font-size: 3rem;
       font-weight: 700;
     }
-    .filter-buttons {
+    /* .filter-buttons {
       text-align: center;
       margin: 30px 0;
     }
@@ -45,7 +79,7 @@
     }
     .filter-btn:hover {
       background: #D1A980;
-    }
+    } */
     .food-section {
       padding: 20px;
     }
@@ -119,6 +153,26 @@
     align-items: center;
     gap: 10px;
   }
+  .filter-btn {
+  display: inline-block;
+  background: #E5E0D8;
+  color: black;
+  border: 1px solid black;
+  border-radius: 50px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  background: #D1A980;
+  color: black;
+}
+
   </style>
 </head>
 <body>
@@ -131,28 +185,31 @@
   </div>
 
   <!-- Filter Buttons -->
-  <div class="filter-buttons">
-    <button class="filter-btn" onclick="filterFood('all')">All</button>
-    <button class="filter-btn" onclick="filterFood('Dog')">Dog Food</button>
-    <button class="filter-btn" onclick="filterFood('Cat')">Cat Food</button>
-    <button class="filter-btn" onclick="filterFood('Fish')">Fish Food</button>
-    <button class="filter-btn" onclick="filterFood('Bird')">Bird Food</button>
-    <button class="filter-btn" onclick="filterFood('Turtle')">Turtle Food</button>
-    <button class="filter-btn" onclick="filterFood('Rabbit')">Rabbit Food</button>
-    
+<div class="filter-buttons container">
+  <div class="d-flex flex-wrap justify-content-center gap-2">
+    <a href="?category=all" class="filter-btn">All</a>
+    <a href="?category=Dog" class="filter-btn">Dog Food</a>
+    <a href="?category=Cat" class="filter-btn">Cat Food</a>
+    <a href="?category=Fish" class="filter-btn">Fish Food</a>
+    <a href="?category=Bird" class="filter-btn">Bird Food</a>
+    <a href="?category=Turtle" class="filter-btn">Turtle Food</a>
+    <a href="?category=Rabbit" class="filter-btn">Rabbit Food</a>
   </div>
+</div>
+
+
+
 
   <!-- Food Grid Section -->
   <div class="container food-section">
     <div class="row g-4">
 
       <!-- Food Card 1 -->
-        <?php 
-            $query1 = "SELECT * FROM food";
-            $result1 = mysqli_query($conn,$query1);
-            if(mysqli_num_rows($result1) > 0){
-             while($row = mysqli_fetch_assoc($result1)){
-                    echo "
+           <?php 
+if ($result1->num_rows > 0) {
+  while ($row = $result1->fetch_assoc()) {
+
+        echo "
                <div class='col-md-4 food-item' data-type='". $row['food-category'] ."'>
         <div class='card food-card'>
         <a href='detail2.php?id=" . $row['food_id'] . "'><img src='". $row['food-image'] ."' class='card-img-top'></a>
@@ -182,9 +239,37 @@
     </div>
   </div>
 
+
+  <div class="text-center my-4">
+  <nav>
+    <ul class="pagination justify-content-center">
+      <?php
+        $baseUrl = "?category=$filterCategory&page=";
+
+        // Previous
+        if ($page > 1) {
+          echo "<li class='page-item'><a class='page-link' href='". $baseUrl . ($page - 1) ."'>Previous</a></li>";
+        }
+
+        // Page numbers
+        for ($i = 1; $i <= $totalPages; $i++) {
+          $active = ($i == $page) ? "active" : "";
+          echo "<li class='page-item $active'><a class='page-link' href='". $baseUrl . $i ."'>$i</a></li>";
+        }
+
+        // Next
+        if ($page < $totalPages) {
+          echo "<li class='page-item'><a class='page-link' href='". $baseUrl . ($page + 1) ."'>Next</a></li>";
+        }
+      ?>
+    </ul>
+  </nav>
+</div>
+
+
   
   <!-- Filter Script -->
-  <script>
+  <!-- <script>
     function filterFood(type) {
       const foods = document.querySelectorAll('.food-item');
       foods.forEach(food => {
@@ -195,7 +280,17 @@
         }
       });
     }
-  </script>
+  </script> -->
+<script>
+  const currentCategory = "<?php echo $filterCategory; ?>".toLowerCase();
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    if (btn.textContent.toLowerCase().includes(currentCategory)) {
+      btn.style.background = '#D1A980';
+      btn.style.fontWeight = 'bold';
+    }
+  });
+</script>
+
 
 </body>
 </html>

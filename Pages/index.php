@@ -1,5 +1,6 @@
 <?php include 'login_session.php' ?>
 <?php include '../partial/_navbar.php' ?> <!-- Navbar -->
+<?php include '../partial/_database.php' ?> <!-- Database connection -->
 
 
 <!DOCTYPE html>
@@ -17,48 +18,58 @@
             <div id="sliderTrack">
                 <!-- Slide 1 -->
                 <div class="slide-block">
-                    <div class="slide-text">
-                        <h2 class="stroke-heading">Tasty Food</h2>
-                        <svg viewBox="0 0 500 150">
-                            <text x="0" y="70" class="animated-text2">Fresh Flavoured</text>
-                            <text x="0" y="130" class="animated-text2">Dog Food</text>
-                        </svg>
-                        <p>Sedquis nis eleentum rhoncus sit amet in nisi. Phasellus tmpor.</p>
-                    </div>
-                    <div class="slide">
-                        <img src="../images/pet1.png" alt="Pet 1" />
-                    </div>
-                </div>
+    <div class="slide-text">
+        <h2 class="stroke-heading">Tasty Food</h2>
+        <svg viewBox="0 0 500 150">
+            <text x="0" y="70" class="animated-text2">Fresh Flavoured</text>
+            <text x="0" y="130" class="animated-text2">Dog Food</text>
+        </svg>
+        <p>
+            <a href="food-page.php" class="magic-btn">Explore Products</a>
+        </p>
+    </div>
+    <div class="slide">
+        <img src="../images/pet1.png" alt="Pet 1" />
+    </div>
+</div>
+
 
                 <!-- Slide 2 -->
-                <div class="slide-block">
-                    <div class="slide-text">
-                        <h2 class="stroke-heading">Yummy & Tasty</h2>
-                        <svg viewBox="0 0 500 150">
-                            <text x="0" y="70" class="animated-text2">We Make</text>
-                            <text x="0" y="130" class="animated-text2">The Best Food</text>
-                        </svg>
-                        <p>Sedquis nis eleentum rhoncus sit amet in nisi. Phasellus tmpor.</p>
-                    </div>
-                    <div class="slide">
-                        <img src="../images/pet2.png" alt="Pet 2" />
-                    </div>
-                </div>
 
-                <!-- Slide 3 -->
                 <div class="slide-block">
-                    <div class="slide-text">
-                        <h2 class="stroke-heading">Budget Friendly</h2>
-                        <svg viewBox="0 0 500 150">
-                            <text x="0" y="70" class="animated-text2">Organic Food &</text>
-                            <text x="0" y="130" class="animated-text2">Supplements</text>
-                        </svg>
-                        <p>Sedquis nis eleentum rhoncus sit amet in nisi. Phasellus tmpor.</p>
-                    </div>
-                    <div class="slide">
-                        <img src="../images/pet3.png" alt="Pet 3" />
-                    </div>
-                </div>
+    <div class="slide-text">
+        <h2 class="stroke-heading">Tasty Food</h2>
+        <svg viewBox="0 0 500 150">
+            <text x="0" y="70" class="animated-text2">Yummy & Tasty</text>
+            <text x="0" y="130" class="animated-text2">The Best Food</text>
+        </svg>
+        <p>
+            <a href="food-page.php" class="magic-btn">Explore Products</a>
+        </p>
+    </div>
+    <div class="slide">
+        <img src="../images/pet2.png" alt="Pet 2" />
+    </div>
+</div>
+
+                
+                <!-- Slide 3 -->
+                 <div class="slide-block">
+    <div class="slide-text">
+        <h2 class="stroke-heading">Tasty Food</h2>
+        <svg viewBox="0 0 500 150">
+            <text x="0" y="70" class="animated-text2">Organic Food &</text>
+            <text x="0" y="130" class="animated-text2">Tasty</text>
+        </svg>
+        <p>
+            <a href="Food-page.php" class="magic-btn">Explore Products</a>
+        </p>
+    </div>
+    <div class="slide">
+        <img src="../images/pet3.png" alt="Pet 3" />
+    </div>
+</div>
+
             </div>
 
             <!-- Next Button -->
@@ -142,52 +153,70 @@
       <p class="text-center mb-5 text-muted">Explore our wide range of pets food categories and find the best food for your beloved animals.</p>
       <div class="row g-4">
         <!-- Card 1 -->
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="category-card">
-            <div class="category-icon">🐶</div>
-            <h5>Dog Food</h5>
-            <p>Nutritious and delicious meals for dogs.</p>
-          </div>
-        </div>
-        <!-- Card 2 -->
-        <div class="col-12 col-sm-6 col-md-4">
-          <div class="category-card">
-            <div class="category-icon">🐱</div>
-            <h5>Cat Food</h5>
-            <p>Healthy and tasty food for cats.</p>
-          </div>
-        </div>
+<div class="col-12 col-sm-6 col-md-4">
+  <a href="food-page.php?category=Dog" class="text-decoration-none text-dark">
+    <div class="category-card">
+      <div class="category-icon">🐶</div>
+      <h5>Dog Food</h5>
+      <p>Nutritious and delicious meals for dogs.</p>
+    </div>
+  </a>
+</div>
+
+<!-- Card 2 -->
+<div class="col-12 col-sm-6 col-md-4">
+  <a href="food-page.php?category=Cat" class="text-decoration-none text-dark">
+    <div class="category-card">
+      <div class="category-icon">🐱</div>
+      <h5>Cat Food</h5>
+      <p>Healthy and tasty food for cats.</p>
+    </div>
+  </a>
+</div>
+
         <!-- Card 3 -->
         <div class="col-12 col-sm-6 col-md-4">
+  <a href="food-page.php?category=Rabbit" class="text-decoration-none text-dark">
+
           <div class="category-card">
             <div class="category-icon">🐰</div>
             <h5>Rabbit Food</h5>
             <p>Fresh and nutritious food for rabbits.</p>
           </div>
+</a>
         </div>
         <!-- Card 4 -->
         <div class="col-12 col-sm-6 col-md-4">
+  <a href="food-page.php?category=Bird" class="text-decoration-none text-dark">
+
           <div class="category-card">
             <div class="category-icon">🐦</div>
             <h5>Birds Food</h5>
             <p>High-quality seeds and feed for birds.</p>
           </div>
+</a>
         </div>
         <!-- Card 5 -->
         <div class="col-12 col-sm-6 col-md-4">
+  <a href="food-page.php?category=Turtle" class="text-decoration-none text-dark">
+
           <div class="category-card">
             <div class="category-icon">🐢</div>
             <h5>Reptile Food</h5>
             <p>Special feed for turtles and reptiles.</p>
           </div>
+</a>
         </div>
         <!-- Card 6 -->
         <div class="col-12 col-sm-6 col-md-4">
+  <a href="food-page.php?category=Fish" class="text-decoration-none text-dark">
+
           <div class="category-card">
             <div class="category-icon">🐟</div>
             <h5>Fish Food</h5>
             <p>Premium quality food for aquarium fish.</p>
           </div>
+</a>
         </div>
       </div>
     </div>
@@ -200,90 +229,41 @@
         <p class="text-center lead text-muted mb-5">Hear inspiring stories & Reviews from pet owners around the world.</p>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <div class="col">
-                <div class="p-4 review-card">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="John Smith" width="60" height="60">
-                        <div>
-                            <h5 class="mb-0">John S.</h5>
-                            <div class="review-rating">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> (4.5/5)
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-muted">"My dog, Buddy, has truly changed my life. His endless energy and affection remind me to live in the moment. I can't imagine a day without him."</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="p-4 review-card">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="Alice M." width="60" height="60">
-                        <div>
-                            <h5 class="mb-0">Alice M.</h5>
-                            <div class="review-rating">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> (5/5)
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-muted">"My cat, Luna, is the most calming presence in my home. After a long day, just petting her melts away all my stress. Highly recommend pet ownership!"</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="p-4 review-card">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="Rahul K." width="60" height="60">
-                        <div>
-                            <h5 class="mb-0">Rahul K.</h5>
-                            <div class="review-rating">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i> (4/5)
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-muted">"My parrot, Polly, is a constant source of entertainment. While demanding, the joy she brings to our family is immeasurable. It's truly a unique bond."</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="p-4 review-card">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="Sarah F." width="60" height="60">
-                        <div>
-                            <h5 class="mb-0">Sarah F.</h5>
-                            <div class="review-rating">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i> (5/5)
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-muted">"Our guinea pigs, Peanut and Butter, have taught my kids so much about responsibility and compassion. They're tiny bundles of joy!"</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="p-4 review-card ">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="David P." width="60" height="60">
-                        <div>
-                            <h5 class="mb-0">David P.</h5>
-                            <div class="review-rating">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i><i class="bi bi-star"></i> (3/5)
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-muted">"Having a fish tank is surprisingly meditative. It adds a peaceful element to my living room. Maintenance is key, but worth it for the tranquility."</p>
-                </div>
-            </div>
-            <div class="col">
-                <div class="p-4 review-card">
-                    <div class="d-flex align-items-center mb-3">
-                        <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="Liam M." width="60" height="60">
-                        <div>
-                            <h5 class="mb-0">Liam M.</h5>
-                            <div class="review-rating">
-                                <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i> (4.5/5)
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-muted">"My tortoise, Sheldon, is a long-term commitment, but so rewarding. Watching him explore and grow has been a unique experience."</p>
-                </div>
-            </div>
+            <?php
+$result = $conn->query("SELECT * FROM reviews ORDER BY created_at DESC");
+
+while ($row = $result->fetch_assoc()):
+  $rating = intval($row['rating']);
+  $user = htmlspecialchars($row['user_name']);
+  $message = htmlspecialchars($row['message']);
+?>
+<div class="col">
+  <div class="p-4 review-card">
+    <div class="d-flex align-items-center mb-3">
+      <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="<?= $user ?>" width="60" height="60">
+      <div>
+        <h5 class="mb-0"><?= $user ?></h5>
+        <div class="review-rating">
+          <?php
+          // Show full stars
+          for ($i = 1; $i <= $rating; $i++) {
+              echo '<i class="bi bi-star-fill"></i>';
+          }
+          // Show empty stars (if any)
+          for ($i = $rating + 1; $i <= 5; $i++) {
+              echo '<i class="bi bi-star"></i>';
+          }
+          ?>
+          (<?= $rating ?>/5)
+        </div>
+      </div>
+    </div>
+    <p class="text-muted">"<?= $message ?>"</p>
+  </div>
+</div>
+<?php endwhile; ?>
+
+             
         </div>
     </section>
 

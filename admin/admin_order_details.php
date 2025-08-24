@@ -1,12 +1,11 @@
-<?php include 'admin_session.php' ?>
-
+<?php include 'admin_session.php'; ?>
 <?php
 include '../partial/_database.php';
 session_start();
 
 $order_id = $_GET['order_id'];
 
-// Get main order info (optional)
+// Get main order info (including address/phone)
 $order_query = "SELECT o.*, CONCAT(u.fname, ' ', u.lname) AS customer_name
                 FROM orders o
                 JOIN users u ON o.user_id = u.user_id
@@ -23,8 +22,8 @@ $query  = "SELECT oi.*,
           LEFT JOIN food f ON oi.product_type = 'food' AND oi.product_id = f.food_id
           WHERE oi.order_id = '$order_id'";
 $result = mysqli_query($conn, $query);
-?>
-<?php
+
+// Update status
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_status'])) {
     $new_status = mysqli_real_escape_string($conn, $_POST['new_status']);
     $update_query = "UPDATE orders SET payment_status = '$new_status' WHERE order_id = '$order_id'";
@@ -36,7 +35,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_status'])) {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,11 +61,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_status'])) {
       margin-bottom: 20px;
       box-shadow: 0 0 15px rgba(0,0,0,0.1);
     }
-    
   </style>
 </head>
 <body>
-  <?php if (isset($_GET['updated'])) : ?>
+
+<?php if (isset($_GET['updated'])) : ?>
   <div class="alert alert-success">Order status updated successfully!</div>
 <?php endif; ?>
 
@@ -76,6 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_status'])) {
     <h2 class="mb-3">📦 Order Details</h2>
     <p><strong>Order ID:</strong> <?php echo $order_id; ?></p>
     <p><strong>Customer:</strong> <?php echo $order['customer_name']; ?></p>
+    <p><strong>Phone:</strong> <?php echo $order['phone']; ?></p>
+    <p><strong>Address:</strong> <?php echo $order['address']; ?>, <?php echo $order['city']; ?>, <?php echo $order['state']; ?> - <?php echo $order['pincode']; ?></p>
     <p><strong>Total:</strong> ₹<?php echo $order['total_amount']; ?></p>
     <p><strong>Date:</strong> <?php echo $order['order_date']; ?></p>
     <p><strong>Status:</strong> <?php echo ucfirst($order['payment_status']); ?></p>
@@ -113,7 +113,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_status'])) {
         ?>
       </tbody>
     </table>
-
   </div>
 </div>
 
@@ -132,9 +131,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_status'])) {
     <button type="submit" class="btn btn-primary" <?= $is_final_status ? 'disabled' : '' ?>>Update</button>
   </div>
 </form>
-
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

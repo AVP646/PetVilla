@@ -124,7 +124,7 @@ include "../partial/_database.php";
       display: flex;
       align-items: center;
       width: 100%;
-      margin-top:10px;
+      /* margin-top:10px; */
       transition: all 0.3s ease;
     }
 
@@ -218,8 +218,10 @@ include "../partial/_database.php";
         <li class="nav-item"><a href="index.php" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
         <li class="nav-item"><a href="admin_order.php" class="nav-link"><i class="bi bi-bag-check"></i> Orders</a></li>
         <li class="nav-item"><a href="admin_users.php" class="nav-link"><i class="bi bi-people"></i> Users</a></li>
-        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a>
+        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="bi bi-person-circle"></i> Admin</a>
         </li>
+        <li class="nav-item"><a href="admin.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a></li>
+
         <li class="nav-item"><a href="admin_Pets.php" class="nav-link"><i class="fas fa-paw"></i> Pets</a></li>
         <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a>
         </li>
