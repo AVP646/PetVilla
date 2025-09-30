@@ -436,3 +436,18 @@
 
 
 
+.pagination .active .page-link {
+  background-color: #4e8cff; /* Your theme color */
+  border-color: #4e8cff;
+  color: white;
+}
+.pagination .page-link {
+  color: #333;
+  border-radius: 50px;
+  margin: 0 2px;
+  transition: background 0.2s;
+}
+
+.pagination .page-link:hover {
+  background-color: #e8f0ff;
+}

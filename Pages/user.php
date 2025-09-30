@@ -111,6 +111,23 @@
   }
 }
 
+.btn-back {
+  border-radius: 50px;
+  padding: 8px 25px;
+  font-weight: 600;
+  background: #6c757d; /* Elegant gray */
+  color: #fff;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-back:hover {
+  background: #5a6268; /* Darker gray */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+
   </style>
 </head>
 <body>
@@ -130,8 +147,12 @@
       <p>Phone: +91 <?php echo $_SESSION['Mno']; ?></p>
       <!-- <a href="logout.php" class="btn btn-logout">Logout</a> -->
      <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+  <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
+  <a href="javascript:history.back()" class="btn btn-back">⬅ Back</a>
   <a href="edit_profile.php" class="btn btn-primary btn-edit">Edit Profile</a>
   <a href="logout.php" class="btn btn-logout">Logout</a>
+</div>
+
 </div>
 
 

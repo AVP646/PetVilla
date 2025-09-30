@@ -223,49 +223,83 @@
   </section>
 <!-- ends here  -->
 
-<!-- this is why we need pets container  -->
-        <section class="container my-5" id="reviews">
-        <h2 class="text-center display-5 fw-bold mb-4">Why Wee Need Pets ??</h2>
-        <p class="text-center lead text-muted mb-5">Hear inspiring stories & Reviews from pet owners around the world.</p>
+<!-- this is why we need pets contain -->
+ 
+<section class="container my-5" id="reviews">
+  <h2 class="text-center display-5 fw-bold mb-4">Why We Need Pets ??</h2>
+  <p class="text-center lead text-muted mb-5">Hear inspiring stories & Reviews from pet owners around the world.</p>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-            <?php
-$result = $conn->query("SELECT * FROM reviews ORDER BY created_at DESC");
+  <!-- ONE ROW ONLY -->
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+      <?php
+      // Number of reviews per page
+      $limit = 6;
+      $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+      if ($page < 1) $page = 1;
+      $offset = ($page - 1) * $limit;
 
-while ($row = $result->fetch_assoc()):
-  $rating = intval($row['rating']);
-  $user = htmlspecialchars($row['user_name']);
-  $message = htmlspecialchars($row['message']);
-?>
-<div class="col">
-  <div class="p-4 review-card">
-    <div class="d-flex align-items-center mb-3">
-      <img src="../images/review-user.jpg" class="rounded-circle me-3" alt="<?= $user ?>" width="60" height="60">
-      <div>
-        <h5 class="mb-0"><?= $user ?></h5>
-        <div class="review-rating">
-          <?php
-          // Show full stars
-          for ($i = 1; $i <= $rating; $i++) {
-              echo '<i class="bi bi-star-fill"></i>';
-          }
-          // Show empty stars (if any)
-          for ($i = $rating + 1; $i <= 5; $i++) {
-              echo '<i class="bi bi-star"></i>';
-          }
-          ?>
-          (<?= $rating ?>/5)
+      // Total reviews
+      $totalResult = $conn->query("SELECT COUNT(*) AS total FROM reviews");
+      $totalRow = $totalResult->fetch_assoc();
+      $totalReviews = $totalRow['total'];
+      $totalPages = ceil($totalReviews / $limit);
+
+      // Fetch reviews
+      $result = $conn->query("SELECT * FROM reviews ORDER BY created_at DESC LIMIT $limit OFFSET $offset");
+
+      // If no reviews found
+      if ($result->num_rows == 0) {
+          echo "<p class='text-center text-muted'>No reviews yet.</p>";
+      }
+
+      while ($row = $result->fetch_assoc()):
+          $rating = intval($row['rating']);
+          $user = htmlspecialchars($row['user_name']);
+          $message = htmlspecialchars($row['message']);
+      ?>
+      <div class="col">
+        <div class="review-card shadow-sm rounded-4 p-4 h-100 d-flex flex-column justify-content-between">
+          <div class="d-flex align-items-center mb-3">
+            <img src="../images/review-user.jpg" class="rounded-circle me-3 border" alt="<?= $user ?>" width="60" height="60">
+            <div>
+              <h5 class="mb-1 fw-semibold"><?= $user ?></h5>
+              <div class="review-rating text-warning small">
+                <?php
+                for ($i = 1; $i <= $rating; $i++) echo '<i class="bi bi-star-fill"></i>';
+                for ($i = $rating + 1; $i <= 5; $i++) echo '<i class="bi bi-star"></i>';
+                ?>
+                <span class="text-muted">(<?= $rating ?>/5)</span>
+              </div>
+            </div>
+          </div>
+          <p class="text-muted fst-italic flex-grow-1">"<?= $message ?>"</p>
         </div>
       </div>
-    </div>
-    <p class="text-muted">"<?= $message ?>"</p>
+      <?php endwhile; ?>
   </div>
-</div>
-<?php endwhile; ?>
 
-             
-        </div>
-    </section>
+  <!-- Pagination -->
+  <?php if ($totalPages > 1): ?>
+  <nav aria-label="Review Pagination">
+    <ul class="pagination justify-content-center mt-5">
+      <li class="page-item <?= ($page <= 1) ? 'disabled' : '' ?>">
+        <a class="page-link" href="?page=<?= $page - 1 ?>">Previous</a>
+      </li>
+      <?php for ($i = 1; $i <= $totalPages; $i++): ?>
+        <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
+          <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
+        </li>
+      <?php endfor; ?>
+      <li class="page-item <?= ($page >= $totalPages) ? 'disabled' : '' ?>">
+        <a class="page-link" href="?page=<?= $page + 1 ?>">Next</a>
+      </li>
+    </ul>
+  </nav>
+  <?php endif; ?>
+</section>
+
+
+
 
  <!-- this ends here  -->
 

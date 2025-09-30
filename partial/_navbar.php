@@ -117,8 +117,7 @@
 
         <form class="d-flex nav-i " role="search" id="form_nav">
           <input data-aos="fade-down" id="search-box" data-aos-duration="1600" class="form-control me-2 rounded-pill  " type="search" placeholder="Search" aria-label="Search" />
-          <i class="fa-solid fa-xmark" id="cancel"></i>
-          <i class="fa-solid fa-magnifying-glass " id="search"></i>
+          
           <a href="../pages/Cart.php"><i class="fa-solid fa-cart-shopping"></i></a>
           <a href="../Pages/user.php"><i class="fa-solid fa-user"></i></a>
         </form>
@@ -128,23 +127,7 @@
   <!-- here its ends  -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
-  <script>
-    let icon = document.querySelector('#search');
-    let box = document.querySelector('#search-box');
-    let cancel = document.querySelector('#cancel');
-    icon.addEventListener('click', function() {
-      this.style.display = 'none';
-      box.style.display = 'block';
-      cancel.style.display = 'block';
-      console.log("hello");
-    });
-
-    cancel.addEventListener('click', function() {
-      box.style.display = 'none';
-      icon.style.display = 'block';
-      this.style.display = 'none';
-    });
-  </script>
+  
 
 </body>
 
