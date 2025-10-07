@@ -212,22 +212,8 @@ include "../partial/_database.php";
 <body>
   <div id="wrapper">
     <!-- Sidebar -->
-    <div id="sidebar">
-      <h3>🐾 PetVilla</h3>
-      <ul class="nav flex-column">
-        <li class="nav-item"><a href="index.php" class="nav-link"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
-        <li class="nav-item"><a href="admin_order.php" class="nav-link"><i class="bi bi-bag-check"></i> Orders</a></li>
-        <li class="nav-item"><a href="admin_users.php" class="nav-link"><i class="bi bi-people"></i> Users</a></li>
-        <li class="nav-item"><a href="admin_admins.php" class="nav-link"><i class="bi bi-person-circle"></i> Admin</a>
-        </li>
-        <li class="nav-item"><a href="admin.php" class="nav-link"><i class="fas fa-user-shield"></i> Admins</a></li>
-
-        <li class="nav-item"><a href="admin_Pets.php" class="nav-link"><i class="fas fa-paw"></i> Pets</a></li>
-        <li class="nav-item"><a href="admin_Product.php" class="nav-link"><i class="bi bi-box-seam"></i> Products</a>
-        </li>
-        
-      </ul>
-    </div>
+  <?php include 'admin_sidebar.php'; ?>
+    
 
   <!-- Page Content -->
    
@@ -235,7 +221,7 @@ include "../partial/_database.php";
     <div class="row justify-content-center">
       <div class="col-lg-8 animate__animated animate__fadeIn">
         <div class="profile-section text-center">
-          <img src="https://ui-avatars.com/api/?name=<?php  ?>&background=00adb5&color=fff&size=256&rounded=true"
+          <img src="../images/admin.jpg"
                alt="Admin Avatar" class="profile-avatar mb-4">
           <h2 class="profile-name"><?php ?></h2>
           <p class="profile-role"><?php  ?></p>
@@ -257,7 +243,6 @@ include "../partial/_database.php";
           </ul>
 
          <div class="d-flex flex-column flex-md-row justify-content-center gap-3 mt-4">
-  <a href="edit_profile.php" class="btn btn-primary btn-edit">Edit Profile</a>
   <a href="admin_logout.php" class="btn btn-logout">Logout</a>
 </div>
         </div>
